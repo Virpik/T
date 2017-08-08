@@ -18,6 +18,7 @@
 		43972D361F3989E70029B66B /* LocalItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D331F3989E70029B66B /* LocalItem.swift */; };
 		43972D381F3989F50029B66B /* TExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D371F3989F50029B66B /* TExtension.swift */; };
 		43972D3C1F39946F0029B66B /* THashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D3B1F39946F0029B66B /* THashable.swift */; };
+		439795531F39B7BE0029B66B /* T.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439795521F39B7BE0029B66B /* T.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		43972D331F3989E70029B66B /* LocalItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalItem.swift; sourceTree = "<group>"; };
 		43972D371F3989F50029B66B /* TExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TExtension.swift; sourceTree = "<group>"; };
 		43972D3B1F39946F0029B66B /* THashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = THashable.swift; sourceTree = "<group>"; };
+		439795521F39B7BE0029B66B /* T.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		43972D2D1F3989E70029B66B /* src */ = {
 			isa = PBXGroup;
 			children = (
+				439795521F39B7BE0029B66B /* T.swift */,
 				43972D3B1F39946F0029B66B /* THashable.swift */,
 				43972D2E1F3989E70029B66B /* Extension */,
 				43972D2F1F3989E70029B66B /* Json */,
@@ -252,6 +255,7 @@
 				43972D341F3989E70029B66B /* Json.swift in Sources */,
 				43972D101F3989670029B66B /* ViewController.swift in Sources */,
 				43972D3C1F39946F0029B66B /* THashable.swift in Sources */,
+				439795531F39B7BE0029B66B /* T.swift in Sources */,
 				43972D0E1F3989670029B66B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +464,7 @@
 				43972D291F3989680029B66B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		43972D2A1F3989680029B66B /* Build configuration list for PBXNativeTarget "TDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +473,7 @@
 				43972D2C1F3989680029B66B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
