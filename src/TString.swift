@@ -20,11 +20,11 @@ public extension String {
         return first + other
     }
     
-    public var localise: String {
-        return self.localise()
+    public var localize: String {
+        return self.localize()
     }
     
-    public func localise(comment: String? = "", count: Int? = nil) -> String {
+    public func localize(comment: String? = "", count: Int? = nil) -> String {
         var str = self
         
         if let _count = count {
