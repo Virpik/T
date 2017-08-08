@@ -10,13 +10,11 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static func colorWithInt(_ rgbValue: Int) -> UIColor {
-        let red = Float((rgbValue & 0xFF0000) >> 16) / 255.0
-        let green = Float((rgbValue & 0xFF00) >> 8) / 255.0
-        let blue = Float(rgbValue & 0xFF) / 255.0
-
-        let color: UIColor = UIColor.init(colorLiteralRed: red, green: green, blue: blue, alpha: 1.0)
+    convenience init(hex: Int) {
+        let red = Float((hex & 0xFF0000) >> 16) / 255.0
+        let green = Float((hex & 0xFF00) >> 8) / 255.0
+        let blue = Float(hex & 0xFF) / 255.0
         
-        return color
+        self.init(colorLiteralRed: red, green: green, blue: blue, alpha: 1.0)
     }
 }

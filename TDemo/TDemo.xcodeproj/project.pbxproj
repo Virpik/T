@@ -14,6 +14,7 @@
 		437E6EED1F39D06F00648AF1 /* T.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EE71F39D06F00648AF1 /* T.swift */; };
 		437E6EEE1F39D06F00648AF1 /* THashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EE81F39D06F00648AF1 /* THashable.swift */; };
 		437E6EF01F39D09A00648AF1 /* TColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EEF1F39D09A00648AF1 /* TColor.swift */; };
+		437E6F1E1F39EF9800648AF1 /* TString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6F1D1F39EF9800648AF1 /* TString.swift */; };
 		43972D0E1F3989670029B66B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D0D1F3989670029B66B /* AppDelegate.swift */; };
 		43972D101F3989670029B66B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D0F1F3989670029B66B /* ViewController.swift */; };
 		43972D131F3989670029B66B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43972D111F3989670029B66B /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		437E6EE71F39D06F00648AF1 /* T.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T.swift; sourceTree = "<group>"; };
 		437E6EE81F39D06F00648AF1 /* THashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = THashable.swift; sourceTree = "<group>"; };
 		437E6EEF1F39D09A00648AF1 /* TColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TColor.swift; sourceTree = "<group>"; };
+		437E6F1D1F39EF9800648AF1 /* TString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TString.swift; sourceTree = "<group>"; };
 		43972D0A1F3989670029B66B /* TDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43972D0D1F3989670029B66B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43972D0F1F3989670029B66B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				437E6EE71F39D06F00648AF1 /* T.swift */,
 				437E6EE81F39D06F00648AF1 /* THashable.swift */,
 				437E6EEF1F39D09A00648AF1 /* TColor.swift */,
+				437E6F1D1F39EF9800648AF1 /* TString.swift */,
 			);
 			name = src;
 			path = ../src;
@@ -260,6 +263,7 @@
 				437E6EEB1F39D06F00648AF1 /* JsonInitial.swift in Sources */,
 				437E6EF01F39D09A00648AF1 /* TColor.swift in Sources */,
 				437E6EE91F39D06F00648AF1 /* TExtension.swift in Sources */,
+				437E6F1E1F39EF9800648AF1 /* TString.swift in Sources */,
 				437E6EEE1F39D06F00648AF1 /* THashable.swift in Sources */,
 				437E6EEA1F39D06F00648AF1 /* Json.swift in Sources */,
 			);
