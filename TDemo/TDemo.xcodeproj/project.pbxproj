@@ -15,6 +15,8 @@
 		437E6EEE1F39D06F00648AF1 /* THashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EE81F39D06F00648AF1 /* THashable.swift */; };
 		437E6EF01F39D09A00648AF1 /* TColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EEF1F39D09A00648AF1 /* TColor.swift */; };
 		437E6F1E1F39EF9800648AF1 /* TString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6F1D1F39EF9800648AF1 /* TString.swift */; };
+		439089D41F3BDDD30030694E /* TExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439089D21F3BDDD30030694E /* TExtensions.swift */; };
+		439089D51F3BDDD30030694E /* TView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439089D31F3BDDD30030694E /* TView.swift */; };
 		43972D0E1F3989670029B66B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D0D1F3989670029B66B /* AppDelegate.swift */; };
 		43972D101F3989670029B66B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D0F1F3989670029B66B /* ViewController.swift */; };
 		43972D131F3989670029B66B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43972D111F3989670029B66B /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 		437E6EE81F39D06F00648AF1 /* THashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = THashable.swift; sourceTree = "<group>"; };
 		437E6EEF1F39D09A00648AF1 /* TColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TColor.swift; sourceTree = "<group>"; };
 		437E6F1D1F39EF9800648AF1 /* TString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TString.swift; sourceTree = "<group>"; };
+		439089D21F3BDDD30030694E /* TExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TExtensions.swift; sourceTree = "<group>"; };
+		439089D31F3BDDD30030694E /* TView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TView.swift; sourceTree = "<group>"; };
 		43972D0A1F3989670029B66B /* TDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43972D0D1F3989670029B66B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43972D0F1F3989670029B66B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 				437E6EE81F39D06F00648AF1 /* THashable.swift */,
 				437E6EEF1F39D09A00648AF1 /* TColor.swift */,
 				437E6F1D1F39EF9800648AF1 /* TString.swift */,
+				439089D21F3BDDD30030694E /* TExtensions.swift */,
+				439089D31F3BDDD30030694E /* TView.swift */,
 			);
 			name = src;
 			path = ../src;
@@ -257,7 +263,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				437E6EED1F39D06F00648AF1 /* T.swift in Sources */,
+				439089D51F3BDDD30030694E /* TView.swift in Sources */,
 				437E6EEC1F39D06F00648AF1 /* LocalItem.swift in Sources */,
+				439089D41F3BDDD30030694E /* TExtensions.swift in Sources */,
 				43972D101F3989670029B66B /* ViewController.swift in Sources */,
 				43972D0E1F3989670029B66B /* AppDelegate.swift in Sources */,
 				437E6EEB1F39D06F00648AF1 /* JsonInitial.swift in Sources */,
