@@ -23,6 +23,7 @@
 		43972D151F3989670029B66B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43972D141F3989670029B66B /* Assets.xcassets */; };
 		43972D181F3989670029B66B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43972D161F3989670029B66B /* LaunchScreen.storyboard */; };
 		43972D231F3989680029B66B /* TDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D221F3989680029B66B /* TDemoTests.swift */; };
+		43CFEB2C1F55316400C50265 /* TTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFEB2B1F55316400C50265 /* TTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		43972D1E1F3989680029B66B /* TDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43972D221F3989680029B66B /* TDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoTests.swift; sourceTree = "<group>"; };
 		43972D241F3989680029B66B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43CFEB2B1F55316400C50265 /* TTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				437E6F1D1F39EF9800648AF1 /* TString.swift */,
 				439089D21F3BDDD30030694E /* TExtensions.swift */,
 				439089D31F3BDDD30030694E /* TView.swift */,
+				43CFEB2B1F55316400C50265 /* TTableView.swift */,
 			);
 			name = src;
 			path = ../src;
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				437E6EED1F39D06F00648AF1 /* T.swift in Sources */,
+				43CFEB2C1F55316400C50265 /* TTableView.swift in Sources */,
 				439089D51F3BDDD30030694E /* TView.swift in Sources */,
 				437E6EEC1F39D06F00648AF1 /* LocalItem.swift in Sources */,
 				439089D41F3BDDD30030694E /* TExtensions.swift in Sources */,
