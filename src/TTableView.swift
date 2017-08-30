@@ -13,16 +13,18 @@ protocol AnyRowModel {
     var rowType: UITableViewCell.Type { get }
     
     func build(cell: UITableViewCell, indexPath: IndexPath)
+    func didSelect(cell: UITableViewCell, indexPath: IndexPath)
 }
 
 protocol RowModel: AnyRowModel {
     associatedtype RowType: UITableViewCell
     
     func build(cell: RowType, indexPath: IndexPath)
+    func didSelect(cell: RowType, indexPath: IndexPath)
 }
 
 extension RowModel {
-    var rowType: UITableViewCell.Type  {
+    var rowType: UITableViewCell.Type {
         return RowType.self
     }
     
@@ -32,7 +34,16 @@ extension RowModel {
             return
         }
         
-        self.build(cell: cell , indexPath: indexPath)
+        self.build(cell: cell, indexPath: indexPath)
+    }
+    
+    func didSelect(cell: UITableViewCell, indexPath: IndexPath) {
+        guard let cell = cell as? RowType else {
+            assertionFailure("Wrong usage")
+            return
+        }
+        
+        self.didSelect(cell: cell, indexPath: indexPath)
     }
 }
 
@@ -56,6 +67,10 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
         return self.sections.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sections[section].count
     }
@@ -73,6 +88,12 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = self.sections[indexPath.section][indexPath.row]
         
+        guard let cell = self.tableView.cellForRow(at: indexPath) else {
+            return
+        }
+        
+        model.didSelect(cell: cell, indexPath: indexPath)
     }
 }
