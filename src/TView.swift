@@ -9,6 +9,32 @@
 import UIKit
 
 public extension UIView {
+    static func default1x1() -> Self {
+        return self.init(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
+    }
+    
+    static func default10x10() -> Self {
+        return self.init(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+    }
+    
+    static func default20x20() -> Self {
+        return self.init(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    }
+    
+    static func default50x50() -> Self {
+        return self.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    }
+    
+    static func default100x100() -> Self {
+        return self.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    }
+    
+    static func defaultScreen() -> Self {
+        return self.init(frame: UIScreen.main.bounds)
+    }
+}
+
+public extension UIView {
     func printSubViews(q: String) {
         
         print(q, self)

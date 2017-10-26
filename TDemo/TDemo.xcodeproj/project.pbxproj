@@ -15,6 +15,7 @@
 		437E6EEE1F39D06F00648AF1 /* THashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EE81F39D06F00648AF1 /* THashable.swift */; };
 		437E6EF01F39D09A00648AF1 /* TColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EEF1F39D09A00648AF1 /* TColor.swift */; };
 		437E6F1E1F39EF9800648AF1 /* TString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6F1D1F39EF9800648AF1 /* TString.swift */; };
+		438490D51FA185A1005460E9 /* TImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438490D41FA185A1005460E9 /* TImage.swift */; };
 		439089D41F3BDDD30030694E /* TExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439089D21F3BDDD30030694E /* TExtensions.swift */; };
 		439089D51F3BDDD30030694E /* TView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439089D31F3BDDD30030694E /* TView.swift */; };
 		43972D0E1F3989670029B66B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D0D1F3989670029B66B /* AppDelegate.swift */; };
@@ -24,6 +25,7 @@
 		43972D181F3989670029B66B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43972D161F3989670029B66B /* LaunchScreen.storyboard */; };
 		43972D231F3989680029B66B /* TDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D221F3989680029B66B /* TDemoTests.swift */; };
 		43CFEB2C1F55316400C50265 /* TTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFEB2B1F55316400C50265 /* TTableView.swift */; };
+		43EC9FCA1F6152B000600585 /* TJsonOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EC9FC91F6152B000600585 /* TJsonOperators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,7 @@
 		437E6EE81F39D06F00648AF1 /* THashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = THashable.swift; sourceTree = "<group>"; };
 		437E6EEF1F39D09A00648AF1 /* TColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TColor.swift; sourceTree = "<group>"; };
 		437E6F1D1F39EF9800648AF1 /* TString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TString.swift; sourceTree = "<group>"; };
+		438490D41FA185A1005460E9 /* TImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImage.swift; sourceTree = "<group>"; };
 		439089D21F3BDDD30030694E /* TExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TExtensions.swift; sourceTree = "<group>"; };
 		439089D31F3BDDD30030694E /* TView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TView.swift; sourceTree = "<group>"; };
 		43972D0A1F3989670029B66B /* TDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +61,7 @@
 		43972D221F3989680029B66B /* TDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoTests.swift; sourceTree = "<group>"; };
 		43972D241F3989680029B66B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43CFEB2B1F55316400C50265 /* TTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableView.swift; sourceTree = "<group>"; };
+		43EC9FC91F6152B000600585 /* TJsonOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TJsonOperators.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,11 +89,13 @@
 				437E6EE21F39D06F00648AF1 /* Json */,
 				437E6EE51F39D06F00648AF1 /* LocalItem */,
 				437E6EE71F39D06F00648AF1 /* T.swift */,
+				43EC9FC91F6152B000600585 /* TJsonOperators.swift */,
 				437E6EE81F39D06F00648AF1 /* THashable.swift */,
 				437E6EEF1F39D09A00648AF1 /* TColor.swift */,
 				437E6F1D1F39EF9800648AF1 /* TString.swift */,
 				439089D21F3BDDD30030694E /* TExtensions.swift */,
 				439089D31F3BDDD30030694E /* TView.swift */,
+				438490D41FA185A1005460E9 /* TImage.swift */,
 				43CFEB2B1F55316400C50265 /* TTableView.swift */,
 			);
 			name = src;
@@ -272,11 +278,13 @@
 				439089D41F3BDDD30030694E /* TExtensions.swift in Sources */,
 				43972D101F3989670029B66B /* ViewController.swift in Sources */,
 				43972D0E1F3989670029B66B /* AppDelegate.swift in Sources */,
+				438490D51FA185A1005460E9 /* TImage.swift in Sources */,
 				437E6EEB1F39D06F00648AF1 /* JsonInitial.swift in Sources */,
 				437E6EF01F39D09A00648AF1 /* TColor.swift in Sources */,
 				437E6EE91F39D06F00648AF1 /* TExtension.swift in Sources */,
 				437E6F1E1F39EF9800648AF1 /* TString.swift in Sources */,
 				437E6EEE1F39D06F00648AF1 /* THashable.swift in Sources */,
+				43EC9FCA1F6152B000600585 /* TJsonOperators.swift in Sources */,
 				437E6EEA1F39D06F00648AF1 /* Json.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

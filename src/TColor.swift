@@ -15,6 +15,10 @@ extension UIColor {
         let green = Float((hex & 0xFF00) >> 8) / 255.0
         let blue = Float(hex & 0xFF) / 255.0
         
-        self.init(colorLiteralRed: red, green: green, blue: blue, alpha: 1.0)
+        self.init(red: red.cgFloat, green: green.cgFloat, blue: blue.cgFloat, alpha: 1.0)
+    }
+    
+    static func random() -> UIColor {
+        return UIColor(red: .random(), green: .random(), blue: .random(), alpha: 1.0)
     }
 }
