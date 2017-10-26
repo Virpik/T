@@ -81,6 +81,22 @@ public extension UIView {
         
         return nil
     }
+    
+    func shake () {
+        let midX = self.frame.midX
+        let midY = self.frame.midY
+        
+        let animation = CABasicAnimation(keyPath: "position")
+        
+        animation.duration = 0.06
+        animation.repeatCount = 4
+        animation.autoreverses = true
+        
+        animation.fromValue = CGPoint(x: midX - 10, y: midY)
+        animation.toValue = CGPoint(x: midX + 10, y: midY)
+        
+        layer.add(animation, forKey: "position")
+    }
 }
 
 public extension UIView {
