@@ -9,6 +9,11 @@
 import UIKit
 
 public extension UIView {
+    convenience init(size: CGSize) {
+        let frame = CGRect(origin: CGPoint.zero, size: size)
+        self.init(frame: frame)
+    }
+    
     static func default1x1() -> Self {
         return self.init(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4340EEC61FAAF49A00826F43 /* TArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340EEC51FAAF49A00826F43 /* TArray.swift */; };
 		437E6EE91F39D06F00648AF1 /* TExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EE11F39D06F00648AF1 /* TExtension.swift */; };
 		437E6EEA1F39D06F00648AF1 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EE31F39D06F00648AF1 /* Json.swift */; };
 		437E6EEB1F39D06F00648AF1 /* JsonInitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EE41F39D06F00648AF1 /* JsonInitial.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4340EEC51FAAF49A00826F43 /* TArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TArray.swift; sourceTree = "<group>"; };
 		437E6EE11F39D06F00648AF1 /* TExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TExtension.swift; sourceTree = "<group>"; };
 		437E6EE31F39D06F00648AF1 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
 		437E6EE41F39D06F00648AF1 /* JsonInitial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonInitial.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				438490D41FA185A1005460E9 /* TImage.swift */,
 				43CFEB2B1F55316400C50265 /* TTableView.swift */,
 				4381FABD1FA802FC00540681 /* TData.swift */,
+				4340EEC51FAAF49A00826F43 /* TArray.swift */,
 				4381FAC11FA80EDA00540681 /* file1.json */,
 				4381FAC31FA80F6F00540681 /* file2.json */,
 			);
@@ -283,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				437E6EED1F39D06F00648AF1 /* T.swift in Sources */,
+				4340EEC61FAAF49A00826F43 /* TArray.swift in Sources */,
 				43CFEB2C1F55316400C50265 /* TTableView.swift in Sources */,
 				439089D51F3BDDD30030694E /* TView.swift in Sources */,
 				437E6EEC1F39D06F00648AF1 /* LocalItem.swift in Sources */,
