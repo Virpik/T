@@ -1,8 +1,8 @@
 //
-//  TTableView.swift
+//  TImage.swift
 //  TDemo
 //
-//  Created by Virpik on 29/08/2017.
+//  Created by Virpik on 26/10/2017.
 //  Copyright © 2017 Virpik. All rights reserved.
 //
 
@@ -14,6 +14,21 @@ protocol AnyRowModel {
     
     func build(cell: UITableViewCell, indexPath: IndexPath)
     func didSelect(cell: UITableViewCell, indexPath: IndexPath)
+}
+
+protocol RowModelBlocks: RowModel {
+    var build: ((RowType, IndexPath) -> Void)? { get set }
+    var didSelect: ((RowType, IndexPath) -> Void)? { get set }
+}
+
+extension RowModelBlocks {
+    func build(cell: RowType, indexPath: IndexPath) {
+        self.build?(cell, indexPath)
+    }
+    
+    func didSelect(cell: RowType, indexPath: IndexPath) {
+        self.didSelect?(cell, indexPath)
+    }
 }
 
 protocol RowModel: AnyRowModel {
@@ -45,6 +60,10 @@ extension RowModel {
         
         self.didSelect(cell: cell, indexPath: indexPath)
     }
+    
+    func didSelect(cell: RowType, indexPath: IndexPath) {
+        
+    }
 }
 
 class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
@@ -60,6 +79,17 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+    }
+    
+    func insert(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
+        
+        self.tableView.beginUpdates()
+        
+        self.sections = sections
+        
+        self.tableView.insertRows(at: indexPaths, with: animation)
+        
+        self.tableView.endUpdates()
     }
     
     // MARK: - Table view delegate && data sourse

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4340EEC61FAAF49A00826F43 /* TArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340EEC51FAAF49A00826F43 /* TArray.swift */; };
+		436E24541FE1338B00199D99 /* TTableModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E24531FE1338B00199D99 /* TTableModelViewController.swift */; };
 		437E6EE91F39D06F00648AF1 /* TExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EE11F39D06F00648AF1 /* TExtension.swift */; };
 		437E6EEA1F39D06F00648AF1 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EE31F39D06F00648AF1 /* Json.swift */; };
 		437E6EEB1F39D06F00648AF1 /* JsonInitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EE41F39D06F00648AF1 /* JsonInitial.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		4340EEC51FAAF49A00826F43 /* TArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TArray.swift; sourceTree = "<group>"; };
+		436E24531FE1338B00199D99 /* TTableModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTableModelViewController.swift; sourceTree = "<group>"; };
 		437E6EE11F39D06F00648AF1 /* TExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TExtension.swift; sourceTree = "<group>"; };
 		437E6EE31F39D06F00648AF1 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
 		437E6EE41F39D06F00648AF1 /* JsonInitial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonInitial.swift; sourceTree = "<group>"; };
@@ -90,9 +92,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		436E24521FE1336900199D99 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				43CFEB2B1F55316400C50265 /* TTableView.swift */,
+				436E24531FE1338B00199D99 /* TTableModelViewController.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		437E6EDF1F39D06F00648AF1 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				436E24521FE1336900199D99 /* TableView */,
 				437E6EE01F39D06F00648AF1 /* Extension */,
 				437E6EE21F39D06F00648AF1 /* Json */,
 				437E6EE51F39D06F00648AF1 /* LocalItem */,
@@ -104,7 +116,6 @@
 				439089D21F3BDDD30030694E /* TExtensions.swift */,
 				439089D31F3BDDD30030694E /* TView.swift */,
 				438490D41FA185A1005460E9 /* TImage.swift */,
-				43CFEB2B1F55316400C50265 /* TTableView.swift */,
 				4381FABD1FA802FC00540681 /* TData.swift */,
 				4340EEC51FAAF49A00826F43 /* TArray.swift */,
 				4381FAC11FA80EDA00540681 /* file1.json */,
@@ -287,6 +298,7 @@
 			files = (
 				437E6EED1F39D06F00648AF1 /* T.swift in Sources */,
 				4340EEC61FAAF49A00826F43 /* TArray.swift in Sources */,
+				436E24541FE1338B00199D99 /* TTableModelViewController.swift in Sources */,
 				43CFEB2C1F55316400C50265 /* TTableView.swift in Sources */,
 				439089D51F3BDDD30030694E /* TView.swift in Sources */,
 				437E6EEC1F39D06F00648AF1 /* LocalItem.swift in Sources */,
