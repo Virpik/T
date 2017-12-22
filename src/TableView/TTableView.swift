@@ -9,63 +9,6 @@
 import Foundation
 import UIKit
 
-protocol AnyRowModel {
-    var rowType: UITableViewCell.Type { get }
-    
-    func build(cell: UITableViewCell, indexPath: IndexPath)
-    func didSelect(cell: UITableViewCell, indexPath: IndexPath)
-}
-
-protocol RowModelBlocks: RowModel {
-    var build: ((RowType, IndexPath) -> Void)? { get set }
-    var didSelect: ((RowType, IndexPath) -> Void)? { get set }
-}
-
-extension RowModelBlocks {
-    func build(cell: RowType, indexPath: IndexPath) {
-        self.build?(cell, indexPath)
-    }
-    
-    func didSelect(cell: RowType, indexPath: IndexPath) {
-        self.didSelect?(cell, indexPath)
-    }
-}
-
-protocol RowModel: AnyRowModel {
-    associatedtype RowType: UITableViewCell
-    
-    func build(cell: RowType, indexPath: IndexPath)
-    func didSelect(cell: RowType, indexPath: IndexPath)
-}
-
-extension RowModel {
-    var rowType: UITableViewCell.Type {
-        return RowType.self
-    }
-    
-    func build(cell: UITableViewCell, indexPath: IndexPath) {
-        guard let cell = cell as? RowType else {
-            assertionFailure("Wrong usage")
-            return
-        }
-        
-        self.build(cell: cell, indexPath: indexPath)
-    }
-    
-    func didSelect(cell: UITableViewCell, indexPath: IndexPath) {
-        guard let cell = cell as? RowType else {
-            assertionFailure("Wrong usage")
-            return
-        }
-        
-        self.didSelect(cell: cell, indexPath: indexPath)
-    }
-    
-    func didSelect(cell: RowType, indexPath: IndexPath) {
-        
-    }
-}
-
 class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     let tableView: UITableView
@@ -79,6 +22,28 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+    }
+    
+    func remove(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
+        
+        self.tableView.beginUpdates()
+        
+        self.sections = sections
+        
+        self.tableView.deleteRows(at: indexPaths, with: animation)
+        
+        self.tableView.endUpdates()
+    }
+    
+    func update(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .automatic) {
+        
+        self.tableView.beginUpdates()
+        
+        self.sections = sections
+        
+        self.tableView.reloadRows(at: indexPaths, with: animation)
+        
+        self.tableView.endUpdates()
     }
     
     func insert(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
@@ -126,4 +91,9 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
         
         model.didSelect(cell: cell, indexPath: indexPath)
     }
+    
+    //    override func tableView(_ tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    //        return false
+    //    }
 }
+

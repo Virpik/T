@@ -9,6 +9,19 @@
 import UIKit
 
 public extension UIView {
+    func tAddSubview(view: UIView, autoresizingMask: UIViewAutoresizing =  [.flexibleWidth, .flexibleHeight]) {
+        view.frame = self.bounds
+        view.autoresizingMask = autoresizingMask
+        self.addSubview(view)
+    }
+//    -(void) addSubViewToAutoresizingMask: (UIView*) view {
+//    view.frame = self.bounds;
+//    view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+//    [self addSubview:view];
+//    }
+}
+
+public extension UIView {
     convenience init(size: CGSize) {
         let frame = CGRect(origin: CGPoint.zero, size: size)
         self.init(frame: frame)

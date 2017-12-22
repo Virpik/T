@@ -17,10 +17,14 @@ class TTableModelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if self.tableView == nil {
+            self._installTableView()
+        }
+        
         self.tableViewModel = TableViewModel(tableView: self.tableView)
     }
     
-    func load(rows: [[AnyRowModel]]) {
+    func set(rows: [[AnyRowModel]]) {
         rows.forEach {
             $0.forEach({ (rowModel) in
                 self.tableView.register(type: rowModel.rowType.self)
@@ -29,5 +33,13 @@ class TTableModelViewController: UIViewController {
         
         self.tableViewModel.sections = rows
         self.tableView.reloadData()
+    }
+    
+    private func _installTableView() {
+        let tableView = UITableView(frame: self.view.bounds)
+        self.tableView = tableView
+        tableView.separatorStyle = .none
+        
+        self.view.tAddSubview(view: tableView)
     }
 }
