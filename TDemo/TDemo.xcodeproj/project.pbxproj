@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		4340EEC61FAAF49A00826F43 /* TArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340EEC51FAAF49A00826F43 /* TArray.swift */; };
+		434C2C731FEBD5CB00B62481 /* TMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C711FEBD5CB00B62481 /* TMenuItemCell.swift */; };
+		434C2C741FEBD5CB00B62481 /* TMenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 434C2C721FEBD5CB00B62481 /* TMenuItemCell.xib */; };
+		434C2C771FEBD68000B62481 /* TMenuItemRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C761FEBD68000B62481 /* TMenuItemRowModel.swift */; };
+		434C2C7A1FEBD6EA00B62481 /* TMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C791FEBD6EA00B62481 /* TMenuItem.swift */; };
+		434C2C7C1FEBD77900B62481 /* AnyRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C7B1FEBD77900B62481 /* AnyRowModel.swift */; };
+		434C2C7E1FEBD78D00B62481 /* RowModelBlocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C7D1FEBD78D00B62481 /* RowModelBlocks.swift */; };
+		434C2C801FEBD79E00B62481 /* RowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C7F1FEBD79E00B62481 /* RowModel.swift */; };
+		434C2C831FEC8FCA00B62481 /* TDemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C821FEC8FCA00B62481 /* TDemoTableViewController.swift */; };
+		434C2C851FEC917000B62481 /* TViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C841FEC917000B62481 /* TViewController.swift */; };
+		436947BC1FEC9A02003B147B /* TDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436947BA1FEC9A02003B147B /* TDemoCell.swift */; };
+		436947BD1FEC9A02003B147B /* TDemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436947BB1FEC9A02003B147B /* TDemoCell.xib */; };
+		436947BF1FEC9BFC003B147B /* TDemoRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436947BE1FEC9BFC003B147B /* TDemoRowModel.swift */; };
+		436947C11FEC9D25003B147B /* TDemoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436947C01FEC9D25003B147B /* TDemoItem.swift */; };
+		436947C31FECAD3B003B147B /* TMutableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436947C21FECAD3A003B147B /* TMutableStore.swift */; };
 		436E24541FE1338B00199D99 /* TTableModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E24531FE1338B00199D99 /* TTableModelViewController.swift */; };
 		437E6EE91F39D06F00648AF1 /* TExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EE11F39D06F00648AF1 /* TExtension.swift */; };
 		437E6EEA1F39D06F00648AF1 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E6EE31F39D06F00648AF1 /* Json.swift */; };
@@ -29,6 +43,7 @@
 		43972D151F3989670029B66B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43972D141F3989670029B66B /* Assets.xcassets */; };
 		43972D181F3989670029B66B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43972D161F3989670029B66B /* LaunchScreen.storyboard */; };
 		43972D231F3989680029B66B /* TDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D221F3989680029B66B /* TDemoTests.swift */; };
+		439D96C01FED1545003860D3 /* TableViewModel.MoveContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D96BF1FED1545003860D3 /* TableViewModel.MoveContext.swift */; };
 		43CFEB2C1F55316400C50265 /* TTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFEB2B1F55316400C50265 /* TTableView.swift */; };
 		43EC9FCA1F6152B000600585 /* TJsonOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EC9FC91F6152B000600585 /* TJsonOperators.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +60,20 @@
 
 /* Begin PBXFileReference section */
 		4340EEC51FAAF49A00826F43 /* TArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TArray.swift; sourceTree = "<group>"; };
+		434C2C711FEBD5CB00B62481 /* TMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItemCell.swift; sourceTree = "<group>"; };
+		434C2C721FEBD5CB00B62481 /* TMenuItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMenuItemCell.xib; sourceTree = "<group>"; };
+		434C2C761FEBD68000B62481 /* TMenuItemRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItemRowModel.swift; sourceTree = "<group>"; };
+		434C2C791FEBD6EA00B62481 /* TMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItem.swift; sourceTree = "<group>"; };
+		434C2C7B1FEBD77900B62481 /* AnyRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRowModel.swift; sourceTree = "<group>"; };
+		434C2C7D1FEBD78D00B62481 /* RowModelBlocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowModelBlocks.swift; sourceTree = "<group>"; };
+		434C2C7F1FEBD79E00B62481 /* RowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowModel.swift; sourceTree = "<group>"; };
+		434C2C821FEC8FCA00B62481 /* TDemoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoTableViewController.swift; sourceTree = "<group>"; };
+		434C2C841FEC917000B62481 /* TViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TViewController.swift; sourceTree = "<group>"; };
+		436947BA1FEC9A02003B147B /* TDemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoCell.swift; sourceTree = "<group>"; };
+		436947BB1FEC9A02003B147B /* TDemoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TDemoCell.xib; sourceTree = "<group>"; };
+		436947BE1FEC9BFC003B147B /* TDemoRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoRowModel.swift; sourceTree = "<group>"; };
+		436947C01FEC9D25003B147B /* TDemoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoItem.swift; sourceTree = "<group>"; };
+		436947C21FECAD3A003B147B /* TMutableStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMutableStore.swift; sourceTree = "<group>"; };
 		436E24531FE1338B00199D99 /* TTableModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTableModelViewController.swift; sourceTree = "<group>"; };
 		437E6EE11F39D06F00648AF1 /* TExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TExtension.swift; sourceTree = "<group>"; };
 		437E6EE31F39D06F00648AF1 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
@@ -70,6 +99,7 @@
 		43972D1E1F3989680029B66B /* TDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43972D221F3989680029B66B /* TDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoTests.swift; sourceTree = "<group>"; };
 		43972D241F3989680029B66B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		439D96BF1FED1545003860D3 /* TableViewModel.MoveContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.MoveContext.swift; sourceTree = "<group>"; };
 		43CFEB2B1F55316400C50265 /* TTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableView.swift; sourceTree = "<group>"; };
 		43EC9FC91F6152B000600585 /* TJsonOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TJsonOperators.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,11 +122,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		434C2C6D1FEBD58700B62481 /* XIBS */ = {
+			isa = PBXGroup;
+			children = (
+				436947B91FEC99E2003B147B /* TDemoCell */,
+				434C2C701FEBD5AE00B62481 /* TMenuItemCell */,
+			);
+			path = XIBS;
+			sourceTree = "<group>";
+		};
+		434C2C701FEBD5AE00B62481 /* TMenuItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				434C2C711FEBD5CB00B62481 /* TMenuItemCell.swift */,
+				434C2C721FEBD5CB00B62481 /* TMenuItemCell.xib */,
+			);
+			path = TMenuItemCell;
+			sourceTree = "<group>";
+		};
+		434C2C751FEBD66A00B62481 /* RowModels */ = {
+			isa = PBXGroup;
+			children = (
+				434C2C761FEBD68000B62481 /* TMenuItemRowModel.swift */,
+				436947BE1FEC9BFC003B147B /* TDemoRowModel.swift */,
+			);
+			path = RowModels;
+			sourceTree = "<group>";
+		};
+		434C2C781FEBD6DD00B62481 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				434C2C791FEBD6EA00B62481 /* TMenuItem.swift */,
+				436947C01FEC9D25003B147B /* TDemoItem.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		434C2C811FEC8FA400B62481 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				43972D0F1F3989670029B66B /* ViewController.swift */,
+				434C2C821FEC8FCA00B62481 /* TDemoTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		436947B91FEC99E2003B147B /* TDemoCell */ = {
+			isa = PBXGroup;
+			children = (
+				436947BA1FEC9A02003B147B /* TDemoCell.swift */,
+				436947BB1FEC9A02003B147B /* TDemoCell.xib */,
+			);
+			path = TDemoCell;
+			sourceTree = "<group>";
+		};
 		436E24521FE1336900199D99 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
 				43CFEB2B1F55316400C50265 /* TTableView.swift */,
+				439D96BF1FED1545003860D3 /* TableViewModel.MoveContext.swift */,
 				436E24531FE1338B00199D99 /* TTableModelViewController.swift */,
+				434C2C7B1FEBD77900B62481 /* AnyRowModel.swift */,
+				434C2C7D1FEBD78D00B62481 /* RowModelBlocks.swift */,
+				434C2C7F1FEBD79E00B62481 /* RowModel.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -118,6 +206,8 @@
 				438490D41FA185A1005460E9 /* TImage.swift */,
 				4381FABD1FA802FC00540681 /* TData.swift */,
 				4340EEC51FAAF49A00826F43 /* TArray.swift */,
+				434C2C841FEC917000B62481 /* TViewController.swift */,
+				436947C21FECAD3A003B147B /* TMutableStore.swift */,
 				4381FAC11FA80EDA00540681 /* file1.json */,
 				4381FAC31FA80F6F00540681 /* file2.json */,
 			);
@@ -172,8 +262,11 @@
 		43972D0C1F3989670029B66B /* TDemo */ = {
 			isa = PBXGroup;
 			children = (
+				434C2C811FEC8FA400B62481 /* ViewControllers */,
+				434C2C781FEBD6DD00B62481 /* Structs */,
+				434C2C751FEBD66A00B62481 /* RowModels */,
+				434C2C6D1FEBD58700B62481 /* XIBS */,
 				43972D0D1F3989670029B66B /* AppDelegate.swift */,
-				43972D0F1F3989670029B66B /* ViewController.swift */,
 				43972D111F3989670029B66B /* Main.storyboard */,
 				43972D141F3989670029B66B /* Assets.xcassets */,
 				43972D161F3989670029B66B /* LaunchScreen.storyboard */,
@@ -236,15 +329,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Virpik;
 				TargetAttributes = {
 					43972D091F3989670029B66B = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					43972D1D1F3989680029B66B = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 43972D091F3989670029B66B;
 					};
@@ -278,6 +373,8 @@
 				4381FAC21FA80EDA00540681 /* file1.json in Resources */,
 				4381FAC41FA80F6F00540681 /* file2.json in Resources */,
 				43972D151F3989670029B66B /* Assets.xcassets in Resources */,
+				434C2C741FEBD5CB00B62481 /* TMenuItemCell.xib in Resources */,
+				436947BD1FEC9A02003B147B /* TDemoCell.xib in Resources */,
 				43972D131F3989670029B66B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +395,11 @@
 			files = (
 				437E6EED1F39D06F00648AF1 /* T.swift in Sources */,
 				4340EEC61FAAF49A00826F43 /* TArray.swift in Sources */,
+				434C2C801FEBD79E00B62481 /* RowModel.swift in Sources */,
+				434C2C7A1FEBD6EA00B62481 /* TMenuItem.swift in Sources */,
+				434C2C7C1FEBD77900B62481 /* AnyRowModel.swift in Sources */,
+				439D96C01FED1545003860D3 /* TableViewModel.MoveContext.swift in Sources */,
+				436947C31FECAD3B003B147B /* TMutableStore.swift in Sources */,
 				436E24541FE1338B00199D99 /* TTableModelViewController.swift in Sources */,
 				43CFEB2C1F55316400C50265 /* TTableView.swift in Sources */,
 				439089D51F3BDDD30030694E /* TView.swift in Sources */,
@@ -311,9 +413,17 @@
 				437E6EF01F39D09A00648AF1 /* TColor.swift in Sources */,
 				437E6EE91F39D06F00648AF1 /* TExtension.swift in Sources */,
 				437E6F1E1F39EF9800648AF1 /* TString.swift in Sources */,
+				436947BC1FEC9A02003B147B /* TDemoCell.swift in Sources */,
 				437E6EEE1F39D06F00648AF1 /* THashable.swift in Sources */,
 				43EC9FCA1F6152B000600585 /* TJsonOperators.swift in Sources */,
+				434C2C7E1FEBD78D00B62481 /* RowModelBlocks.swift in Sources */,
+				434C2C851FEC917000B62481 /* TViewController.swift in Sources */,
+				436947BF1FEC9BFC003B147B /* TDemoRowModel.swift in Sources */,
+				434C2C731FEBD5CB00B62481 /* TMenuItemCell.swift in Sources */,
 				437E6EEA1F39D06F00648AF1 /* Json.swift in Sources */,
+				436947C11FEC9D25003B147B /* TDemoItem.swift in Sources */,
+				434C2C831FEC8FCA00B62481 /* TDemoTableViewController.swift in Sources */,
+				434C2C771FEBD68000B62481 /* TMenuItemRowModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +475,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -373,7 +485,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -416,7 +532,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -424,7 +542,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -458,7 +580,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.Tt.TDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -470,7 +593,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.Tt.TDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -483,7 +607,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.Tt.TDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TDemo.app/TDemo";
 			};
 			name = Debug;
@@ -497,7 +622,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.Tt.TDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TDemo.app/TDemo";
 			};
 			name = Release;

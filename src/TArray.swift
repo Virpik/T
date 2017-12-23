@@ -21,3 +21,12 @@ extension Array {
         return self[index]
     }
 }
+
+extension Array {
+    mutating func move(at: Int, to: Int) {
+        let item = self[at]
+        
+        self.remove(at: at)
+        self.insert(item, at: to)
+    }
+}
