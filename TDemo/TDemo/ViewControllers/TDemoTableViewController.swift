@@ -10,31 +10,43 @@ import Foundation
 import UIKit
 
 class TDemoTableViewController: TTableModelViewController {
-    struct Item {
-        var title: String?
-        var color: UIColor?
-        
-        init(title: String?, color: UIColor?) {
-            self.title = title
-            self.color = color
-        }
-    }
     
-    private var items: [Item] = {
-        
+    private var items: [TDemoItem] = {
         return [
-            Item(title: "Title1", color: .red.withAlphaComponent(0.3)),
-            Item(title: "Title2", color: .green.withAlphaComponent(0.3)),
-            Item(title: "Title3", color: .blue.withAlphaComponent(0.3)),
-            Item(title: "Title4", color: .purple.withAlphaComponent(0.3)),
-            Item(title: "Title5", color: .orange.withAlphaComponent(0.3)),
-            Item(title: "Title6", color: .cyan.withAlphaComponent(0.3))
+            TDemoItem(title: "Title1", color: UIColor.red.transparency(0.3)),
+            TDemoItem(title: "Title2", color: UIColor.green.transparency(0.3)),
+            TDemoItem(title: "Title3", color: UIColor.blue.transparency(0.3)),
+            TDemoItem(title: "Title4", color: UIColor.purple.transparency(0.3)),
+            TDemoItem(title: "Title5", color: UIColor.orange.transparency(0.3)),
+            TDemoItem(title: "Title6", color: UIColor.cyan.transparency(0.3))
         ]
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tLog()
+        
+        var handlers = Handlers()
+        
+        handlers.handlerDidMove = {_, _, atIndexPath, toIndexPath in
+            self.items.move(at: atIndexPath.row, to: toIndexPath.row)
+        }
+        
+        self.handlers = handlers
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.setupTable()
+    }
+    
+    func setupTable() {
+        let rows: [AnyRowModel] = self.items.map {
+            return TDemoRowModel(item: $0)
+        }
+        
+        self.set(rows: [rows])
+    }
 }

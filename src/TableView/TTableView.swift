@@ -9,19 +9,44 @@
 import Foundation
 import UIKit
 
+extension TableViewModel {
+    struct Handlers {
+        typealias DefaultBlock = ((AnyRowModel, UITableViewCell, IndexPath) -> Void)
+        
+        // debug
+        var handler: Block?
+        
+        var handlerDidSelect: DefaultBlock?
+        var handlerDidDeselect: DefaultBlock?
+        
+        var handlerWillMove: DefaultBlock?
+        var handlerMove: ((AnyRowModel, UITableViewCell, _ at: IndexPath, _ to:IndexPath) -> Void)?
+        var handlerDidMove: ((AnyRowModel, UITableViewCell, _ at: IndexPath, _ to:IndexPath) -> Void)?
+    }
+}
+
 class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     let tableView: UITableView
     
     var sections: [[AnyRowModel]] = []
     
-    init (tableView: UITableView) {
+    var movingContext: GestureContext?
+    
+    var handlers: Handlers?
+    
+    init (tableView: UITableView, handlers: Handlers? = nil) {
         self.tableView = tableView
+        self.handlers = handlers
         
         super.init()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(_gestureActions))
+        gesture.minimumPressDuration = 0.1
+        self.tableView.addGestureRecognizer(gesture)
     }
     
     func remove(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
@@ -71,6 +96,7 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let model = self.sections[indexPath.section][indexPath.row]
         
         guard let cell = self.tableView.cell(type: model.rowType) else {
@@ -92,8 +118,117 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
         model.didSelect(cell: cell, indexPath: indexPath)
     }
     
-    //    override func tableView(_ tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    //        return false
-    //    }
+    // MARK: Cell move
+    @objc private func _gestureActions(gesture: UILongPressGestureRecognizer) {
+        let state = gesture.state
+        
+        let context = GestureContext(gesture: gesture, tableView: self.tableView, rows: self.sections)
+        
+        switch state {
+        case .began:
+            self._beginMove(context: context)
+        case .changed:
+            self._move(context: context)
+        default:
+            self._endMoving(context: context)
+        }
+    }
+    
+    private func _beginMove(context: GestureContext) {
+        
+        tLog()
+        
+        if context.isMoving != true || context.cellMoveContext == nil {
+            return
+        }
+        
+        
+        self.movingContext = context
+        
+        let activeCContext = context.cellMoveContext!
+        
+        // call handlers
+        self.handlers?.handlerWillMove?(activeCContext.rowModel, activeCContext.cell, activeCContext.indexPath)
+        
+        var centerPoint = activeCContext.cell.center
+        activeCContext.snapshot.center = centerPoint
+        activeCContext.snapshot.alpha = 0
+        
+        self.tableView.addSubview(activeCContext.snapshot)
+        
+        UIView.animate(withDuration: 0.3) {
+            centerPoint.y = context.location.y;
+            activeCContext.snapshot.center = centerPoint;
+            activeCContext.snapshot.transform = CGAffineTransform(scaleX: 1.05, y: 1.05);
+            activeCContext.snapshot.alpha = 0.8;
+            activeCContext.cell.alpha = 0.0
+        }
+    }
+    
+    private func _move(context: GestureContext) {
+        guard let atGContext = self.movingContext else {
+            return
+        }
+        
+        guard let toCContext = context.cellMoveContext else {
+            return
+        }
+        
+        let atCContext = atGContext.cellMoveContext!
+        
+        let atIndexPath = atCContext.indexPath
+        let toIndexPath = toCContext.indexPath
+        
+        // call handlers
+        self.handlers?.handlerMove?(atCContext.rowModel, atCContext.cell, atIndexPath, toIndexPath)
+        tLog(atIndexPath, toIndexPath)
+        
+        var centerPoint = atCContext.snapshot.center
+        centerPoint.y = context.location.y
+        atCContext.snapshot.center = centerPoint;
+        
+        if atIndexPath != toIndexPath {
+            self.movingContext?.cellMoveContext?.indexPath = toIndexPath
+            
+            let item = self.sections[atIndexPath.section][atIndexPath.row]
+            
+            self.sections[atIndexPath.section].remove(at: atIndexPath.row)
+            self.sections[toIndexPath.section].insert(item, at: toIndexPath.row)
+            
+            self.tableView.moveRow(at: atIndexPath, to: toIndexPath)
+            atCContext.cell.isHidden = true
+        }
+    }
+    
+    private func _endMoving(context: GestureContext) {
+        tLog()
+        
+        guard let activeGContext = self.movingContext else {
+            return
+        }
+        
+        let activeCContext = activeGContext.cellMoveContext!
+        
+        // call handlers
+        self.handlers?.handlerDidMove?(activeCContext.rowModel, activeCContext.cell, activeCContext.originalIndexPath, activeCContext.indexPath)
+        
+        activeCContext.cell.isHidden = false
+        activeCContext.cell.alpha = 0
+        
+        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: .calculationModeLinear, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: {
+                activeCContext.snapshot.center = activeCContext.cell.center
+                activeCContext.snapshot.transform = CGAffineTransform.identity
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.4, animations: {
+                activeCContext.snapshot.alpha = 0
+                activeCContext.cell.alpha = 1
+            })
+        }, completion: { _ in
+            activeCContext.snapshot.removeFromSuperview()
+            self.movingContext = nil
+        })
+    }
 }
 

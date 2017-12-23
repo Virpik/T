@@ -11,8 +11,16 @@ import UIKit
 
 class TTableModelViewController: UIViewController {
     
+    typealias Handlers = TableViewModel.Handlers
+    
     @IBOutlet private(set) weak var tableView: UITableView!
     private(set) var tableViewModel: TableViewModel!
+    
+    var handlers: Handlers? {
+        didSet(value) {
+            self.tableViewModel.handlers = self.handlers
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +29,7 @@ class TTableModelViewController: UIViewController {
             self._installTableView()
         }
         
-        self.tableViewModel = TableViewModel(tableView: self.tableView)
+        self.tableViewModel = TableViewModel(tableView: self.tableView, handlers: self.handlers)
     }
     
     func set(rows: [[AnyRowModel]]) {

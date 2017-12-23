@@ -16,17 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        timeLog {
-            let file1Json = Data(fileName: "file1")?.json
-            let file1String = Data(fileName: "file1")?.string
-            
-            let file2Json = Data(fileName: "file2")?.json
-            let file2String = Data(fileName: "file2")?.string
-            
-            print("file1String: \(file1String != nil)")
-            print("file1Json: \(file1Json != nil)")
-            print("file2String: \(file2String != nil)")
-            print("file2Json: \(file2Json != nil)")
+        async {
+            timeLog {
+                let file1Json = Data(fileName: "file1")?.json
+                let file1String = Data(fileName: "file1")?.string
+                
+                let file2Json = Data(fileName: "file2")?.json
+                let file2String = Data(fileName: "file2")?.string
+                
+                print("file1String: \(file1String != nil)")
+                print("file1Json: \(file1Json != nil)")
+                print("file2String: \(file2String != nil)")
+                print("file2Json: \(file2Json != nil)")
+            }
         }
         
         return true

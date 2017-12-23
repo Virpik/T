@@ -78,7 +78,16 @@ public extension UIView {
 }
 
 public extension UIView {
-    public func renderImage() -> UIImage? {
+    
+    public func snapshot() -> UIView {
+        
+        let view = UIImageView(frame: self.bounds)
+        view.image = self.render()
+        
+        return view
+    }
+    
+    public func render() -> UIImage? {
         
         self.layoutIfNeeded()
         
