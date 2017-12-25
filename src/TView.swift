@@ -14,11 +14,6 @@ public extension UIView {
         view.autoresizingMask = autoresizingMask
         self.addSubview(view)
     }
-//    -(void) addSubViewToAutoresizingMask: (UIView*) view {
-//    view.frame = self.bounds;
-//    view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-//    [self addSubview:view];
-//    }
 }
 
 public extension UIView {

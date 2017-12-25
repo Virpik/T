@@ -25,7 +25,7 @@ extension TableViewModel {
     }
 }
 
-class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
+class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
     let tableView: UITableView
     
@@ -34,6 +34,18 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
     var movingContext: GestureContext?
     
     var handlers: Handlers?
+    
+    private var longPressGestue: UILongPressGestureRecognizer!
+    
+    var cellMoviesPressDuration: TimeInterval {
+        get {
+            return self.longPressGestue.minimumPressDuration
+        }
+        
+        set(value) {
+            self.longPressGestue.minimumPressDuration = value
+        }
+    }
     
     init (tableView: UITableView, handlers: Handlers? = nil) {
         self.tableView = tableView
@@ -45,8 +57,11 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
         self.tableView.dataSource = self
         
         let gesture = UILongPressGestureRecognizer(target: self, action: #selector(_gestureActions))
-        gesture.minimumPressDuration = 0.1
+        gesture.minimumPressDuration = 0.01
+        gesture.delegate = self
         self.tableView.addGestureRecognizer(gesture)
+        
+        self.longPressGestue = gesture
     }
     
     func remove(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
@@ -119,6 +134,17 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: Cell move
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        guard let gesture = gestureRecognizer as? UILongPressGestureRecognizer else {
+            return false
+        }
+        
+        let context = GestureContext(gesture: gesture, tableView: self.tableView, rows: self.sections)
+        
+        return context.isMoving && context.cellMoveContext != nil
+    }
+
     @objc private func _gestureActions(gesture: UILongPressGestureRecognizer) {
         let state = gesture.state
         

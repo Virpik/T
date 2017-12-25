@@ -27,7 +27,7 @@ class TDemoTableViewController: TTableModelViewController {
         
         tLog()
         
-        var handlers = Handlers()
+        var handlers = TableHandlers()
         
         handlers.handlerDidMove = {_, _, atIndexPath, toIndexPath in
             self.items.move(at: atIndexPath.row, to: toIndexPath.row)

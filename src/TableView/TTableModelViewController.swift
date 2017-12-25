@@ -11,14 +11,24 @@ import UIKit
 
 class TTableModelViewController: UIViewController {
     
-    typealias Handlers = TableViewModel.Handlers
+    typealias TableHandlers = TableViewModel.Handlers
     
     @IBOutlet private(set) weak var tableView: UITableView!
     private(set) var tableViewModel: TableViewModel!
     
-    var handlers: Handlers? {
+    var handlers: TableHandlers? {
         didSet(value) {
             self.tableViewModel.handlers = self.handlers
+        }
+    }
+    
+    var cellMoviesPressDuration: TimeInterval {
+        get {
+            return self.tableViewModel.cellMoviesPressDuration
+        }
+        
+        set(value) {
+            self.tableViewModel.cellMoviesPressDuration = value
         }
     }
     
