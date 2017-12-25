@@ -215,17 +215,14 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
         activeCContext.cell.isHidden = false
         activeCContext.cell.alpha = 0
         
-        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: .calculationModeLinear, animations: {
+        UIView.animateKeyframes(withDuration: 0.2, delay: 0, options: .calculationModeLinear, animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: {
                 activeCContext.snapshot.center = activeCContext.cell.center
                 activeCContext.snapshot.transform = CGAffineTransform.identity
             })
-            
-            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.4, animations: {
-                activeCContext.snapshot.alpha = 0
-                activeCContext.cell.alpha = 1
-            })
         }, completion: { _ in
+            activeCContext.snapshot.alpha = 0
+            activeCContext.cell.alpha = 1
             activeCContext.snapshot.removeFromSuperview()
             self.movingContext = nil
         })
