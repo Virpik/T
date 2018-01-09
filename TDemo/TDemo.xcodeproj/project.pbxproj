@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		432E9B2B1FF62EA600E90559 /* TableViewModel.Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432E9B2A1FF62EA600E90559 /* TableViewModel.Handlers.swift */; };
 		4340EEC61FAAF49A00826F43 /* TArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340EEC51FAAF49A00826F43 /* TArray.swift */; };
 		434C2C731FEBD5CB00B62481 /* TMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C711FEBD5CB00B62481 /* TMenuItemCell.swift */; };
 		434C2C741FEBD5CB00B62481 /* TMenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 434C2C721FEBD5CB00B62481 /* TMenuItemCell.xib */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		432E9B2A1FF62EA600E90559 /* TableViewModel.Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.Handlers.swift; sourceTree = "<group>"; };
 		4340EEC51FAAF49A00826F43 /* TArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TArray.swift; sourceTree = "<group>"; };
 		434C2C711FEBD5CB00B62481 /* TMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItemCell.swift; sourceTree = "<group>"; };
 		434C2C721FEBD5CB00B62481 /* TMenuItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMenuItemCell.xib; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				434C2C7B1FEBD77900B62481 /* AnyRowModel.swift */,
 				434C2C7D1FEBD78D00B62481 /* RowModelBlocks.swift */,
 				434C2C7F1FEBD79E00B62481 /* RowModel.swift */,
+				432E9B2A1FF62EA600E90559 /* TableViewModel.Handlers.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				43972D0B1F3989670029B66B /* Products */,
 			);
 			sourceTree = "<group>";
+			wrapsLines = 0;
 		};
 		43972D0B1F3989670029B66B /* Products */ = {
 			isa = PBXGroup;
@@ -334,6 +338,7 @@
 				TargetAttributes = {
 					43972D091F3989670029B66B = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = U4H4D3GM6A;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
@@ -404,6 +409,7 @@
 				43CFEB2C1F55316400C50265 /* TTableView.swift in Sources */,
 				439089D51F3BDDD30030694E /* TView.swift in Sources */,
 				437E6EEC1F39D06F00648AF1 /* LocalItem.swift in Sources */,
+				432E9B2B1FF62EA600E90559 /* TableViewModel.Handlers.swift in Sources */,
 				4381FABE1FA802FC00540681 /* TData.swift in Sources */,
 				439089D41F3BDDD30030694E /* TExtensions.swift in Sources */,
 				43972D101F3989670029B66B /* ViewController.swift in Sources */,
@@ -576,10 +582,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U4H4D3GM6A;
 				INFOPLIST_FILE = TDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Tt.TDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Tt.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
@@ -589,10 +600,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U4H4D3GM6A;
 				INFOPLIST_FILE = TDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Tt.TDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Tt.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};

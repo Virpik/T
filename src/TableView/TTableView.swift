@@ -9,22 +9,6 @@
 import Foundation
 import UIKit
 
-extension TableViewModel {
-    struct Handlers {
-        typealias DefaultBlock = ((AnyRowModel, UITableViewCell, IndexPath) -> Void)
-        
-        // debug
-        var handler: Block?
-        
-        var handlerDidSelect: DefaultBlock?
-        var handlerDidDeselect: DefaultBlock?
-        
-        var handlerWillMove: DefaultBlock?
-        var handlerMove: ((AnyRowModel, UITableViewCell, _ at: IndexPath, _ to:IndexPath) -> Void)?
-        var handlerDidMove: ((AnyRowModel, UITableViewCell, _ at: IndexPath, _ to:IndexPath) -> Void)?
-    }
-}
-
 class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
     let tableView: UITableView
@@ -111,7 +95,7 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let model = self.sections[indexPath.section][indexPath.row]
         
         guard let cell = self.tableView.cell(type: model.rowType) else {
@@ -144,7 +128,7 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGe
         
         return context.isMoving && context.cellMoveContext != nil
     }
-
+    
     @objc private func _gestureActions(gesture: UILongPressGestureRecognizer) {
         let state = gesture.state
         
@@ -205,15 +189,47 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGe
         let atIndexPath = atCContext.indexPath
         let toIndexPath = toCContext.indexPath
         
+        
+        /// Проверка на необходимость скрола
+//        let visibleCells = self.tableView.visibleCells
+//        let vIndexPaths = visibleCells.map { (cell) -> IndexPath in
+//            return self.tableView.indexPath(for: cell)!
+//        }
+        
+//        if let first = vIndexPaths.first, let firstCell = visibleCells.first, first == toIndexPath {
+//            tLog(context.location, firstCell.frame)
+//        }
+
+//        if let first = vIndexPaths.first, let firstCell = visibleCells.first, first == toIndexPath {
+//            if let indexPath = self._previousIndexPath(at: first) {
+////                let _ = self.tableView.cellForRow(at: indexPath)
+//                tLog("_previousIndexPath", first, indexPath)
+////                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+////                return
+//            }
+//        }
+
+//        if let last = vIndexPaths.last, last == toIndexPath {
+//            if let indexPath = self._beforeIndexPath(at: last) {
+////                let _ = self.tableView.cellForRow(at: indexPath)
+//                tLog("_beforeIndexPath", last, indexPath)
+////                self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+////                return
+//            }
+//        }
+
+    
+        /// Перемещение
         // call handlers
-        self.handlers?.handlerMove?(atCContext.rowModel, atCContext.cell, atIndexPath, toIndexPath)
-        tLog(atIndexPath, toIndexPath)
         
         var centerPoint = atCContext.snapshot.center
         centerPoint.y = context.location.y
         atCContext.snapshot.center = centerPoint;
         
         if atIndexPath != toIndexPath {
+            self.handlers?.handlerMove?(atCContext.rowModel, atCContext.cell, atIndexPath, toIndexPath)
+            tLog(atIndexPath, toIndexPath)
+            
             self.movingContext?.cellMoveContext?.indexPath = toIndexPath
             
             let item = self.sections[atIndexPath.section][atIndexPath.row]
@@ -221,9 +237,64 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGe
             self.sections[atIndexPath.section].remove(at: atIndexPath.row)
             self.sections[toIndexPath.section].insert(item, at: toIndexPath.row)
             
+            self.tableView.beginUpdates()
+
             self.tableView.moveRow(at: atIndexPath, to: toIndexPath)
+            
+            self.tableView.endUpdates()
+            
             atCContext.cell.isHidden = true
         }
+    }
+    
+    private func _beforeIndexPath(at indexPath: IndexPath) -> IndexPath? {
+        var section = indexPath.section
+        var row = indexPath.row
+        
+        let sections = self.tableView.numberOfSections
+        let rowsAtSection = self.tableView.numberOfRows(inSection: section)
+        
+        if rowsAtSection - 1 == row && sections - 1 == section {
+            return nil
+        }
+        
+        if rowsAtSection - 1 > row {
+            row += 1
+            
+            return IndexPath(row: row, section: section)
+        }
+        
+        if sections - 1 > section {
+            section += 1
+            row = 0
+            
+            return IndexPath(row: row, section: section)
+        }
+        
+        return nil
+    }
+    
+    private func _previousIndexPath(at indexPath: IndexPath) -> IndexPath? {
+        var section = indexPath.section
+        var row = indexPath.row
+        
+        if row == 0 && section == 0 {
+            return nil
+        }
+        
+        if row > 0 {
+            row -= 1
+            
+            return IndexPath(row: row, section: section)
+        }
+        
+        if section > 0 {
+            section -= 1
+            row = self.tableView.numberOfRows(inSection: section) - 1
+            return IndexPath(row: row, section: section)
+        }
+        
+        return nil
     }
     
     private func _endMoving(context: GestureContext) {
@@ -236,8 +307,12 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGe
         let activeCContext = activeGContext.cellMoveContext!
         
         // call handlers
-        self.handlers?.handlerDidMove?(activeCContext.rowModel, activeCContext.cell, activeCContext.originalIndexPath, activeCContext.indexPath)
         
+        self.handlers?.handlerDidMove?(activeCContext.rowModel,
+                                       activeCContext.cell,
+                                       activeCContext.originalIndexPath,
+                                       activeCContext.indexPath)
+
         activeCContext.cell.isHidden = false
         activeCContext.cell.alpha = 0
         

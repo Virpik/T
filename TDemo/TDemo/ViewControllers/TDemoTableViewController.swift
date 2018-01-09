@@ -18,7 +18,13 @@ class TDemoTableViewController: TTableModelViewController {
             TDemoItem(title: "Title3", color: UIColor.blue.transparency(0.3)),
             TDemoItem(title: "Title4", color: UIColor.purple.transparency(0.3)),
             TDemoItem(title: "Title5", color: UIColor.orange.transparency(0.3)),
-            TDemoItem(title: "Title6", color: UIColor.cyan.transparency(0.3))
+            TDemoItem(title: "Title6", color: UIColor.cyan.transparency(0.3)),
+            TDemoItem(title: "Title7", color: UIColor.red.transparency(0.3)),
+            TDemoItem(title: "Title8", color: UIColor.green.transparency(0.3)),
+            TDemoItem(title: "Title9", color: UIColor.blue.transparency(0.3)),
+            TDemoItem(title: "Title10", color: UIColor.purple.transparency(0.3)),
+            TDemoItem(title: "Title11", color: UIColor.orange.transparency(0.3)),
+            TDemoItem(title: "Title12", color: UIColor.cyan.transparency(0.3))
         ]
     }()
     

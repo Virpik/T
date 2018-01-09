@@ -30,3 +30,31 @@ extension Array {
         self.insert(item, at: to)
     }
 }
+
+extension Collection {
+    var shuffle: [Element] {
+        var list = Array(self)
+        list.shuffleInPlace()
+        return list
+    }
+}
+
+extension MutableCollection where Index == Int {
+    mutating func shuffleInPlace() {
+        
+        if count < 2 {
+            return
+        }
+        
+        for i in 0 ..< Int(count) - 1 {
+            
+            let j = Int(arc4random_uniform(UInt32(Int(count) - i))) + i
+            
+            guard i != j else {
+                continue
+            }
+            
+            self.swapAt(i, j)
+        }
+    }
+}

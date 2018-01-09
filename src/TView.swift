@@ -14,6 +14,31 @@ public extension UIView {
         view.autoresizingMask = autoresizingMask
         self.addSubview(view)
     }
+    
+    func tHidde(duration: TimeInterval, completion: Block? = nil) {
+        let alpha = self.alpha
+        
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 0
+        }) { (_) in
+            self.isHidden = true
+            self.alpha = alpha
+            completion?()
+        }
+    }
+    
+    func tShow(duration: TimeInterval, completion: Block? = nil) {
+        let alpha = self.alpha
+        
+        self.alpha = 0
+        self.isHidden = false
+        
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = alpha
+        }) { (_) in
+            completion?()
+        }
+    }
 }
 
 public extension UIView {
