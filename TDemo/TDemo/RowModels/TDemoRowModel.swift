@@ -8,20 +8,21 @@
 
 import Foundation
 import UIKit
+import T
 
-struct TDemoRowModel: RowModelBlocks {
-    typealias RowType = TDemoCell
+public struct TDemoRowModel: RowModelBlocks {
+    public typealias RowType = TDemoCell
     
-    var isMoving: Bool {
+    public var isMoving: Bool {
         return self._cell.item?.moveAnchor != nil
     }
     
-    var movingAnchorView: UIView? {
+    public var movingAnchorView: UIView? {
         return self._cell.item?.moveAnchor
     }
     
-    var didSelect: ((RowType, IndexPath) -> Void)?
-    var build: ((RowType, IndexPath) -> Void)?
+    public var didSelect: ((RowType, IndexPath) -> Void)?
+    public var build: ((RowType, IndexPath) -> Void)?
     
     var item: TDemoItem
     
@@ -31,7 +32,7 @@ struct TDemoRowModel: RowModelBlocks {
         self.item = item
     }
     
-    func build(cell: RowType, indexPath: IndexPath) {
+    public func build(cell: RowType, indexPath: IndexPath) {
 //        self._cell = cell
         self._cell.item = cell
         
@@ -42,7 +43,7 @@ struct TDemoRowModel: RowModelBlocks {
         self.build?(cell, indexPath)
     }
     
-    func didSelect(cell: RowType, indexPath: IndexPath) {
+    public func didSelect(cell: RowType, indexPath: IndexPath) {
 
         self.didSelect?(cell, indexPath)
     }

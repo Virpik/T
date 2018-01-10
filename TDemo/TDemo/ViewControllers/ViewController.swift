@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import T
 
 class ViewController: TTableModelViewController {
 
@@ -16,6 +17,7 @@ class ViewController: TTableModelViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = "[Examples & Tests]"
         
         self.menuItem = [

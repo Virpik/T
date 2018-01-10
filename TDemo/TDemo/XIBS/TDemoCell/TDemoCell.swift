@@ -8,18 +8,18 @@
 
 import UIKit
 
-class TDemoCell: UITableViewCell {
+public class TDemoCell: UITableViewCell {
 
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var moveAnchor: UIView!
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
