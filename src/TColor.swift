@@ -17,6 +17,11 @@ extension UIColor {
         var a: CGFloat = 0
     }
     
+    
+    static func random() -> UIColor {
+        return UIColor(red: .random(), green: .random(), blue: .random(), alpha: 1.0)
+    }
+    
     var rgbaComponents: RGBAComponents {
         var r: CGFloat = 0
         var g: CGFloat = 0
@@ -35,11 +40,27 @@ extension UIColor {
         
         self.init(red: red.cgFloat, green: green.cgFloat, blue: blue.cgFloat, alpha: 1.0)
     }
-    
-    static func random() -> UIColor {
-        return UIColor(red: .random(), green: .random(), blue: .random(), alpha: 1.0)
+
+    convenience init(sHex: String) {
+        let hex = sHex
+        
+        var cString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        if cString.hasPrefix("#") {
+            cString.remove(at: cString.startIndex)
+        }
+        
+        var rgbValue: UInt32 = 0
+        
+        Scanner(string: cString).scanHexInt32(&rgbValue)
+        
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
+        let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
+        let blue = CGFloat(rgbValue & 0x0000FF) / 255.0
+        
+        self.init(red: red, green: green, blue: blue, alpha: 1.0)
     }
-    
+
     func transparency(_ f: CGFloat) -> UIColor {
         return self.withAlphaComponent(f)
     }
@@ -53,6 +74,29 @@ extension UIColor {
         let b = max(0, min(components.b + f, 1))
         
         let color = UIColor(red: r, green: g, blue: b, alpha: components.a)
+        
+        return color
+    }
+    
+    public var hex: String {
+        return self.hexDescription()
+    }
+    
+    public func hexDescription(_ includeAlpha: Bool = false) -> String {
+        guard self.cgColor.numberOfComponents == 4 else {
+            return "Color not RGB."
+        }
+        
+        let a = self.cgColor.components!.map {
+            Int($0 * CGFloat(255))
+        }
+        
+        let color = String.init(format: "%02x%02x%02x", a[0], a[1], a[2])
+        
+        if includeAlpha {
+            let alpha = String.init(format: "%02x", a[3])
+            return "\(color)\(alpha)"
+        }
         
         return color
     }
