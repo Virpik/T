@@ -9,13 +9,13 @@
 import UIKit
 
 public extension UIView {
-    func tAddSubview(view: UIView, autoresizingMask: UIViewAutoresizing =  [.flexibleWidth, .flexibleHeight]) {
+    public func tAddSubview(view: UIView, autoresizingMask: UIViewAutoresizing =  [.flexibleWidth, .flexibleHeight]) {
         view.frame = self.bounds
         view.autoresizingMask = autoresizingMask
         self.addSubview(view)
     }
     
-    func tHidde(duration: TimeInterval, completion: Block? = nil) {
+    public func tHidde(duration: TimeInterval, completion: Block? = nil) {
         let alpha = self.alpha
         
         UIView.animate(withDuration: duration, animations: {
@@ -27,7 +27,7 @@ public extension UIView {
         }
     }
     
-    func tShow(duration: TimeInterval, completion: Block? = nil) {
+    public func tShow(duration: TimeInterval, completion: Block? = nil) {
         let alpha = self.alpha
         
         self.alpha = 0
@@ -42,38 +42,38 @@ public extension UIView {
 }
 
 public extension UIView {
-    convenience init(size: CGSize) {
+    public convenience init(size: CGSize) {
         let frame = CGRect(origin: CGPoint.zero, size: size)
         self.init(frame: frame)
     }
     
-    static func default1x1() -> Self {
+    public static func default1x1() -> Self {
         return self.init(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
     }
     
-    static func default10x10() -> Self {
+    public static func default10x10() -> Self {
         return self.init(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
     }
     
-    static func default20x20() -> Self {
+    public static func default20x20() -> Self {
         return self.init(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
     }
     
-    static func default50x50() -> Self {
+    public static func default50x50() -> Self {
         return self.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     }
     
-    static func default100x100() -> Self {
+    public static func default100x100() -> Self {
         return self.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     }
     
-    static func defaultScreen() -> Self {
+    public static func defaultScreen() -> Self {
         return self.init(frame: UIScreen.main.bounds)
     }
 }
 
 public extension UIView {
-    func printSubViews(q: String) {
+    public func printSubViews(q: String) {
         
         print(q, self)
         
@@ -82,7 +82,7 @@ public extension UIView {
         })
     }
     
-    func subview<T: UIView>() -> T? {
+    public func subview<T: UIView>() -> T? {
         if let result = self as? T {
             return result
         }
@@ -129,7 +129,7 @@ public extension UIView {
         return nil
     }
     
-    func shake () {
+    public func shake () {
         let midX = self.frame.midX
         let midY = self.frame.midY
         

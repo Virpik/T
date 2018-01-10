@@ -8,11 +8,11 @@
 
 import Foundation
 
-fileprivate enum TStringDecline: String {
+public enum TStringDecline: String {
     case TOne, TMany, TOther
 }
 
-extension String {
+public extension String {
     
     subscript (i: Int) -> Character {
         return self[index(startIndex, offsetBy: i)]
@@ -27,12 +27,10 @@ extension String {
         let end = index(startIndex, offsetBy: r.upperBound)
         return String(self[Range(start ..< end)])
     }
-}
 
-public extension String {
     public var capitalizingFirstLetter: String {
-        let first = String(characters.prefix(1)).capitalized
-        let other = String(characters.dropFirst())
+        let first = self.prefix(1).capitalized
+        let other = self.dropFirst()
         return first + other
     }
     

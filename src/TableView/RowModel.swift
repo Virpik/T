@@ -9,19 +9,19 @@
 import Foundation
 import UIKit
 
-protocol RowModel: AnyRowModel {
+public protocol RowModel: AnyRowModel {
     associatedtype RowType: UITableViewCell
     
     func build(cell: RowType, indexPath: IndexPath)
     func didSelect(cell: RowType, indexPath: IndexPath)
 }
 
-extension RowModel {
-    var rowType: UITableViewCell.Type {
+public extension RowModel {
+    public var rowType: UITableViewCell.Type {
         return RowType.self
     }
     
-    func build(cell: UITableViewCell, indexPath: IndexPath) {
+    public func build(cell: UITableViewCell, indexPath: IndexPath) {
         guard let cell = cell as? RowType else {
             assertionFailure("Wrong usage")
             return
@@ -30,7 +30,7 @@ extension RowModel {
         self.build(cell: cell, indexPath: indexPath)
     }
     
-    func didSelect(cell: UITableViewCell, indexPath: IndexPath) {
+    public func didSelect(cell: UITableViewCell, indexPath: IndexPath) {
         guard let cell = cell as? RowType else {
             assertionFailure("Wrong usage")
             return
@@ -39,7 +39,7 @@ extension RowModel {
         self.didSelect(cell: cell, indexPath: indexPath)
     }
     
-    func didSelect(cell: RowType, indexPath: IndexPath) {
+    public func didSelect(cell: RowType, indexPath: IndexPath) {
         
     }
 }

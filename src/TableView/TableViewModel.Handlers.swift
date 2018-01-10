@@ -9,17 +9,21 @@
 import Foundation
 import UIKit
 
-extension TableViewModel {
-    struct Handlers {
-        typealias DefaultBlock = ((AnyRowModel, UITableViewCell, IndexPath) -> Void)
+public extension TableViewModel {
+    public struct Handlers {
+        public typealias DefaultBlock = ((AnyRowModel, UITableViewCell, IndexPath) -> Void)
         // debug
-        var handler: Block?
+        public var handler: Block?
         
-        var handlerDidSelect: DefaultBlock?
-        var handlerDidDeselect: DefaultBlock?
+        public var handlerDidSelect: DefaultBlock?
+        public var handlerDidDeselect: DefaultBlock?
         
-        var handlerWillMove: DefaultBlock?
-        var handlerMove: ((AnyRowModel, UITableViewCell, _ at: IndexPath, _ to:IndexPath) -> Void)?
-        var handlerDidMove: ((AnyRowModel, UITableViewCell, _ at: IndexPath, _ to:IndexPath) -> Void)?
+        public var handlerWillMove: DefaultBlock?
+        public var handlerMove: ((AnyRowModel, UITableViewCell, _ at: IndexPath, _ to:IndexPath) -> Void)?
+        public var handlerDidMove: ((AnyRowModel, UITableViewCell, _ at: IndexPath, _ to:IndexPath) -> Void)?
+        
+        public init() {
+            
+        }
     }
 }

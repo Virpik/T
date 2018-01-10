@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Data {
-    init?(fileName: String, bundle: Bundle = Bundle.main) {
+public extension Data {
+    public init?(fileName: String, bundle: Bundle = Bundle.main) {
         guard let path = bundle.path(forResource: fileName, ofType: "json") else {
             return nil
         }
@@ -23,7 +23,7 @@ extension Data {
         }
     }
 
-    var json: [[AnyHashable: Any]]? {
+    public var json: [[AnyHashable: Any]]? {
         do {
             let jsonResult = try JSONSerialization.jsonObject(with: self, options: .mutableLeaves)
             
@@ -41,7 +41,7 @@ extension Data {
         }
     }
     
-    var string: String? {
+    public var string: String? {
         return String(data: self, encoding: .utf8)
     }
 }

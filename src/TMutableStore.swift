@@ -9,10 +9,10 @@
 import Foundation
 
 /// Класс, использовать в структурах
-class TMutableStore <T> {
-    var item: T
+open class TMutableStore <T> {
+    public var item: T
     
-    init(item: T) {
+    public init(item: T) {
         self.item = item
     }
 }

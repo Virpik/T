@@ -9,19 +9,16 @@
 import Foundation
 import UIKit
 
-class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
+open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
-    let tableView: UITableView
-    
-    var sections: [[AnyRowModel]] = []
-    
-    var movingContext: GestureContext?
-    
-    var handlers: Handlers?
+    public let tableView: UITableView
+    public var sections: [[AnyRowModel]] = []
+    public var movingContext: GestureContext?
+    public var handlers: Handlers?
     
     private var longPressGestue: UILongPressGestureRecognizer!
     
-    var cellMoviesPressDuration: TimeInterval {
+    public var cellMoviesPressDuration: TimeInterval {
         get {
             return self.longPressGestue.minimumPressDuration
         }
@@ -31,7 +28,7 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGe
         }
     }
     
-    init (tableView: UITableView, handlers: Handlers? = nil) {
+    public init (tableView: UITableView, handlers: Handlers? = nil) {
         self.tableView = tableView
         self.handlers = handlers
         
@@ -48,7 +45,7 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGe
         self.longPressGestue = gesture
     }
     
-    func remove(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
+    public func remove(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
         
         self.tableView.beginUpdates()
         
@@ -59,7 +56,7 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGe
         self.tableView.endUpdates()
     }
     
-    func update(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .automatic) {
+    public func update(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .automatic) {
         
         self.tableView.beginUpdates()
         
@@ -70,7 +67,7 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGe
         self.tableView.endUpdates()
     }
     
-    func insert(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
+    public func insert(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
         
         self.tableView.beginUpdates()
         
@@ -82,19 +79,19 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGe
     }
     
     // MARK: - Table view delegate && data sourse
-    func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return self.sections.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sections[section].count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let model = self.sections[indexPath.section][indexPath.row]
         
@@ -107,7 +104,7 @@ class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGe
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = self.sections[indexPath.section][indexPath.row]
         
         guard let cell = self.tableView.cellForRow(at: indexPath) else {

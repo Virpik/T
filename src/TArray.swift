@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Array {
-    func item(atIndex index: Int) -> Element? {
+public extension Array {
+    public func item(atIndex index: Int) -> Element? {
         if self.count <= index {
             return nil
         }
@@ -20,10 +20,8 @@ extension Array {
         
         return self[index]
     }
-}
 
-extension Array {
-    mutating func move(at: Int, to: Int) {
+    public mutating func move(at: Int, to: Int) {
         let item = self[at]
         
         self.remove(at: at)
@@ -31,24 +29,23 @@ extension Array {
     }
 }
 
-extension Collection {
-    var shuffle: [Element] {
+public extension Collection {
+    public var shuffle: [Element] {
         var list = Array(self)
         list.shuffleInPlace()
         return list
     }
 }
 
-extension MutableCollection where Index == Int {
-    mutating func shuffleInPlace() {
-        
-        if count < 2 {
+public extension MutableCollection where Index == Int {
+    public mutating func shuffleInPlace() {
+        if self.count < 2 {
             return
         }
         
-        for i in 0 ..< Int(count) - 1 {
+        for i in 0 ..< Int(self.count) - 1 {
             
-            let j = Int(arc4random_uniform(UInt32(Int(count) - i))) + i
+            let j = Int(arc4random_uniform(UInt32(Int(self.count) - i))) + i
             
             guard i != j else {
                 continue

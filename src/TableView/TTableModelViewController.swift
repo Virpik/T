@@ -9,20 +9,20 @@
 import Foundation
 import UIKit
 
-class TTableModelViewController: UIViewController {
+open class TTableModelViewController: UIViewController {
     
-    typealias TableHandlers = TableViewModel.Handlers
+    public typealias TableHandlers = TableViewModel.Handlers
     
-    @IBOutlet private(set) weak var tableView: UITableView!
+    @IBOutlet open private(set) weak var tableView: UITableView!
     private(set) var tableViewModel: TableViewModel!
     
-    var handlers: TableHandlers? {
+    public var handlers: TableHandlers? {
         didSet(value) {
             self.tableViewModel.handlers = self.handlers
         }
     }
     
-    var cellMoviesPressDuration: TimeInterval {
+    public var cellMoviesPressDuration: TimeInterval {
         get {
             return self.tableViewModel.cellMoviesPressDuration
         }
@@ -32,7 +32,7 @@ class TTableModelViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         if self.tableView == nil {
@@ -42,7 +42,7 @@ class TTableModelViewController: UIViewController {
         self.tableViewModel = TableViewModel(tableView: self.tableView, handlers: self.handlers)
     }
     
-    func set(rows: [[AnyRowModel]]) {
+    public func set(rows: [[AnyRowModel]]) {
         rows.forEach {
             $0.forEach({ (rowModel) in
                 self.tableView.register(type: rowModel.rowType.self)

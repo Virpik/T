@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct SMask {
-    var raw: String
+public struct SMask {
+    public var raw: String
     
-    var mask: String
+    public var mask: String
     
-    var value: String {
+    public var value: String {
         return self._go()
     }
     
-    init(mask: String, str: String) {
+    public init(mask: String, str: String) {
         self.raw = str
         self.mask = mask
     }

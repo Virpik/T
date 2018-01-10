@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "T"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A short description of T."
 
   # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
                     Set of add-ons for ios development
-                    /* Someday there will be a lot of letters*/                    
+                    /* Someday there will be a lot of letters*/
                    DESC
 
   s.homepage     = "http://t.t/T"
@@ -90,7 +90,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "src", "src/**/*.{h,m,swift}"
+  s.source_files  = "src", "src/**/*.{h, m, swift}"
   s.exclude_files = "src/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"

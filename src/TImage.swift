@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIImage {
     
-    static var defaultColor: UIColor {
+    public static var defaultColor: UIColor {
         return UIColor.red
     }
     
@@ -32,7 +32,7 @@ public extension UIImage {
         self.init(cgImage: image!.cgImage!)
     }
     
-    static func image1x1(color: UIColor?) -> UIImage {
+    public static func image1x1(color: UIColor?) -> UIImage {
         
         let color = color ?? self.defaultColor
         
@@ -43,7 +43,7 @@ public extension UIImage {
         return image
     }
     
-    static func image10x10(color: UIColor?) -> UIImage {
+    public static func image10x10(color: UIColor?) -> UIImage {
         let color = color ?? self.defaultColor
         
         let size = CGSize(width: 10, height: 10)
@@ -53,7 +53,7 @@ public extension UIImage {
         return image
     }
 
-    static func image20x20(color: UIColor?) -> UIImage {
+    public static func image20x20(color: UIColor?) -> UIImage {
         let color = color ?? self.defaultColor
         
         let size = CGSize(width: 20, height: 20)
@@ -63,7 +63,7 @@ public extension UIImage {
         return image
     }
 
-    static func image50x50(color: UIColor?) -> UIImage {
+    public static func image50x50(color: UIColor?) -> UIImage {
         let color = color ?? self.defaultColor
         
         let size = CGSize(width: 50, height: 50)
@@ -73,7 +73,7 @@ public extension UIImage {
         return image
     }
 
-    static func image100x100(color: UIColor?) -> UIImage {
+    public static func image100x100(color: UIColor?) -> UIImage {
         let color = color ?? self.defaultColor
         
         let size = CGSize(width: 100, height: 100)
@@ -83,7 +83,7 @@ public extension UIImage {
         return image
     }
 
-    static func imageBoundsScreen(color: UIColor?) -> UIImage {
+    public static func imageBoundsScreen(color: UIColor?) -> UIImage {
         let color = color ?? self.defaultColor
         
         let size = UIScreen.main.bounds.size

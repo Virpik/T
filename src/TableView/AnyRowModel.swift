@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol AnyRowModel {
+public protocol AnyRowModel {
     var rowType: UITableViewCell.Type { get }
     
     var isMoving: Bool { get }
@@ -19,12 +19,12 @@ protocol AnyRowModel {
     func didSelect(cell: UITableViewCell, indexPath: IndexPath)
 }
 
-extension AnyRowModel {
-    var isMoving: Bool {
+public extension AnyRowModel {
+    public var isMoving: Bool {
         return false
     }
     
-    var movingAnchorView: UIView? {
+    public var movingAnchorView: UIView? {
         return nil
     }
 }

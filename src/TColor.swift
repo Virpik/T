@@ -9,20 +9,19 @@
 import Foundation
 import UIKit
 
-extension UIColor {
-    struct RGBAComponents {
-        var r: CGFloat = 0
-        var g: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
+public extension UIColor {
+    public struct RGBAComponents {
+        public var r: CGFloat = 0
+        public var g: CGFloat = 0
+        public var b: CGFloat = 0
+        public var a: CGFloat = 0
     }
-    
-    
-    static func random() -> UIColor {
+
+    public static func random() -> UIColor {
         return UIColor(red: .random(), green: .random(), blue: .random(), alpha: 1.0)
     }
     
-    var rgbaComponents: RGBAComponents {
+    public var rgbaComponents: RGBAComponents {
         var r: CGFloat = 0
         var g: CGFloat = 0
         var b: CGFloat = 0
@@ -33,7 +32,7 @@ extension UIColor {
         return RGBAComponents(r: r, g: g, b: b, a: a)
     }
     
-    convenience init(hex: Int) {
+    public convenience init(hex: Int) {
         let red = Float((hex & 0xFF0000) >> 16) / 255.0
         let green = Float((hex & 0xFF00) >> 8) / 255.0
         let blue = Float(hex & 0xFF) / 255.0
@@ -41,7 +40,7 @@ extension UIColor {
         self.init(red: red.cgFloat, green: green.cgFloat, blue: blue.cgFloat, alpha: 1.0)
     }
 
-    convenience init(sHex: String) {
+    public convenience init(sHex: String) {
         let hex = sHex
         
         var cString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
@@ -61,12 +60,12 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: 1.0)
     }
 
-    func transparency(_ f: CGFloat) -> UIColor {
+    public func transparency(_ f: CGFloat) -> UIColor {
         return self.withAlphaComponent(f)
     }
     
     /// +/- 1.000
-    func light(_ f: CGFloat) -> UIColor {
+    public func light(_ f: CGFloat) -> UIColor {
         let components = self.rgbaComponents
         
         let r = max(0, min(components.r + f, 1))

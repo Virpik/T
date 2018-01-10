@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-extension TableViewModel {
-    struct CellMoveContext {
-        var indexPath: IndexPath
-        private(set) var originalIndexPath: IndexPath
+public extension TableViewModel {
+    public struct CellMoveContext {
+        public var indexPath: IndexPath
+        public private(set) var originalIndexPath: IndexPath
         
-        var rowModel: AnyRowModel
-        var cell: UITableViewCell
+        public var rowModel: AnyRowModel
+        public var cell: UITableViewCell
         
-        var snapshot: UIView
+        public var snapshot: UIView
         
-        init?(location: CGPoint, tableView: UITableView, rows: [[AnyRowModel]]) {
+        public init?(location: CGPoint, tableView: UITableView, rows: [[AnyRowModel]]) {
             guard let indexPath = tableView.indexPathForRow(at: location) else {
                 return nil
             }
@@ -36,14 +36,14 @@ extension TableViewModel {
         }
     }
     
-    struct GestureContext {
+    public struct GestureContext {
         
-        var location: CGPoint
-        var isMoving: Bool = false
+        public var location: CGPoint
+        public var isMoving: Bool = false
         
-        var cellMoveContext: CellMoveContext?
+        public var cellMoveContext: CellMoveContext?
         
-        init(gesture: UILongPressGestureRecognizer, tableView: UITableView, rows: [[AnyRowModel]]) {
+        public init(gesture: UILongPressGestureRecognizer, tableView: UITableView, rows: [[AnyRowModel]]) {
             self.location = gesture.location(in: tableView)
             self.cellMoveContext = CellMoveContext(location: location, tableView: tableView, rows: rows)
             

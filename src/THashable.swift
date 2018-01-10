@@ -13,7 +13,7 @@ public protocol THashable: Hashable {
 }
 
 public extension THashable {
-    var hashValue: Int {
+    public var hashValue: Int {
         return self.hashes.reduce(5381) {
             ($0 << 5) &+ $0 &+ Int($1)
         }

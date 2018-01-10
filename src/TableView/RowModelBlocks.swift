@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-protocol RowModelBlocks: RowModel {
+public protocol RowModelBlocks: RowModel {
     var build: ((RowType, IndexPath) -> Void)? { get set }
     var didSelect: ((RowType, IndexPath) -> Void)? { get set }
 }
 
-extension RowModelBlocks {
-    func build(cell: RowType, indexPath: IndexPath) {
+public extension RowModelBlocks {
+    public func build(cell: RowType, indexPath: IndexPath) {
         self.build?(cell, indexPath)
     }
     
-    func didSelect(cell: RowType, indexPath: IndexPath) {
+    public func didSelect(cell: RowType, indexPath: IndexPath) {
         self.didSelect?(cell, indexPath)
     }
 }

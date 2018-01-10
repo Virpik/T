@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol JsonInital {
+public protocol JsonInital {
     init(json: Json)
 }

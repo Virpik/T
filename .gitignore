@@ -20,4 +20,5 @@ Temporary Items
 .apdisk
 xcuserdata
 Pods/
+Podfile.lock
 res.tt/

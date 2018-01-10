@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct LocalItem<T> {
-    var key: String
+public struct LocalItem<T> {
+    public var key: String
     
-    var transformSave: ((T) -> Any)?
-    var transformRestore: ((Any) -> T?)?
+    public var transformSave: ((T) -> Any)?
+    public var transformRestore: ((Any) -> T?)?
     
-    var value: T? {
+    public var value: T? {
         get {
             guard let any = UserDefaults.standard.value(forKey: self.key) else {
                 return nil
@@ -44,7 +44,7 @@ struct LocalItem<T> {
     }
     
     
-    init (key: String) {
+    public init (key: String) {
         self.key = key
     }
 }

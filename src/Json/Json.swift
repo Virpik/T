@@ -18,7 +18,7 @@ precedencegroup MultiplicationPrecedence {
 infix operator <=- : MultiplicationPrecedence
 infix operator -=> : MultiplicationPrecedence
 
-func <=- <T: JsonInital> (left: Json, right: String) -> [T] {
+public func <=- <T: JsonInital> (left: Json, right: String) -> [T] {
     if let tmp = left[right] as? [Json] {
         return tmp.map { T(json: $0) }
     }
@@ -26,7 +26,7 @@ func <=- <T: JsonInital> (left: Json, right: String) -> [T] {
     return []
 }
 
-func <=- <T: JsonInital> (left: Json, right: String) -> T? {
+public func <=- <T: JsonInital> (left: Json, right: String) -> T? {
     if let tmp = left[right] as? Json {
         return T(json: tmp)
     }
@@ -34,11 +34,11 @@ func <=- <T: JsonInital> (left: Json, right: String) -> T? {
     return nil
 }
 
-func <=- <T> (left: Json, right: String) -> T? {
+public func <=- <T> (left: Json, right: String) -> T? {
     return left[right] as? T
 }
 
-func <=- <T> (left: Json?, right: String) -> T? {
+public func <=- <T> (left: Json?, right: String) -> T? {
     return left?[right] as? T
 }
 

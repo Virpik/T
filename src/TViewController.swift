@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
-    func chponks() {
+public extension UIViewController {
+    public func chponks() {
         let tView = UIView.defaultScreen()
         
         tView.backgroundColor = UIColor.red.withAlphaComponent(0.3)
