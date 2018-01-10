@@ -1,2 +1,0 @@
-# T
-IOS Dev Support
