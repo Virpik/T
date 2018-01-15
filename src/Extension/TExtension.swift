@@ -48,6 +48,10 @@ public extension FloatingPoint {
 }
 
 public extension String {
+    var int: Int {
+        return Int(self) ?? 0
+    }
+    
     public var uInt32: UInt32 {
         if let int = UInt32(self) {
             return int
@@ -104,6 +108,10 @@ public extension Int {
     
     public var bool: Bool {
         return (self as NSNumber).boolValue
+    }
+    
+    var number: NSNumber {
+        return NSNumber(value: self)
     }
 }
 

@@ -182,3 +182,40 @@ public extension UIView {
         }
     }
 }
+
+extension UIView: UIGestureRecognizerDelegate {
+    
+    private static var _dissmissKeyboardGestures: [UIView: UITapGestureRecognizer] = [:]
+    
+    private var _isDissmissKeyboardTag: Int {
+        return 989
+    }
+    
+    var isDissmissKeyboard: Bool {
+        get {
+            return UIView._dissmissKeyboardGestures[self] != nil
+        }
+        
+        set (value) {
+            
+            if !value {
+                if let gesture = UIView._dissmissKeyboardGestures[self] {
+                    self.removeGestureRecognizer(gesture)
+                }
+                
+                return
+            }
+            
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self._keyboardDissmiss(sender:)))
+            gesture.cancelsTouchesInView = false
+            self.addGestureRecognizer(gesture)
+            UIView._dissmissKeyboardGestures[self] = gesture
+            
+        }
+    }
+    
+    @objc private func _keyboardDissmiss(sender: NSObject) {
+        print(self.classForCoder, sender.classForCoder, #function)
+        self.endEditing(false)
+    }
+}

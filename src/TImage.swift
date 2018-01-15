@@ -11,6 +11,14 @@ import UIKit
 
 public extension UIImage {
     
+    var png: Data? {
+        return UIImagePNGRepresentation(self)
+    }
+    
+    var jpg: Data? {
+        return UIImageJPEGRepresentation(self, 0)
+    }
+    
     public static var defaultColor: UIColor {
         return UIColor.red
     }
