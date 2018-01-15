@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
     public let tableView: UITableView
