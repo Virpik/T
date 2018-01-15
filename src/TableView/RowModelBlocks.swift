@@ -23,3 +23,4 @@ public extension RowModelBlocks {
         self.didSelect?(cell, indexPath)
     }
 }
+
