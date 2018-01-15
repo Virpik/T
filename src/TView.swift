@@ -183,7 +183,7 @@ public extension UIView {
     }
 }
 
-extension UIView: UIGestureRecognizerDelegate {
+public extension UIView {
     
     private static var _dissmissKeyboardGestures: [UIView: UITapGestureRecognizer] = [:]
     
@@ -191,7 +191,7 @@ extension UIView: UIGestureRecognizerDelegate {
         return 989
     }
     
-    var isDissmissKeyboard: Bool {
+    public var isDissmissKeyboard: Bool {
         get {
             return UIView._dissmissKeyboardGestures[self] != nil
         }
