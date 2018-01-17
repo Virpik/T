@@ -80,6 +80,37 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
 
         self.tableView.endUpdates()
     }
+    
+    public func insert(rows: [Row]) {
+        self.tableView.beginUpdates()
+        
+        rows.forEach { row in
+            self.sections[row.indexPath.section].insert(row.rowModel, at: row.indexPath.row)
+            self.tableView.insertRows(at: [row.indexPath], with: row.animation)
+        }
+        
+        self.tableView.endUpdates()
+    }
+    
+    public func replace(rows: [Row]) {
+        self.tableView.beginUpdates()
+        
+        rows.forEach { row in
+            self.sections[row.indexPath.section][row.indexPath.row] = row.rowModel
+            self.tableView.reloadRows(at: [row.indexPath], with: row.animation)
+        }
+        
+        self.tableView.endUpdates()
+    }
+    
+    public func remove(rows: [(IndexPath, UITableViewRowAnimation)]) {
+        self.tableView.beginUpdates()
+        rows.forEach { row in
+            self.sections[row.0.section].remove(at: row.0.row)
+            self.tableView.deleteRows(at: [row.0], with: row.1)
+        }
+        self.tableView.endUpdates()
+    }
 
     // MARK: - scroll view
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -252,6 +283,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
             self.tableView.beginUpdates()
 
             self.tableView.moveRow(at: atIndexPath, to: toIndexPath)
+
             self.tableView.endUpdates()
 
             atCContext.cell.isHidden = true
