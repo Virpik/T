@@ -32,6 +32,8 @@ class TDemoTableViewController: TTableModelViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        self.tableView.setupAutomaticDimension()
+        
         tLog()
         
         var handlers = TableHandlers()
