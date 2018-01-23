@@ -48,6 +48,15 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         self.longPressGestue = gesture
     }
 
+    public func reload(rows: [Row]) {
+        rows.forEach { (row) in
+            self.sections[row.indexPath.section][row.indexPath.row] = row.rowModel
+            if let cell = self.tableView.cellForRow(at: row.indexPath) {
+                row.rowModel.build(cell: cell, indexPath: row.indexPath)
+            }
+        }
+    }
+    
     public func remove(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
 
         self.tableView.beginUpdates()
