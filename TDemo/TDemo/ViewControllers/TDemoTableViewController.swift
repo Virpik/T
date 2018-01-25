@@ -32,8 +32,6 @@ class TDemoTableViewController: TTableModelViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.tableView.setupAutomaticDimension()
-        
         tLog()
         
         var handlers = TableHandlers()
@@ -52,10 +50,45 @@ class TDemoTableViewController: TTableModelViewController {
     }
     
     func setupTable() {
+        func getModel(at item: TDemoItem) -> TDemoRowModel {
+            var model = TDemoRowModel(item: item)
+            
+            model.blockAddToBottom = { item in
+                guard let indexPath = self.indexPath(at: item)?.incRow() else {
+                    return
+                }
+                
+                let newItem = TDemoItem(title: "Title at \(item.title ?? "#NULL#")", color: UIColor.random().transparency(0.3))
+                self.items.insert(newItem, at: indexPath.row)
+                let rowModel = getModel(at: newItem)
+                let row = TableViewModel.Row(model: rowModel, indexPath: indexPath, animation: .top)
+                self.tableViewModel.insert(rows: [row])
+            }
+            
+            model.blockDelete = { item in
+                guard let indexPath = self.indexPath(at: item) else {
+                    return
+                }
+
+                self.items.remove(at: indexPath.row)
+                self.tableViewModel.remove(rows: [(indexPath, .bottom)])
+            }
+            
+            return model
+        }
+        
         let rows: [AnyRowModel] = self.items.map {
-            return TDemoRowModel(item: $0)
+            let model = getModel(at: $0)
+            
+            return model
         }
         
         self.set(rows: [rows])
+    }
+    
+    private func indexPath(at item: TDemoItem) -> IndexPath? {
+        return self.items.index(of: item).map({
+            IndexPath(row: $0, section: 0)
+        })
     }
 }

@@ -9,6 +9,22 @@
 import Foundation
 import UIKit
 
+public extension IndexPath {
+    public func incRow() -> IndexPath {
+        let section = self.section
+        let row = self.row
+        
+        return IndexPath(row: row + 1, section: section)
+    }
+    
+    public func decRow() -> IndexPath {
+        let section = self.section
+        let row = self.row
+        
+        return IndexPath(row: row - 1, section: section)
+    }
+}
+
 public extension CGSize {
     public init (_ width: CGFloat, height: CGFloat) {
         self.init(width: width, height: height)

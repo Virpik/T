@@ -48,6 +48,15 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         self.longPressGestue = gesture
     }
 
+    public func reload(rows: [Row]) {
+        rows.forEach { (row) in
+            self.sections[row.indexPath.section][row.indexPath.row] = row.rowModel
+            if let cell = self.tableView.cellForRow(at: row.indexPath) {
+                row.rowModel.build(cell: cell, indexPath: row.indexPath)
+            }
+        }
+    }
+    
     public func remove(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
 
         self.tableView.beginUpdates()
@@ -80,6 +89,37 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
 
         self.tableView.endUpdates()
     }
+    
+    public func insert(rows: [Row]) {
+        self.tableView.beginUpdates()
+        
+        rows.forEach { row in
+            self.sections[row.indexPath.section].insert(row.rowModel, at: row.indexPath.row)
+            self.tableView.insertRows(at: [row.indexPath], with: row.animation)
+        }
+        
+        self.tableView.endUpdates()
+    }
+    
+    public func replace(rows: [Row]) {
+        self.tableView.beginUpdates()
+        
+        rows.forEach { row in
+            self.sections[row.indexPath.section][row.indexPath.row] = row.rowModel
+            self.tableView.reloadRows(at: [row.indexPath], with: row.animation)
+        }
+        
+        self.tableView.endUpdates()
+    }
+    
+    public func remove(rows: [(IndexPath, UITableViewRowAnimation)]) {
+        self.tableView.beginUpdates()
+        rows.forEach { row in
+            self.sections[row.0.section].remove(at: row.0.row)
+            self.tableView.deleteRows(at: [row.0], with: row.1)
+        }
+        self.tableView.endUpdates()
+    }
 
     // MARK: - scroll view
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -92,7 +132,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
     }
 
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100//UITableViewAutomaticDimension
+        return 150//UITableViewAutomaticDimension
     }
 
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -205,36 +245,13 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
             return
         }
 
+        // Не перемещаем ячейки если цель залочена
+        if !toCContext.rowModel.isMoving {
+            return
+        }
+        
         let atIndexPath = atCContext.indexPath
         let toIndexPath = toCContext.indexPath
-
-        /// Проверка на необходимость скрола
-//        let visibleCells = self.tableView.visibleCells
-//        let vIndexPaths = visibleCells.map { (cell) -> IndexPath in
-//            return self.tableView.indexPath(for: cell)!
-//        }
-//
-//        if let first = vIndexPaths.first, let firstCell = visibleCells.first, first == toIndexPath {
-//            ####(context.location, firstCell.frame)
-//        }
-
-//        if let first = vIndexPaths.first, let firstCell = visibleCells.first, first == toIndexPath {
-//            if let indexPath = self._previousIndexPath(at: first) {
-////                let _ = self.tableView.cellForRow(at: indexPath)
-//                ####("_previousIndexPath", first, indexPath)
-////                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-////                return
-//            }
-//        }
-
-//        if let last = vIndexPaths.last, last == toIndexPath {
-//            if let indexPath = self._beforeIndexPath(at: last) {
-////                let _ = self.tableView.cellForRow(at: indexPath)
-//                ####("_beforeIndexPath", last, indexPath)
-////                self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-////                return
-//            }
-//        }
 
         /// Перемещение
         // call handlers
@@ -252,9 +269,6 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
 //            UIView.setAnimationsEnabled(false)
             
             self.tableView.moveRow(at: atIndexPath, to: toIndexPath)
-            
-//            UIView.setAnimationsEnabled(true)
-            
             atCContext.cell.isHidden = true
         }
     }
@@ -318,12 +332,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         let activeCContext = activeGContext.cellMoveContext!
 
         self.handlers?.handlerEndMove?(activeCContext, activeCContext.indexPath)
-        // call handlers
-//        self.handlers?.handlerDidMove?(activeCContext.rowModel,
-//                                       activeCContext.cell,
-//                                       activeCContext.originalIndexPath,
-//                                       activeCContext.indexPath)
-
+        
         activeCContext.cell.isHidden = false
         activeCContext.cell.alpha = 0
 

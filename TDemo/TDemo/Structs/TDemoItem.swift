@@ -8,10 +8,18 @@
 
 import Foundation
 import UIKit
+import T
 
-struct TDemoItem {
+struct TDemoItem: THashable {
     var title: String?
     var color: UIColor?
+    
+    var hashes: [Int] {
+        return [
+            self.title?.hashValue ?? 0,
+            self.color?.hashValue ?? 0
+        ]
+    }
     
     init(title: String?, color: UIColor?) {
         self.title = title

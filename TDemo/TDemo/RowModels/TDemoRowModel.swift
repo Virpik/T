@@ -21,6 +21,9 @@ public struct TDemoRowModel: RowModelBlocks {
         return self._cell.item?.moveAnchor
     }
     
+    var blockDelete: ((TDemoItem) -> Void)?
+    var blockAddToBottom: ((TDemoItem) -> Void)?
+    
     public var didSelect: ((RowType, IndexPath) -> Void)?
     public var build: ((RowType, IndexPath) -> Void)?
     
@@ -39,6 +42,18 @@ public struct TDemoRowModel: RowModelBlocks {
         cell.labelTitle.text = self.item.title
         cell.viewContainer.backgroundColor = self.item.color
         cell.contentView.backgroundColor = self.item.color?.light(-0.2)
+        
+        var handlers = RowType.Handlers()
+        
+        handlers.addToCart = {
+            self.blockAddToBottom?(self.item)
+        }
+        
+        handlers.delete = {
+            self.blockDelete?(self.item)
+        }
+        
+        cell.handlers = handlers
         
         self.build?(cell, indexPath)
     }

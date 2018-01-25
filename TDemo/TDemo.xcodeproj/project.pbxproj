@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		432FE3D72015DC050082E13D /* T.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 432FE3D62015DC040082E13D /* T.podspec */; };
 		434C2C731FEBD5CB00B62481 /* TMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C711FEBD5CB00B62481 /* TMenuItemCell.swift */; };
 		434C2C741FEBD5CB00B62481 /* TMenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 434C2C721FEBD5CB00B62481 /* TMenuItemCell.xib */; };
 		434C2C771FEBD68000B62481 /* TMenuItemRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C761FEBD68000B62481 /* TMenuItemRowModel.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		0B5F976CAB332D64BF75D15C /* Pods-TDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDemoTests/Pods-TDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		213DC4A2055EAD62445D2C19 /* Pods-TDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TDemo/Pods-TDemo.release.xcconfig"; sourceTree = "<group>"; };
+		432FE3D62015DC040082E13D /* T.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = T.podspec; path = ../T.podspec; sourceTree = "<group>"; };
 		434C2C711FEBD5CB00B62481 /* TMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItemCell.swift; sourceTree = "<group>"; };
 		434C2C721FEBD5CB00B62481 /* TMenuItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMenuItemCell.xib; sourceTree = "<group>"; };
 		434C2C761FEBD68000B62481 /* TMenuItemRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItemRowModel.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		43972D011F3989670029B66B = {
 			isa = PBXGroup;
 			children = (
+				432FE3D62015DC040082E13D /* T.podspec */,
 				43972D0C1F3989670029B66B /* TDemo */,
 				43972D211F3989680029B66B /* TDemoTests */,
 				43972D0B1F3989670029B66B /* Products */,
@@ -301,6 +304,7 @@
 				434C2C741FEBD5CB00B62481 /* TMenuItemCell.xib in Resources */,
 				436947BD1FEC9A02003B147B /* TDemoCell.xib in Resources */,
 				43972D131F3989670029B66B /* Main.storyboard in Resources */,
+				432FE3D72015DC050082E13D /* T.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
