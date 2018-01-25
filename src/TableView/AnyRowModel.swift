@@ -15,11 +15,17 @@ public protocol AnyRowModel {
     var isMoving: Bool { get }
     var movingAnchorView: UIView? { get }
     
+    var rowHeight: CGFloat? { get } // default: tableView.rowHeigh
+    
     func build(cell: UITableViewCell, indexPath: IndexPath)
     func didSelect(cell: UITableViewCell, indexPath: IndexPath)
 }
 
 public extension AnyRowModel {
+    public var rowHeight: CGFloat? {
+        return nil
+    }
+    
     public var isMoving: Bool {
         return false
     }

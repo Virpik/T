@@ -31,6 +31,8 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         }
     }
 
+    private var _cashHeightRows: [IndexPath: CGSize] = [:]
+    
     public init (tableView: UITableView, handlers: Handlers? = nil) {
         self.tableView = tableView
         self.handlers = handlers
@@ -123,18 +125,52 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
 
     // MARK: - scroll view
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        tLog(scrollView.contentOffset)
+        
+//        if let contentOffset = self.movingContext?.scrollViewContentOffset {
+//            self.tableView.contentOffset = contentOffset
+//        }
+
         self.handlers?.handlerDidScroll?(scrollView)
     }
 
+//    open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        tLog(scrollView.contentOffset)
+//    }
+//
+//    open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+//        tLog(scrollView.contentOffset)
+//    }
+//
+//    open func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        tLog(scrollView.contentOffset, decelerate)
+//    }
+//
+//    open func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+//        tLog(scrollView.contentOffset)
+//    }
+//
+//    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        tLog(scrollView.contentOffset)
+//    }
+    
     // MARK: - Table view delegate && data sourse
     open func numberOfSections(in tableView: UITableView) -> Int {
         return self.sections.count
     }
-
+    
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150//UITableViewAutomaticDimension
+        return self.sections[indexPath.section][indexPath.row].rowHeight ?? tableView.rowHeight
+    }
+    
+    open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self._cashHeightRows[indexPath]?.height ?? tableView.estimatedRowHeight
     }
 
+    open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self._cashHeightRows[indexPath] = cell.bounds.size
+    }
+    
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sections[section].count
     }
@@ -182,8 +218,9 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
     @objc private func _gestureActions(gesture: UILongPressGestureRecognizer) {
         let state = gesture.state
 
-        let context = GestureContext(gesture: gesture, tableView: self.tableView, rows: self.sections)
-
+        var context = GestureContext(gesture: gesture, tableView: self.tableView, rows: self.sections)
+        context.scrollViewContentOffset = self.tableView.contentOffset
+        
         switch state {
         case .began:
             self._beginMove(context: context)
@@ -257,8 +294,9 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         // call handlers
 
         if atIndexPath != toIndexPath {
+//            let _contentOffset = self.tableView.contentOffset
 //            self.handlers?.handlerDidMove?(atCContext, toIndexPath)
-
+//            tLog(self.tableView.contentOffset)
             self.movingContext?.cellMoveContext?.indexPath = toIndexPath
 
             let item = self.sections[atIndexPath.section][atIndexPath.row]
@@ -269,6 +307,8 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
 //            UIView.setAnimationsEnabled(false)
             
             self.tableView.moveRow(at: atIndexPath, to: toIndexPath)
+//            self.tableView.contentOffset = _contentOffset
+//            tLog("-",self.tableView.contentOffset)
             atCContext.cell.isHidden = true
         }
     }

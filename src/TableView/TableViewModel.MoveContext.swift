@@ -40,6 +40,8 @@ public extension TableViewModel {
 
     public struct GestureContext {
 
+        public var scrollViewContentOffset: CGPoint?
+        
         public var location: CGPoint
         public var isMoving: Bool = false
 
