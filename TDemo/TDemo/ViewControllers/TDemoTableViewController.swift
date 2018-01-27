@@ -41,12 +41,14 @@ class TDemoTableViewController: TTableModelViewController {
         }
         
         self.handlers = handlers
+        
+        self.setupTable()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.setupTable()
+        
     }
     
     func setupTable() {
