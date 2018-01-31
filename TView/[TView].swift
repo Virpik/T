@@ -9,6 +9,12 @@
 import UIKit
 
 public extension UIView {
+    public convenience init(width: CGFloat, height: CGFloat) {
+        let size = CGSize(width: width, height: height)
+        self.init(size: size)
+    }
+    
+    
     public convenience init(size: CGSize) {
         let frame = CGRect(origin: CGPoint.zero, size: size)
         self.init(frame: frame)
@@ -40,8 +46,13 @@ public extension UIView {
 }
 
 public extension UIView {
-    public func tAddSubview(view: UIView, autoresizingMask: UIViewAutoresizing =  [.flexibleWidth, .flexibleHeight]) {
-        view.frame = self.bounds
+    /// if isBounds == true { view.frame = self.bounds }
+    public func tAddSubview(view: UIView, isSetBounds: Bool = false, autoresizingMask: UIViewAutoresizing =  [.flexibleWidth, .flexibleHeight]) {
+        
+        if isSetBounds {
+            view.frame = self.bounds
+        }
+        
         view.autoresizingMask = autoresizingMask
         self.addSubview(view)
     }
@@ -70,30 +81,20 @@ public extension UIView {
             completion?()
         }
     }
-}
-
-public extension UIView {
-    public func printSubViews(q: String) {
-        
-        print(q, self)
-        
-        self.subviews.forEach({
-            $0.printSubViews(q: q+q)
-        })
-    }
     
-    public func subview<T: UIView>() -> T? {
-        if let result = self as? T {
-            return result
-        }
-        
-        for view in self.subviews {
-            if let result: T = view.subview() {
-                return result
+    public func selfdestruction(isAnimation: Bool = true, after: TimeInterval = 1, handler: Block? = nil) {
+        delay(after) {
+            if !isAnimation {
+                self.removeFromSuperview()
+                handler?()
+                return
+            }
+            
+            self.tHidde(duration: 0.2) {
+                self.removeFromSuperview()
+                handler?()
             }
         }
-        
-        return nil
     }
 }
 
