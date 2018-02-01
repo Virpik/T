@@ -43,6 +43,8 @@ class TDemoTableViewController: TTableModelViewController {
         self.handlers = handlers
         
         self.setupTable()
+        
+//        self.tableView.contentInset = self.tableView.contentInset.set(top: 500)
     }
     
     override func viewDidAppear(_ animated: Bool) {

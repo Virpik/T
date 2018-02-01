@@ -43,6 +43,25 @@ extension UIView {
             
             return view
         }
+        
+//        static func addSubviewAtSubstrateOnWindow(view: UIView, convertPointView: UIView? = nil) -> UIView {
+//            let window = UIApplication.shared.delegate!.window!
+//
+//            let substrateView = UIView(frame: window!.bounds)
+//
+////            if let tPoint = window?.convert(view.frame.origin, to: convertPointView) {
+////                view.frame.origin = tPoint
+////            }
+//
+//            if let point = convertPointView?.convert(view.frame.origin, to: window!) {
+//                view.frame.origin = point
+//            }
+//
+//            substrateView.addSubview(view)
+//            window?.tAddSubview(view: substrateView)
+//
+//            return substrateView
+//        }
     }
     
 //    public func printSubViews(q: String) {
