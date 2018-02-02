@@ -70,10 +70,6 @@ public extension TableViewModel {
         public var cellMoveContext: CellContext?
 
         public init(gesture: UILongPressGestureRecognizer, tableView: UITableView, rows: [[AnyRowModel]]) {
-            self.gesture = gesture
-            self.tableView = tableView
-            self.rows = rows
-            
             self.location = gesture.location(in: tableView)
             self.cellMoveContext = CellContext(location: location, tableView: tableView, rows: rows)
 

@@ -227,9 +227,14 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         let activeCContext = context.cellMoveContext!
        
         self.handlers?.handletBeginMove?(activeCContext)
+        
+//        activeCContext.cell.alpha = 0
+//        activeCContext.snapshot.alpha = 1
+//        activeCContext.snapshot.isHidden = false
+//        self.tableView.addSubview(activeCContext.snapshot)
     }
     
-    var _isScrolling = false
+    private var _isScrolling = false
     
     private func _move(context: GestureContext) {
         
