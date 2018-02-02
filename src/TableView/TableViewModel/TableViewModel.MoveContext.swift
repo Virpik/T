@@ -22,19 +22,12 @@ public extension TableViewModel {
         public private(set) var originSnapshot: UIView
         public var snapshot: UIView
 
-        public init?(location: CGPoint, tableView: UITableView, rows: [[AnyRowModel]]) {
-            guard let indexPath = tableView.indexPathForRow(at: location) else {
-                return nil
-            }
-
-            guard let cell = tableView.cellForRow(at: indexPath) else {
-                return nil
-            }
+        public init(location: CGPoint, indexPath: IndexPath, rowModel: AnyRowModel, cell: UITableViewCell) {
 
             self.location = location
             self.originalIndexPath = indexPath
             self.indexPath = indexPath
-            self.rowModel = rows[indexPath.section][indexPath.row]
+            self.rowModel = rowModel
             self.cell = cell
             
             self.originSnapshot = cell.snapshot()
@@ -69,19 +62,31 @@ public extension TableViewModel {
 
         public var cellMoveContext: CellContext?
 
-        public init(gesture: UILongPressGestureRecognizer, tableView: UITableView, rows: [[AnyRowModel]]) {
+        public init(gesture: UILongPressGestureRecognizer, tableView: UITableView, getRowModel: ((IndexPath) -> AnyRowModel?)) {
+            
             self.location = gesture.location(in: tableView)
-            self.cellMoveContext = CellContext(location: location, tableView: tableView, rows: rows)
+    
+            guard let indexPath = tableView.indexPathForRow(at: location) else {
+                return
+            }
+            
+            guard let cell = tableView.cellForRow(at: indexPath) else {
+                return
+            }
+            
+            guard let rowModel = getRowModel(indexPath) else {
+                return
+            }
+            
+            let cellContext = CellContext(location: location, indexPath: indexPath, rowModel: rowModel, cell: cell)
+            self.cellMoveContext = cellContext
 
             var isAnchorView = false
 
-            if let cellMoveContext = self.cellMoveContext {
-                let view = cellMoveContext.rowModel.movingAnchorView ?? cellMoveContext.cell
-                isAnchorView = view.bounds.contains(gesture.location(in: view))
-            }
-
-            let rowModel = self.cellMoveContext?.rowModel
-            self.isMoving = (rowModel?.isMoving ?? false) && isAnchorView
+            let view = rowModel.movingAnchorView ?? cell
+            isAnchorView = view.bounds.contains(gesture.location(in: view))
+            
+            self.isMoving = (rowModel.isMoving) && isAnchorView
         }
     }
 }
