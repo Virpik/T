@@ -9,7 +9,7 @@ import Foundation
 
 extension UIView {
     struct debug {
-        static func view(at center: CGPoint) -> UIView {
+        static func point(at center: CGPoint) -> UIView {
             
 //            let bgAlpha = 0.3
 //            let crosshairsBgAlpha = 0.3
@@ -44,46 +44,5 @@ extension UIView {
             return view
         }
         
-//        static func addSubviewAtSubstrateOnWindow(view: UIView, convertPointView: UIView? = nil) -> UIView {
-//            let window = UIApplication.shared.delegate!.window!
-//
-//            let substrateView = UIView(frame: window!.bounds)
-//
-////            if let tPoint = window?.convert(view.frame.origin, to: convertPointView) {
-////                view.frame.origin = tPoint
-////            }
-//
-//            if let point = convertPointView?.convert(view.frame.origin, to: window!) {
-//                view.frame.origin = point
-//            }
-//
-//            substrateView.addSubview(view)
-//            window?.tAddSubview(view: substrateView)
-//
-//            return substrateView
-//        }
     }
-    
-//    public func printSubViews(q: String) {
-//
-//        print(q, self)
-//
-//        self.subviews.forEach({
-//            $0.printSubViews(q: q+q)
-//        })
-//    }
-//
-//    public func subview<T: UIView>() -> T? {
-//        if let result = self as? T {
-//            return result
-//        }
-//
-//        for view in self.subviews {
-//            if let result: T = view.subview() {
-//                return result
-//            }
-//        }
-//
-//        return nil
-//    }
 }

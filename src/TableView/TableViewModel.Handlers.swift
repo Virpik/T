@@ -21,10 +21,10 @@ public extension TableViewModel {
         public var handlerDidSelect: DefaultBlock?
         public var handlerDidDeselect: DefaultBlock?
 
-        public var handletBeginMove: ((_ context: CellMoveContext) -> Void)?
-        public var handlerMove: ((_ context: CellMoveContext, _ to: IndexPath?) -> Void)?
-        public var handlerDidMove: ((_ context: CellMoveContext, _ to: IndexPath) -> Void)?
-        public var handlerEndMove: ((_ context: CellMoveContext, _ to: IndexPath) -> Void)?
+        public var handletBeginMove: ((_ context: CellContext) -> Void)?
+        public var handlerMove: ((_ context: CellContext, _ to: IndexPath?) -> Void)?
+        public var handlerDidMove: ((_ context: CellContext, _ to: IndexPath) -> Void)?
+        public var handlerEndMove: ((_ context: CellContext, _ to: IndexPath) -> Void)?
         
         public init() {
             

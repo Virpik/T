@@ -20,7 +20,10 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
 
     public var sections: [[AnyRowModel]] = []
 
-    public var movingContext: GestureContext?
+    /// Контекс перемещаемой ячейки, задается при событии began, Gesture
+    public var atContext: GestureContext?
+    /// Контекст, захваченый при событии change, Gesture, необходим для определения текущей локации
+    public var toContext: GestureContext?
 
     public var handlers: Handlers?
 
@@ -130,43 +133,12 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
 
     // MARK: - scroll view
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        tLog(scrollView.contentOffset)
-        
-
+//        tLog(scrollView.contentOffset)
+    
         self.handlers?.handlerDidScroll?(scrollView)
     }
-
-    open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        tLog(scrollView.contentOffset)
-    }
-
+    
     open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        tLog(scrollView.contentOffset)
-        
-//        if let scrollType = self._isScroll() {
-//
-//            tLog(tag: "isScroll", scrollType.0, scrollType.1)
-//
-//            let offset = scrollType.0 == .up ? -scrollType.1 : scrollType.1
-//
-//            let contentOffset = self.tableView.contentOffset.sum(y: offset)
-//
-//            self.tableView.setContentOffset(contentOffset, animated: true)
-//
-//            return
-//        }
-
-    }
-
-    open func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        tLog(scrollView.contentOffset, decelerate)
-    }
-
-    open func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-//        tLog(scrollView.contentOffset)
-    }
-
-    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 //        tLog(scrollView.contentOffset)
     }
     
@@ -215,11 +187,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
     }
 
     // MARK: Cell move
-
-//    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-//
-//    }
-
+    
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
 
         guard let gesture = gestureRecognizer as? UILongPressGestureRecognizer else {
@@ -234,8 +202,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
     @objc private func _gestureActions(gesture: UILongPressGestureRecognizer) {
         let state = gesture.state
 
-        var context = GestureContext(gesture: gesture, tableView: self.tableView, rows: self.sections)
-        context.scrollViewContentOffset = self.tableView.contentOffset
+        let context = GestureContext(gesture: gesture, tableView: self.tableView, rows: self.sections)
         
         switch state {
         case .began:
@@ -255,14 +222,10 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         
         tLog(tag: "[DEV]", "[BEGIN MOVE]", context.cellMoveContext?.indexPath)
         
-        self.movingContext = context
+        self.atContext = context
 
         let activeCContext = context.cellMoveContext!
-        
-//        self.tableView.addSubview(activeCContext.snapshot)
-//        activeCContext.snapshot.isHidden = false
-//        activeCContext.snapshot.alpha = 1
-        
+       
         self.handlers?.handletBeginMove?(activeCContext)
     }
     
@@ -270,31 +233,30 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
     
     private func _move(context: GestureContext) {
         
-        if _isScrolling {
+        if self._isScrolling {
             return
         }
         
-        guard let atGContext = self.movingContext else {
+        guard let atGContext = self.atContext else {
+            return
+        }
+        
+        let toGContext = context
+        
+        self.toContext = toGContext
+        
+        /// Задаем новую локацию у контекста перемещаемой ячейки
+        let atCContext = atGContext.cellMoveContext!.set(location: toGContext.location)
+        self.atContext?.cellMoveContext = atCContext
+
+        self.handlers?.handlerMove?(atCContext, toGContext.cellMoveContext?.indexPath)
+
+        /// Если текущий контекст перемещения не содержит ячейки - выходим
+        guard let toCContext = toGContext.cellMoveContext else {
             return
         }
 
-        var atCContext = atGContext.cellMoveContext!
-
-        var centerPoint = atCContext.snapshot.center
-        centerPoint.y = context.location.y
-
-        atCContext.snapshot.center = centerPoint
-        atCContext.location = context.location
-
-        self.movingContext?.cellMoveContext = atCContext
-
-        self.handlers?.handlerMove?(atCContext, context.cellMoveContext?.indexPath)
-
-        guard let toCContext = context.cellMoveContext else {
-            return
-        }
-
-        // Не перемещаем ячейки если цель залочена
+        /// Не перемещаем ячейки если цель залочена
         if !toCContext.rowModel.isMoving {
             return
         }
@@ -302,222 +264,144 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         let atIndexPath = atCContext.indexPath
         let toIndexPath = toCContext.indexPath
 
-        /// Scroll
-        if let scrollType = self._isScroll() {
-            
-            tLog(tag: "isScroll", scrollType.0, scrollType.1)
-            
-            let offset = scrollType.0 == .up ? -scrollType.1 : scrollType.1
-            
-            let contentOffset = self.tableView.contentOffset.sum(y: offset)
-            
-            self._isScrolling = true
-            
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tableView.contentOffset = contentOffset
-            }, completion: { success in
-                tLog("self.tableView.contentOffset success: \(success)")
-                self._isScrolling = false
-            })
-            
-            return
-        }
+        /// Скролл
+        let _ =  {
+            self._Scroll()
+        }()
         
         /// Перемещение
-        // call handlers
-        if atIndexPath != toIndexPath {
-            
-            let isDown = atIndexPath < toIndexPath
-            self.movingContext?.cellMoveContext?.indexPath = toIndexPath
-            
-            let item = self.sections[atIndexPath.section][atIndexPath.row]
-            
-            self.sections[atIndexPath.section].remove(at: atIndexPath.row)
-            self.sections[toIndexPath.section].insert(item, at: toIndexPath.row)
-            
-            //We simply cultural have fun
-            
-//            let isScroll: Bool = {
-//                let controllCell = toCContext.cell
-//
-//                var tPoint = controllCell.frame.origin
-//                tPoint.y -= self.tableView.contentOffset.y
-//
-//                var tFrame = controllCell.frame
-//                tFrame.origin.y -= self.tableView.contentOffset.y
-//
-//                let isNotCellContains = !(self.tableView.frame.contains(tFrame))
-//
-//                if isNotCellContains {
-//
-//                    tLog(isDown ? "scroll down" : "scroll up")
-//
-//                    if isDown {
-//                        self.tableView.scrollToRow(at: toIndexPath, at: .bottom, animated: true)
-//                    } else {
-//                        self.tableView.scrollToRow(at: toIndexPath, at: .top, animated: true)
-//                    }
-//
-//                    return true
-//                }
-//
-//                return false
-//            }()
-//
-//            if isScroll {
-//                return
-//            }
-            /// Scroll end
+        let _ = {
+            if atIndexPath != toIndexPath {
+                
+                let isDown = atIndexPath < toIndexPath
+                let isUp = !isDown
 
-            
-//            }
+                let atCellFrame = atCContext.originSnapshot.frame
+                let toCellFrame = toCContext.cell.frame
 
-//
-//            let deleteAnimation: UITableViewRowAnimation = isDown ? .top : .bottom
-//            let insert: UITableViewRowAnimation = isDown ? .bottom : .top
-//
-//            self.tableView.beginUpdates()
-//            self.tableView.deleteRows(at: [atIndexPath], with: deleteAnimation)
-//            self.tableView.insertRows(at: [toIndexPath], with: insert)
-//            self.tableView.endUpdates()
-            self.tableView.moveRow(at: atIndexPath, to: toIndexPath)
-            
-//            atCContext.cell.isHidden = true
-        }
-    }
+                let atCellMidMaxPoint = CGPoint(x: atCellFrame.midX, y: atCellFrame.maxY)
+                let atCellMidMinPoint = CGPoint(x: atCellFrame.midX, y: atCellFrame.minY)
 
-    /// Return (up or down scroll + offset scroll) or nil
-    private func _isScroll() -> (_TypeScroll, CGFloat)? {
-        guard let context = self.movingContext?.cellMoveContext else {
-            return nil
-        }
-    
-        let snaphotFrame = context.snapshot.frame
-//        let snaphotView = UIView(frame: snaphotFrame)
-//        snaphotView.backgroundColor = .red
-//        snaphotView.selfdestruction()
-//        self.tableView.addSubview(snaphotView)
-        
-        let tableViewFrame = self.tableView.bounds
+                if isDown {
+                    let isTrue = !toCellFrame.contains(atCellMidMaxPoint) && toCellFrame.contains(atCellMidMinPoint)
 
-        let location = context.location
-        let upLocation = location.set(y: snaphotFrame.minY)
-        let downLocation = location.set(y: snaphotFrame.maxY)
-        
-        let _gLocationView = UIView.debug.view(at: location)
-        let _upLocationView = UIView.debug.view(at: upLocation)
-        let _downLocationView = UIView.debug.view(at: downLocation)
-        
-        _gLocationView.selfdestruction()
-        _upLocationView.selfdestruction()
-        _downLocationView.selfdestruction()
+                    if !isTrue {
+                        return
+                    }
+                }
 
-        self.tableView.addSubview(_gLocationView)
-        self.tableView.addSubview(_upLocationView)
-        self.tableView.addSubview(_downLocationView)
-        
-        let upOffset = abs(max(upLocation.y, 0) - tableViewFrame.minY)
-        if !tableViewFrame.contains(upLocation) {
-            return (.up, upOffset)
-        }
-
-        let downOffset = abs(min(downLocation.y, self.tableView.contentSize.height) - tableViewFrame.maxY)
-        if !tableViewFrame.contains(downLocation) {
-            return (.down, downOffset)
-        }
-        
-        return nil
-    }
-
-    private func _beforeCell(at indexPath: IndexPath) -> UITableViewCell? {
-        guard let indexPath = self._before(at: indexPath) else {
-            return nil
-        }
-        
-        return self.tableView.cellForRow(at: indexPath)
+                if isUp {
+                    let isTrue = !toCellFrame.contains(atCellMidMinPoint) && toCellFrame.contains(atCellMidMaxPoint)
+                    if !isTrue {
+                        return
+                    }
+                }
+                
+                self.atContext?.cellMoveContext?.indexPath = toIndexPath
+                
+                let item = self.sections[atIndexPath.section][atIndexPath.row]
+                
+                self.sections[atIndexPath.section].remove(at: atIndexPath.row)
+                self.sections[toIndexPath.section].insert(item, at: toIndexPath.row)
+                
+                self.tableView.moveRow(at: atIndexPath, to: toIndexPath)
+            }
+        }()
     }
     
-    private func _previousCell(at indexPath: IndexPath) -> UITableViewCell? {
-        guard let indexPath = self._previous(at: indexPath) else {
-            return nil
-        }
-        
-        return self.tableView.cellForRow(at: indexPath)
-    }
-    
-    private func _before(at indexPath: IndexPath) -> IndexPath? {
-        var section = indexPath.section
-        var row = indexPath.row
-
-        let sections = self.tableView.numberOfSections
-        let rowsAtSection = self.tableView.numberOfRows(inSection: section)
-
-        if rowsAtSection - 1 == row && sections - 1 == section {
-            return nil
-        }
-
-        if rowsAtSection - 1 > row {
-            row += 1
-
-            return IndexPath(row: row, section: section)
-        }
-
-        if sections - 1 > section {
-            section += 1
-            row = 0
-
-            return IndexPath(row: row, section: section)
-        }
-
-        return nil
-    }
-
-    private func _previous(at indexPath: IndexPath) -> IndexPath? {
-        var section = indexPath.section
-        var row = indexPath.row
-
-        if row == 0 && section == 0 {
-            return nil
-        }
-
-        if row > 0 {
-            row -= 1
-
-            return IndexPath(row: row, section: section)
-        }
-
-        if section > 0 {
-            section -= 1
-            row = self.tableView.numberOfRows(inSection: section) - 1
-            return IndexPath(row: row, section: section)
-        }
-
-        return nil
-    }
-
     private func _endMoving(context: GestureContext) {
-
-        guard let activeGContext = self.movingContext else {
+        
+        guard let activeGContext = self.atContext else {
             return
         }
-
+        
+        self.atContext = nil
+        self.toContext = nil
+        
         let activeCContext = activeGContext.cellMoveContext!
-
+        
         self.handlers?.handlerEndMove?(activeCContext, activeCContext.indexPath)
         
         activeCContext.cell.isHidden = false
-//        activeCContext.cell.alpha = 0
-
+        
         UIView.animateKeyframes(withDuration: 0.2, delay: 0, options: .calculationModeLinear, animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: {
                 activeCContext.snapshot.center = activeCContext.cell.center
                 activeCContext.snapshot.transform = CGAffineTransform.identity
             })
         }, completion: { _ in
-//            activeCContext.snapshot.alpha = 0
-//            activeCContext.cell.alpha = 1
             activeCContext.snapshot.removeFromSuperview()
-            self.movingContext = nil
+            self.atContext = nil
         })
+    }
+    
+    /// Return (up or down scroll + offset scroll) or nil
+    @discardableResult private func _Scroll() -> (_TypeScroll, CGFloat)? {
+        guard let atGContext = self.atContext else {
+            return nil
+        }
+        
+        guard let context = atGContext.cellMoveContext else {
+            return nil
+        }
+    
+        let snaphotFrame = context.originSnapshot.frame
+        
+        let tableViewFrame = self.tableView.bounds
+        let location = context.location
+        
+        let minPoint = location.set(y: snaphotFrame.minY)
+        let maxPoint = location.set(y: snaphotFrame.maxY)
+
+        let cellAbove: UITableViewCell? = {
+            guard let indexPath = self.tableView.indexPathForRow(at: minPoint) else {
+                return nil
+            }
+
+            return self.tableView.cellForRow(at: indexPath)
+        }()
+        
+        let cellBelow: UITableViewCell? = {
+            guard let indexPath = self.tableView.indexPathForRow(at: maxPoint) else {
+                return nil
+            }
+            
+            return self.tableView.cellForRow(at: indexPath)
+        }()
+
+        let frameCellAbove = cellAbove?.frame ?? snaphotFrame
+        let frameCellBelow = cellBelow?.frame ?? snaphotFrame
+        
+        let upLocation = location.set(y: frameCellAbove.minY)
+        let downLocation = location.set(y: frameCellBelow.maxY)
+        
+        var scrollType: _TypeScroll?
+        var offset: CGFloat = 0
+        
+        if !tableViewFrame.contains(upLocation) {
+            scrollType = .up
+            offset = max(upLocation.y, 0) - tableViewFrame.minY
+        }
+
+        if !tableViewFrame.contains(downLocation) {
+            scrollType = .down
+            offset = min(downLocation.y, self.tableView.contentSize.height) - tableViewFrame.maxY
+        }
+        
+        guard let _scrollType = scrollType else {
+            return nil
+        }
+
+        let contentOffset = self.tableView.contentOffset.sum(y: offset)
+        
+        self._isScrolling = true
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.tableView.contentOffset = contentOffset
+        }, completion: { success in
+            self._isScrolling = false
+        })
+        
+        return (_scrollType, offset)
     }
 }
