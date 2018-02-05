@@ -70,25 +70,25 @@ extension TableViewModel {
             let context = GestureContext(gesture: gesture, tableView: self.tableView, getRowModel: self.dataSourse.getRowModel)
             
             switch state {
-            case .began:
-                self._beginMove(context: context)
-            case .changed:
-                self._move(context: context)
-            default:
-                self._endMoving(context: context)
+                case .began:
+                    self._beginMove(context: context)
+                case .changed:
+                    self._move(context: context)
+                default:
+                    self._endMoving(context: context)
             }
         }
         
         private func _beginMove(context: GestureContext) {
-            tLog()
+            
         }
         
         private func _move(context: GestureContext) {
-            tLog()
+            
         }
         
         private func _endMoving(context: GestureContext) {
-            tLog()
+            
         }
     }
 }
