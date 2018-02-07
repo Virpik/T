@@ -187,7 +187,6 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
     }
 
     // MARK: Cell move
-    
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
 
         guard let gesture = gestureRecognizer as? UILongPressGestureRecognizer else {
@@ -226,12 +225,10 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
 
         let activeCContext = context.cellMoveContext!
        
-        self.handlers?.handletBeginMove?(activeCContext)
+        /// Устанавливаем снапшот
+        self._setupSnapshot(context: activeCContext)
         
-//        activeCContext.cell.alpha = 0
-//        activeCContext.snapshot.alpha = 1
-//        activeCContext.snapshot.isHidden = false
-//        self.tableView.addSubview(activeCContext.snapshot)
+        self.handlers?.handletBeginMove?(activeCContext)
     }
     
     private var _isScrolling = false
@@ -253,7 +250,10 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         /// Задаем новую локацию у контекста перемещаемой ячейки
         let atCContext = atGContext.cellMoveContext!.set(location: toGContext.location)
         self.atContext?.cellMoveContext = atCContext
-
+        
+        /// Перемещенеи снапшота
+        self._locateSnapshot(context: atCContext)
+        
         self.handlers?.handlerMove?(atCContext, toGContext.cellMoveContext?.indexPath)
 
         /// Если текущий контекст перемещения не содержит ячейки - выходим
@@ -269,13 +269,8 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         let atIndexPath = atCContext.indexPath
         let toIndexPath = toCContext.indexPath
 
-        /// Скролл
-        let _ =  {
-            self._Scroll()
-        }()
-        
-        /// Перемещение
-        let _ = {
+        self._Scroll() {
+
             if atIndexPath != toIndexPath {
                 
                 let isDown = atIndexPath < toIndexPath
@@ -286,7 +281,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
 
                 let atCellMidMaxPoint = CGPoint(x: atCellFrame.midX, y: atCellFrame.maxY)
                 let atCellMidMinPoint = CGPoint(x: atCellFrame.midX, y: atCellFrame.minY)
-
+                
                 if isDown {
                     let isTrue = !toCellFrame.contains(atCellMidMaxPoint) && toCellFrame.contains(atCellMidMinPoint)
 
@@ -311,7 +306,9 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
                 
                 self.tableView.moveRow(at: atIndexPath, to: toIndexPath)
             }
-        }()
+
+        }
+
     }
     
     private func _endMoving(context: GestureContext) {
@@ -325,28 +322,33 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         
         let activeCContext = activeGContext.cellMoveContext!
         
+        /// Удаляем снапшот
+        self._uninstallSnapshot(context: activeCContext)
+        
         self.handlers?.handlerEndMove?(activeCContext, activeCContext.indexPath)
         
         activeCContext.cell.isHidden = false
         
-        UIView.animateKeyframes(withDuration: 0.2, delay: 0, options: .calculationModeLinear, animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: {
-                activeCContext.snapshot.center = activeCContext.cell.center
-                activeCContext.snapshot.transform = CGAffineTransform.identity
-            })
-        }, completion: { _ in
-            activeCContext.snapshot.removeFromSuperview()
-            self.atContext = nil
-        })
+//        UIView.animateKeyframes(withDuration: 0.2, delay: 0, options: .calculationModeLinear, animations: {
+//            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: {
+//                activeCContext.snapshot.center = activeCContext.cell.center
+//                activeCContext.snapshot.transform = CGAffineTransform.identity
+//            })
+//        }, completion: { _ in
+//            activeCContext.snapshot.removeFromSuperview()
+//            self.atContext = nil
+//        })
     }
     
     /// Return (up or down scroll + offset scroll) or nil
-    @discardableResult private func _Scroll() -> (_TypeScroll, CGFloat)? {
+    @discardableResult private func _Scroll(handler: Block?) -> (_TypeScroll, CGFloat)? {
         guard let atGContext = self.atContext else {
+            handler?()
             return nil
         }
         
         guard let context = atGContext.cellMoveContext else {
+            handler?()
             return nil
         }
     
@@ -360,6 +362,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
 
         let cellAbove: UITableViewCell? = {
             guard let indexPath = self.tableView.indexPathForRow(at: minPoint) else {
+                handler?()
                 return nil
             }
 
@@ -368,6 +371,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         
         let cellBelow: UITableViewCell? = {
             guard let indexPath = self.tableView.indexPathForRow(at: maxPoint) else {
+                handler?()
                 return nil
             }
             
@@ -394,6 +398,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         }
         
         guard let _scrollType = scrollType else {
+            handler?()
             return nil
         }
 
@@ -401,12 +406,28 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource,
         
         self._isScrolling = true
         
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.tableView.contentOffset = contentOffset
         }, completion: { success in
             self._isScrolling = false
+            handler?()
         })
         
         return (_scrollType, offset)
+    }
+    
+    private func _setupSnapshot(context: CellContext) {
+//        context.snapshot.alpha = 1
+//        self.tableView.addSubview(context.snapshot)
+//        self._locateSnapshot(context: context)
+    }
+    
+    private func _locateSnapshot(context: CellContext) {
+//        context.snapshot.center = context.originSnapshot.center
+    }
+    
+    private func _uninstallSnapshot(context: CellContext) {
+//        context.snapshot.alpha = 0
+//        context.snapshot.removeFromSuperview()
     }
 }

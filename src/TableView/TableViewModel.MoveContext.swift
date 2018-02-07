@@ -39,6 +39,8 @@ public extension TableViewModel {
             
             self.originSnapshot = cell.snapshot()
             self.snapshot = cell.snapshot()
+            
+            self = self.set(location: location)
         }
         
         public func set(location: CGPoint) -> CellContext {
