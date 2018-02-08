@@ -13,6 +13,8 @@ public extension TableViewModel {
     public struct CellContext {
         public var location: CGPoint
         
+        public var isMoving: Bool = false
+        
         public var indexPath: IndexPath
         public private(set) var originalIndexPath: IndexPath
 
@@ -32,6 +34,8 @@ public extension TableViewModel {
             
             self.originSnapshot = cell.snapshot()
             self.snapshot = cell.snapshot()
+    
+            self = self.set(location: location)
         }
         
         public func set(location: CGPoint) -> CellContext {
@@ -52,41 +56,6 @@ public extension TableViewModel {
             }()
             
             return self
-        }
-    }
-
-    public struct GestureContext {
-        
-        public var location: CGPoint
-        public var isMoving: Bool = false
-
-        public var cellMoveContext: CellContext?
-
-        public init(gesture: UILongPressGestureRecognizer, tableView: UITableView, getRowModel: ((IndexPath) -> AnyRowModel?)) {
-            
-            self.location = gesture.location(in: tableView)
-    
-            guard let indexPath = tableView.indexPathForRow(at: location) else {
-                return
-            }
-            
-            guard let cell = tableView.cellForRow(at: indexPath) else {
-                return
-            }
-            
-            guard let rowModel = getRowModel(indexPath) else {
-                return
-            }
-            
-            let cellContext = CellContext(location: location, indexPath: indexPath, rowModel: rowModel, cell: cell)
-            self.cellMoveContext = cellContext
-
-            var isAnchorView = false
-
-            let view = rowModel.movingAnchorView ?? cell
-            isAnchorView = view.bounds.contains(gesture.location(in: view))
-            
-            self.isMoving = (rowModel.isMoving) && isAnchorView
         }
     }
 }

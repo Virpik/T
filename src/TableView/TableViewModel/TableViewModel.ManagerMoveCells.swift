@@ -61,13 +61,17 @@ extension TableViewModel {
             
             let context = GestureContext(gesture: gesture, tableView: self.tableView, getRowModel: self.dataSourse.getRowModel)
             
-            return context.isMoving && context.cellMoveContext != nil
+            guard let cellContext = context.cellMoveContext else {
+                return false
+            }
+            
+            return cellContext.isMoving
         }
         
         @objc private func _gestureActions(gesture: UILongPressGestureRecognizer) {
             let state = gesture.state
-            
-            let context = GestureContext(gesture: gesture, tableView: self.tableView, getRowModel: self.dataSourse.getRowModel)
+            let getRowModelBlock = self.dataSourse.getRowModel
+            let context = GestureContext(gesture: gesture, tableView: self.tableView, getRowModel: getRowModelBlock)
             
             switch state {
                 case .began:
