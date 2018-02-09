@@ -13,7 +13,7 @@ class ViewController: TTableModelViewController {
 
     private var menuItem: [TMenuItem] = []
     
-    private var demoTableViewController: TDemoTableViewController = TDemoTableViewController()
+    private var essaysListViewController = EssaysListViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class ViewController: TTableModelViewController {
         self.title = "[Examples & Tests]"
         
         self.menuItem = [
-            TMenuItem(title: "TTableView", block: self._tableViewDemo)
+            TMenuItem(title: "TTableView [Essays]", block: self._essaysList)
         ]
         
         self.setup()
@@ -37,8 +37,8 @@ class ViewController: TTableModelViewController {
         self.set(rows: [rowModels])
     }
     
-    func _tableViewDemo() {
-        self.show(self.demoTableViewController, sender: self)
+    func _essaysList() {
+        self.show(self.essaysListViewController, sender: self)
     }
 }
 

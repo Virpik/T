@@ -9,6 +9,10 @@
 import Foundation
 
 public extension Array {
+    subscript (safe index: Int) -> Element? {
+        return indices ~= index ? self[index] : nil
+    }
+    
     public func item(atIndex index: Int) -> Element? {
         if self.count <= index {
             return nil

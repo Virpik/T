@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+/** Аналог UITableViewController, использует TableViewModel
+    Если не добавить UITableView через IBOutlet, то таблица добавляется в методе viewDidLoad.
+ 
+    По дефолту таблица имеет фрейм сдвинутый на 500pt вверх и высотой view.height+500, с заданым contencInset.top = 500
+    Это необходимо для устарения багов анимации при перемещении ячеек.
+ */
 open class TTableModelViewController: UIViewController {
 
     public typealias TableHandlers = TableViewModel.Handlers
@@ -53,7 +59,7 @@ open class TTableModelViewController: UIViewController {
         self.tableViewModel.sections = rows
         self.tableView.reloadData()
     }
-
+ 
     private func _installTableView() {
         var frame = self.view.bounds
         frame.origin.y = -500
