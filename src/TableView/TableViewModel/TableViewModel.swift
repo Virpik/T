@@ -15,6 +15,16 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
 
     public var sections: [[AnyRowModel]] = []
 
+//    public var moveHandlers: MoveHandlers? {
+//        set(handlers) {
+//            self._managerMoveCells.handlers = handlers
+//        }
+//
+//        get {
+//            return self._managerMoveCells.handlers
+//        }
+//    }
+//
     public var handlers: Handlers?
 
     public var cellMoviesPressDuration: TimeInterval {
@@ -43,10 +53,40 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
         
         super.init()
 
-        let _ = self._managerMoveCells
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        var mHandlers = MoveHandlers()
+        
+        mHandlers.handlerBeginMove = { context in
+            //
+            self.handlers?.moveHandlers?.handlerBeginMove?(context)
+        }
+        
+        mHandlers.handlerMove = { atContext, toContext in
+            //
+            self.handlers?.moveHandlers?.handlerMove?(atContext, toContext)
+        }
+        
+        mHandlers.handlerDidMove = { atContex, toContext in
+
+            let atIndexPath = atContex.indexPath
+            let toIndexPath = toContext.indexPath
+            
+            let item = self.sections[atIndexPath.section][atIndexPath.row]
+
+            self.sections[atIndexPath.section].remove(at: atIndexPath.row)
+            self.sections[toIndexPath.section].insert(item, at: toIndexPath.row)
+            
+            self.handlers?.moveHandlers?.handlerDidMove?(atContex, toContext)
+        }
+        
+        mHandlers.handlerEndMove = { atContext, toContext in
+            //
+            self.handlers?.moveHandlers?.handlerEndMove?(atContext, toContext)
+        }
+        
+        self._managerMoveCells.handlers = mHandlers
     }
 
     public func reload(rows: [Row]) {

@@ -12,6 +12,7 @@ import UIKit
 open class TTableModelViewController: UIViewController {
 
     public typealias TableHandlers = TableViewModel.Handlers
+    public typealias TableMoveCellHandlers = TableViewModel.MoveHandlers
 
     @IBOutlet public  private(set) weak var tableView: UITableView!
     public private(set) var tableViewModel: TableViewModel!
@@ -21,7 +22,7 @@ open class TTableModelViewController: UIViewController {
             self.tableViewModel.handlers = self.handlers
         }
     }
-
+    
     public var cellMoviesPressDuration: TimeInterval {
         get {
             return self.tableViewModel.cellMoviesPressDuration
@@ -54,7 +55,14 @@ open class TTableModelViewController: UIViewController {
     }
 
     private func _installTableView() {
-        let tableView = UITableView(frame: self.view.bounds)
+        var frame = self.view.bounds
+        frame.origin.y = -500
+        frame.size.height += 500
+        
+        let tableView = UITableView(frame: frame)
+        
+        tableView.contentInset.top = 500
+        
         self.tableView = tableView
         tableView.separatorStyle = .none
 

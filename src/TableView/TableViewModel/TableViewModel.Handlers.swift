@@ -21,10 +21,26 @@ public extension TableViewModel {
         public var handlerDidSelect: DefaultBlock?
         public var handlerDidDeselect: DefaultBlock?
 
-        public var handletBeginMove: ((_ context: CellContext) -> Void)?
-        public var handlerMove: ((_ context: CellContext, _ to: IndexPath?) -> Void)?
-        public var handlerDidMove: ((_ context: CellContext, _ to: IndexPath) -> Void)?
-        public var handlerEndMove: ((_ context: CellContext, _ to: IndexPath) -> Void)?
+        public var moveHandlers: MoveHandlers?
+        
+        public init() {
+            
+        }
+    }
+    
+    public struct MoveHandlers {
+        
+        /// Захват ячейки перемещения
+        public var handlerBeginMove: ((_ context: CellContext) -> Void)?
+        
+        /// Каждый такт перемещения захваченой ячейки (context.indexPath == to || != to)
+        public var handlerMove: ((_ atContext: CellContext, _ toContext: CellContext?) -> Void)?
+        
+        /// При перемещении ячейки в таблице (context.indexPath != to)
+        public var handlerDidMove: ((_ atContext: CellContext, _ toContext: CellContext) -> Void)?
+        
+        /// При очищении контекста захваченой ячейки
+        public var handlerEndMove: ((_ atContext: CellContext, _ toContext: CellContext?) -> Void)?
         
         public init() {
             

@@ -29,22 +29,36 @@ class TDemoTableViewController: TTableModelViewController {
         ]
     }()
     
+    private var tableHeaderView: UIView = {
+        let view = UIView(width: 100, height: 100)
+        view.backgroundColor = .red
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tLog()
+        self.tableView.tableHeaderView = self.tableHeaderView
         
-        var handlers = TableHandlers()
+        var _handlers = TableHandlers()
         
-        handlers.handlerDidMove = {context, toIndexPath in
-            self.items.move(at: context.indexPath.row, to: toIndexPath.row)
+        var mHanlders = TableMoveCellHandlers()
+        
+        mHanlders.handlerDidMove = { atContext, toContext in
+            self.items.move(at: atContext.indexPath.row, to: toContext.indexPath.row)
         }
         
-        self.handlers = handlers
+        _handlers.moveHandlers = mHanlders
+        
+        self.handlers = _handlers
         
         self.setupTable()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-//        self.tableView.contentInset = self.tableView.contentInset.set(top: 500)
+        self.tableHeaderView.frame.size.width = self.tableView.bounds.width
     }
     
     override func viewDidAppear(_ animated: Bool) {

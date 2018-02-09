@@ -21,8 +21,8 @@ public extension TableViewModel {
         public var rowModel: AnyRowModel
         public var cell: UITableViewCell
 
-        public private(set) var originSnapshot: UIView
-        public var snapshot: UIView
+//        public private(set) var originSnapshot: UIView
+//        public var snapshot: UIView
 
         public init(location: CGPoint, indexPath: IndexPath, rowModel: AnyRowModel, cell: UITableViewCell) {
 
@@ -32,8 +32,8 @@ public extension TableViewModel {
             self.rowModel = rowModel
             self.cell = cell
             
-            self.originSnapshot = cell.snapshot()
-            self.snapshot = cell.snapshot()
+//            self.originSnapshot = cell.snapshot()
+//            self.snapshot = cell.snapshot()
     
             self = self.set(location: location)
         }
@@ -43,17 +43,17 @@ public extension TableViewModel {
             
             context.location = location
 
-            let _ = {
-                var centerPoint = context.originSnapshot.center
-                centerPoint.y = location.y
-                context.originSnapshot.center = centerPoint
-            }()
-            
-            let _ = {
-                var centerPoint = context.snapshot.center
-                centerPoint.y = location.y
-                context.snapshot.center = centerPoint
-            }()
+//            let _ = {
+//                var centerPoint = context.originSnapshot.center
+//                centerPoint.y = location.y
+//                context.originSnapshot.center = centerPoint
+//            }()
+//
+//            let _ = {
+//                var centerPoint = context.snapshot.center
+//                centerPoint.y = location.y
+//                context.snapshot.center = centerPoint
+//            }()
             
             return self
         }

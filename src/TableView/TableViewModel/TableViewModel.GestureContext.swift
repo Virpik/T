@@ -12,7 +12,7 @@ extension TableViewModel {
 
         public var location: CGPoint
         
-        public var cellMoveContext: CellContext?
+        public var cellContext: CellContext?
         
         public init(gesture: UILongPressGestureRecognizer, tableView: UITableView, getRowModel: ((IndexPath) -> AnyRowModel?)) {
             
@@ -39,7 +39,7 @@ extension TableViewModel {
             
             cellContext.isMoving = (rowModel.isMoving) && isAnchorView
             
-            self.cellMoveContext = cellContext
+            self.cellContext = cellContext
         }
     }
 }
