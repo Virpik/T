@@ -30,15 +30,13 @@ class EssaysListViewController: TTableModelViewController {
         self.tableView.tableHeaderView = self.tableHeaderView
         
         var _handlers = TableHandlers()
-        
         var mHanlders = TableMoveCellHandlers()
         
-        mHanlders.handlerDidMove = { atContext, toContext in
-            self.essays.move(at: atContext.indexPath.row, to: toContext.indexPath.row)
-        }
-        
+        mHanlders.handlerDidMove =  self._handlerDidMove
         _handlers.moveHandlers = mHanlders
         
+        
+        /// Устанавливаем handlers у TTableModelViewController
         self.handlers = _handlers
         
         self.setupTable()
@@ -53,29 +51,29 @@ class EssaysListViewController: TTableModelViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
     }
     
     func setupTable() {
-        func getModel(at item: TDemoItem) -> TDemoRowModel {
-            var model = TDemoRowModel(item: item)
-            
+        tLog(self.essays.count)
+        func getModel(at item: Essay) -> EssaysCartRowModel {
+            var model = EssaysCartRowModel(item: item)
+            model.didSelect = { _, _ in }//self._didSelect
             return model
         }
         
-        let rows: [AnyRowModel] = self.items.map {
-            
+        let rows: [AnyRowModel] = self.essays.map {
             let model = getModel(at: $0)
-            
             return model
         }
         
         self.set(rows: [rows])
     }
     
-    private func indexPath(at item: TDemoItem) -> IndexPath? {
-        return self.items.index(of: item).map({
-            IndexPath(row: $0, section: 0)
-        })
+    private func _didSelect(cell: EssayCardCell, indexPath: IndexPath) {
+        tLog(indexPath)
+    }
+    
+    private func _handlerDidMove(atContext: TableViewModel.CellContext, toContext: TableViewModel.CellContext) {
+        self.essays.move(at: atContext.indexPath.row, to: toContext.indexPath.row)
     }
 }

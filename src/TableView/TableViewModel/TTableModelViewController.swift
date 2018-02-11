@@ -52,6 +52,9 @@ open class TTableModelViewController: UIViewController {
     public func set(rows: [[AnyRowModel]]) {
         rows.forEach {
             $0.forEach({ (rowModel) in
+                if rowModel.rowType.self == UITableViewCell.self {
+                    return
+                }
                 self.tableView.register(type: rowModel.rowType.self)
             })
         }
