@@ -11,7 +11,7 @@ import UIKit
 import T
 
 class EssaysListViewController: TTableModelViewController {
-    
+    typealias CellContext = TableViewModel.CellContext
 //    private var activeEssayView: EssayView {
 //        return self.tableHeaderView.essayView
 //    }
@@ -37,6 +37,7 @@ class EssaysListViewController: TTableModelViewController {
         var mHanlders = TableMoveCellHandlers()
         
         mHanlders.handlerDidMove =  self._handlerDidMove
+        mHanlders.handlerMove = self._handlerMove(atContext:toConttext:)
         _handlers.moveHandlers = mHanlders
         
         /// Устанавливаем handlers у TTableModelViewController
@@ -76,7 +77,62 @@ class EssaysListViewController: TTableModelViewController {
         tLog(indexPath)
     }
     
-    private func _handlerDidMove(atContext: TableViewModel.CellContext, toContext: TableViewModel.CellContext) {
+    private func _handlerMove(atContext: CellContext, toConttext: CellContext?) {
+        self._snapshotControll(context: atContext)
+    }
+    
+    private func _handlerDidMove(atContext: CellContext, toContext: CellContext) {
         self.essays.move(at: atContext.indexPath.row, to: toContext.indexPath.row)
+    }
+    
+    // MARK: - Check snaphot
+    private var _snapshot: UIView?
+    
+    private func _snapshotControll(context: CellContext) {
+        let isContains = self.tableHeaderView.frame.contains(context.location)
+        
+        if context.indexPath != IndexPath(row: 0, section: 0) || !isContains {
+
+            if let snapshot = self._snapshot {
+                self._uninstallSnapshot(snapshot: snapshot, context: context)
+                self._snapshot = nil
+            }
+            
+            return
+        }
+
+        if context.indexPath == IndexPath(row: 0, section: 0) && isContains {
+            if let snapshot = self._snapshot {
+                self._moveSnaphot(snapshot: snapshot, context: context)
+            } else {
+                let snapshot = self._setupSnashot(context: context)
+                
+                self._moveSnaphot(snapshot: snapshot, context: context)
+                
+                self._snapshot = snapshot
+            }
+        }
+    }
+    
+    private func _setupSnashot(context: CellContext) -> UIView {
+        let image = context.cell.render()
+        
+        let imageView = UIImageView(frame: context.cell.bounds)
+        
+        imageView.image = image
+        
+        self.tableView.addSubview(imageView)
+        
+        return imageView
+    }
+    
+    private func _moveSnaphot(snapshot: UIView, context: CellContext) {
+        let sFrame = snapshot.frame
+        snapshot.center = context.location
+        snapshot.frame.origin.x = sFrame.minX
+    }
+    
+    private func _uninstallSnapshot(snapshot: UIView, context: CellContext) {
+        snapshot.removeFromSuperview()
     }
 }
