@@ -19,20 +19,56 @@
                 <rect key="frame" x="0.0" y="0.0" width="468" height="269.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-gF-97f">
-                        <rect key="frame" x="8" y="8" width="452" height="253.5"/>
-                        <color key="backgroundColor" red="0.25882352939999997" green="0.43529411759999997" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iuV-4c-JOx" userLabel="separator">
+                        <rect key="frame" x="0.0" y="268.5" width="0.0" height="1"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Nwn-bC-tcL"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fp-9y-lAL">
+                        <rect key="frame" x="0.0" y="8" width="0.0" height="253.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-gF-97f" customClass="EssayView" customModule="TDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="253.5"/>
+                                <color key="backgroundColor" red="0.25882352939999997" green="0.43529411759999997" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gpp-yQ-lzE">
+                                <rect key="frame" x="444" y="0.0" width="16" height="253.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="uGf-7a-y2s"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HmN-gF-97f" firstAttribute="leading" secondItem="6fp-9y-lAL" secondAttribute="leading" id="4kZ-VZ-doI"/>
+                            <constraint firstAttribute="trailing" secondItem="Gpp-yQ-lzE" secondAttribute="trailing" id="Jv7-jq-W05"/>
+                            <constraint firstItem="Gpp-yQ-lzE" firstAttribute="leading" secondItem="HmN-gF-97f" secondAttribute="trailing" id="bzG-14-Yuc"/>
+                            <constraint firstAttribute="bottom" secondItem="HmN-gF-97f" secondAttribute="bottom" id="olh-oq-snh"/>
+                            <constraint firstAttribute="bottom" secondItem="Gpp-yQ-lzE" secondAttribute="bottom" id="tr0-3i-z0h"/>
+                            <constraint firstItem="Gpp-yQ-lzE" firstAttribute="top" secondItem="6fp-9y-lAL" secondAttribute="top" id="xxp-Jn-Uaq"/>
+                            <constraint firstItem="HmN-gF-97f" firstAttribute="top" secondItem="6fp-9y-lAL" secondAttribute="top" id="yPQ-pc-p42"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="HmN-gF-97f" secondAttribute="bottom" constant="8" id="TGD-A9-SUk"/>
-                    <constraint firstItem="HmN-gF-97f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="lFu-FU-myq"/>
-                    <constraint firstItem="HmN-gF-97f" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="mxk-zk-h5W"/>
-                    <constraint firstAttribute="trailing" secondItem="HmN-gF-97f" secondAttribute="trailing" constant="8" id="wkP-bi-0Rc"/>
+                    <constraint firstAttribute="bottom" secondItem="6fp-9y-lAL" secondAttribute="bottom" constant="8" id="ILV-pR-Imd"/>
+                    <constraint firstAttribute="trailing" secondItem="6fp-9y-lAL" secondAttribute="trailing" constant="8" id="ODr-xE-eBz"/>
+                    <constraint firstItem="6fp-9y-lAL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="PKt-bd-kQj"/>
+                    <constraint firstItem="iuV-4c-JOx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="R1r-lx-hZh"/>
+                    <constraint firstAttribute="trailing" secondItem="iuV-4c-JOx" secondAttribute="trailing" id="bTU-YU-56V"/>
+                    <constraint firstAttribute="bottom" secondItem="iuV-4c-JOx" secondAttribute="bottom" id="nPn-Xx-6aV"/>
+                    <constraint firstItem="6fp-9y-lAL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="oaN-U1-Zjo"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="anchorView" destination="Gpp-yQ-lzE" id="fXg-BC-mbn"/>
+                <outlet property="essayView" destination="HmN-gF-97f" id="tBC-8G-B1i"/>
+            </connections>
             <point key="canvasLocation" x="35" y="132"/>
         </tableViewCell>
     </objects>

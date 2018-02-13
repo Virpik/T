@@ -12,8 +12,12 @@ import T
 
 class EssaysListViewController: TTableModelViewController {
     
-    private var tableHeaderView: UIView = {
-        let view = UIView(width: 100, height: 100)
+//    private var activeEssayView: EssayView {
+//        return self.tableHeaderView.essayView
+//    }
+    
+    private var tableHeaderView: UIView  = {
+        let view = UIView(width: 320, height: 100)
         view.backgroundColor = .red
         return view
     }()
@@ -35,7 +39,6 @@ class EssaysListViewController: TTableModelViewController {
         mHanlders.handlerDidMove =  self._handlerDidMove
         _handlers.moveHandlers = mHanlders
         
-        
         /// Устанавливаем handlers у TTableModelViewController
         self.handlers = _handlers
         
@@ -45,6 +48,7 @@ class EssaysListViewController: TTableModelViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+//        self.tableHeaderView.frame.size.height = 200
         self.tableHeaderView.frame.size.width = self.tableView.bounds.width
     }
     
@@ -54,10 +58,9 @@ class EssaysListViewController: TTableModelViewController {
     }
     
     func setupTable() {
-        tLog(self.essays.count)
         func getModel(at item: Essay) -> EssaysCartRowModel {
             var model = EssaysCartRowModel(item: item)
-            model.didSelect = { _, _ in }//self._didSelect
+            model.didSelect = self._didSelect
             return model
         }
         

@@ -9,7 +9,12 @@
 import UIKit
 import T
 
+@IBDesignable
 class EssayView: UIView {
+    
+    @IBOutlet var labelTitle: UILabel?
+    @IBOutlet var labelBody: UILabel?
+    @IBOutlet var labelDateAt: UILabel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,8 +26,11 @@ class EssayView: UIView {
         super.init(coder: aDecoder)
         
         self.setup(fromXib: "\(self.classForCoder)")
-        
     }
-    
 
+    func setup(essay: Essay) {
+        self.labelBody?.text = essay.body
+        self.labelTitle?.text = essay.title
+        self.labelDateAt?.text = essay.dateAt.string(format: "DD/MM/YYY hh:mm")
+    }
 }

@@ -10,19 +10,29 @@ import Foundation
 import T
 
 struct EssaysCartRowModel: RowModelBlocks {
-    typealias RowType = UITableViewCell
+    typealias RowType = EssayCardCell
     
     let item: Essay
 
     var build: ((RowType, IndexPath) -> Void)?
     var didSelect: ((RowType, IndexPath) -> Void)?
 
+    var isMoving: Bool {
+        return true
+    }
+    
+    var movingAnchorView: UIView? {
+        return self.storeLastBuildRow.item?.anchorView
+    }
+    
+    var storeLastBuildRow: TMutableStore<RowType?> = TMutableStore(item: nil)
+    
     init(item: Essay) {
         self.item = item
     }
     
     func build(cell: RowType, indexPath: IndexPath) {
-        
+        self.storeLastBuildRow.item = cell
         /// 
         
         self.build?(cell, indexPath)

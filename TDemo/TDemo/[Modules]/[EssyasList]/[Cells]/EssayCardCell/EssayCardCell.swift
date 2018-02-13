@@ -11,16 +11,16 @@ import T
 
 class EssayCardCell: UITableViewCell {
 
+    @IBOutlet weak var essayView: EssayView!
+    @IBOutlet weak var anchorView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
-    
 }

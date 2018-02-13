@@ -20,6 +20,7 @@
 		434C2C771FEBD68000B62481 /* TMenuItemRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C761FEBD68000B62481 /* TMenuItemRowModel.swift */; };
 		434C2C7A1FEBD6EA00B62481 /* TMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C791FEBD6EA00B62481 /* TMenuItem.swift */; };
 		434C2C831FEC8FCA00B62481 /* EssaysListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C821FEC8FCA00B62481 /* EssaysListViewController.swift */; };
+		436453AC203172AD001ABDBD /* ActiveEssayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436453AB203172AD001ABDBD /* ActiveEssayView.swift */; };
 		436947BC1FEC9A02003B147B /* TDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436947BA1FEC9A02003B147B /* TDemoCell.swift */; };
 		436947BD1FEC9A02003B147B /* TDemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436947BB1FEC9A02003B147B /* TDemoCell.xib */; };
 		436947BF1FEC9BFC003B147B /* TDemoRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436947BE1FEC9BFC003B147B /* TDemoRowModel.swift */; };
@@ -60,6 +61,7 @@
 		434C2C761FEBD68000B62481 /* TMenuItemRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItemRowModel.swift; sourceTree = "<group>"; };
 		434C2C791FEBD6EA00B62481 /* TMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItem.swift; sourceTree = "<group>"; };
 		434C2C821FEC8FCA00B62481 /* EssaysListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssaysListViewController.swift; sourceTree = "<group>"; };
+		436453AB203172AD001ABDBD /* ActiveEssayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEssayView.swift; sourceTree = "<group>"; };
 		436947BA1FEC9A02003B147B /* TDemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoCell.swift; sourceTree = "<group>"; };
 		436947BB1FEC9A02003B147B /* TDemoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TDemoCell.xib; sourceTree = "<group>"; };
 		436947BE1FEC9BFC003B147B /* TDemoRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoRowModel.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		4300B7EB202D9E42009DD231 /* [EssyasList] */ = {
 			isa = PBXGroup;
 			children = (
+				436453AA2031729B001ABDBD /* [Views] */,
 				43270309202DC0050025BE15 /* [Cells] */,
 				43270306202DBF8A0025BE15 /* [RowModels] */,
 				434C2C821FEC8FCA00B62481 /* EssaysListViewController.swift */,
@@ -219,6 +222,14 @@
 				43972D0F1F3989670029B66B /* ViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		436453AA2031729B001ABDBD /* [Views] */ = {
+			isa = PBXGroup;
+			children = (
+				436453AB203172AD001ABDBD /* ActiveEssayView.swift */,
+			);
+			path = "[Views]";
 			sourceTree = "<group>";
 		};
 		436947B91FEC99E2003B147B /* TDemoCell */ = {
@@ -524,6 +535,7 @@
 				43972D101F3989670029B66B /* ViewController.swift in Sources */,
 				43972D0E1F3989670029B66B /* AppDelegate.swift in Sources */,
 				43270314202DCCAD0025BE15 /* EssayView.swift in Sources */,
+				436453AC203172AD001ABDBD /* ActiveEssayView.swift in Sources */,
 				436947BC1FEC9A02003B147B /* TDemoCell.swift in Sources */,
 				436947BF1FEC9BFC003B147B /* TDemoRowModel.swift in Sources */,
 				4300B7E9202D9060009DD231 /* Essays.swift in Sources */,
