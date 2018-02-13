@@ -142,7 +142,13 @@ extension TableViewModel {
         }
         
         private func _endMoving(context: GestureContext) {
+            guard let activeContext = self._activeCContext else {
+                return
+            }
             
+            self.handlers?.handlerEndMove?( activeContext, context.cellContext)
+            
+            self._activeGContext = nil
         }
     }
 }

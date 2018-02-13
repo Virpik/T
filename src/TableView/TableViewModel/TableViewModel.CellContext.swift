@@ -11,13 +11,20 @@ import UIKit
 
 public extension TableViewModel {
     public struct CellContext {
+        // tableView
         public var location: CGPoint
+        public var locationFromCell: CGPoint
         
         // cell.frame + location
         public var hypotheticalFrame: CGRect {
-            var frame = self.cell.frame
+            let cellFrame = self.cell.frame
             
-            frame = frame.t.set(mid: location)
+            let tY = self.locationFromCell.y - cellFrame.origin.y 
+            
+            var frame = cellFrame.t.set(mid: location)
+            
+            frame.origin.y -= tY
+            frame.origin.x = cellFrame.origin.x
             
             return frame
         }
@@ -33,9 +40,10 @@ public extension TableViewModel {
 //        public private(set) var originSnapshot: UIView
 //        public var snapshot: UIView
 
-        public init(location: CGPoint, indexPath: IndexPath, rowModel: AnyRowModel, cell: UITableViewCell) {
+        public init(location: CGPoint, locationFromCell: CGPoint, indexPath: IndexPath, rowModel: AnyRowModel, cell: UITableViewCell) {
 
             self.location = location
+            self.locationFromCell = locationFromCell
             self.originalIndexPath = indexPath
             self.indexPath = indexPath
             self.rowModel = rowModel

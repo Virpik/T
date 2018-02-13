@@ -30,7 +30,9 @@ extension TableViewModel {
                 return
             }
             
-            var cellContext = CellContext(location: location, indexPath: indexPath, rowModel: rowModel, cell: cell)
+            let locationFromCell = gesture.location(in: cell)
+            
+            var cellContext = CellContext(location: location, locationFromCell: locationFromCell, indexPath: indexPath, rowModel: rowModel, cell: cell)
             
             var isAnchorView = false
             

@@ -24,6 +24,24 @@ class EssaysListViewController: TTableModelViewController {
     
     private var essays: [Essay] = []
     
+    private var _snapshot: UIView?
+    
+    private var _cover: UIView = {
+        let cover = UIView(width: 100, height: 100)
+        
+        let blurEffect = UIBlurEffect(style: .dark)
+        
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        
+        blurView.frame = cover.bounds
+        
+        cover.tAddSubview(view: blurView)
+        
+        return cover
+    }()
+    
+    private var _isOutOfCellLimits: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,12 +50,17 @@ class EssaysListViewController: TTableModelViewController {
         }
         
         self.tableView.tableHeaderView = self.tableHeaderView
+        self.tableView.tAddSubview(view: self._cover)
+        
+        self._cover.alpha = 0
+        self._cover.isHidden = false
         
         var _handlers = TableHandlers()
         var mHanlders = TableMoveCellHandlers()
         
         mHanlders.handlerDidMove =  self._handlerDidMove
         mHanlders.handlerMove = self._handlerMove(atContext:toConttext:)
+        mHanlders.handlerEndMove = self._handlerEndMove(atContext:toContext:)
         
         _handlers.moveHandlers = mHanlders
         
@@ -52,6 +75,12 @@ class EssaysListViewController: TTableModelViewController {
         
 //        self.tableHeaderView.frame.size.height = 200
         self.tableHeaderView.frame.size.width = self.tableView.bounds.width
+        
+        var coverFrame = self.tableView.frame
+        coverFrame.size.height -= self.tableHeaderView.bounds.height
+        coverFrame.origin = self.tableHeaderView.frame.t.max
+        coverFrame.origin.x = 0
+        self._cover.frame = coverFrame
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,44 +108,70 @@ class EssaysListViewController: TTableModelViewController {
     }
     
     private func _handlerMove(atContext: CellContext, toConttext: CellContext?) {
-        self._snapshotControll(context: atContext)
+        self._checkOutCellLimits(context: atContext)
     }
     
     private func _handlerDidMove(atContext: CellContext, toContext: CellContext) {
         self.essays.move(at: atContext.indexPath.row, to: toContext.indexPath.row)
     }
     
-    // MARK: - Check snaphot
-    private var _snapshot: UIView?
+    private func _handlerEndMove(atContext: CellContext, toContext: CellContext?) {
+        if self._isOutOfCellLimits {
+            self._uninstallOutOfCellLimitsState(context: atContext)
+        }
+    }
     
-    private func _snapshotControll(context: CellContext) {
+    // MARK: - Check out of cell limits
+    private func _checkOutCellLimits(context: CellContext) {
         let frame = context.hypotheticalFrame
         
         let isContains = self.tableHeaderView.frame.intersects(frame)//contains(context.location)
         
-        if context.indexPath != IndexPath(row: 0, section: 0) || !isContains {
-
-            if let snapshot = self._snapshot {
-                self._uninstallSnapshot(snapshot: snapshot, context: context)
-                self._snapshot = nil
-            }
-            
+        if (context.indexPath != IndexPath(row: 0, section: 0) || !isContains) && self._isOutOfCellLimits {
+            self._uninstallOutOfCellLimitsState(context: context)
+            self._isOutOfCellLimits = false
             return
         }
-
+        
         if context.indexPath == IndexPath(row: 0, section: 0) && isContains {
-            if let snapshot = self._snapshot {
-                self._moveSnaphot(snapshot: snapshot, context: context)
+            if self._isOutOfCellLimits {
+                self._updateOutOfCellLimitsState(context: context)
             } else {
-                let snapshot = self._setupSnashot(context: context)
-                
-                self._moveSnaphot(snapshot: snapshot, context: context)
-                
-                self._snapshot = snapshot
+                self._setupOutOfCellLimitsState(context: context)
+                self._isOutOfCellLimits = true
             }
         }
     }
     
+    private func _setupOutOfCellLimitsState(context: CellContext) {
+        self.tableView.bringSubview(toFront: self._cover)
+        
+        self._cover.tShow(duration: 0.2)
+        
+        let snapshot = self._setupSnashot(context: context)
+        self._moveSnaphot(snapshot: snapshot, context: context)
+        self._snapshot = snapshot
+    }
+    
+    private func _uninstallOutOfCellLimitsState(context: CellContext) {
+        self._cover.tHidde(duration: 0.2)
+
+        if let snapshot = self._snapshot {
+            self._uninstallSnapshot(snapshot: snapshot, context: context)
+            self._snapshot = nil
+        }
+    }
+    
+    private func _updateOutOfCellLimitsState(context: CellContext) {
+        
+        if let snapshot = self._snapshot {            
+            self.tableView.bringSubview(toFront: self._cover)
+            self.tableView.bringSubview(toFront: snapshot)
+            
+            self._moveSnaphot(snapshot: snapshot, context: context)
+        }
+    }
+
     private func _setupSnashot(context: CellContext) -> UIView {
         let image = context.cell.render()
         
@@ -130,9 +185,7 @@ class EssaysListViewController: TTableModelViewController {
     }
     
     private func _moveSnaphot(snapshot: UIView, context: CellContext) {
-        let sFrame = snapshot.frame
-        snapshot.center = context.location
-        snapshot.frame.origin.x = sFrame.minX
+        snapshot.frame = context.hypotheticalFrame
     }
     
     private func _uninstallSnapshot(snapshot: UIView, context: CellContext) {

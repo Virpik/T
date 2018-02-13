@@ -87,9 +87,7 @@ public extension UIView {
         }
     }
     
-    public func tShow(duration: TimeInterval, completion: Block? = nil) {
-        let alpha = self.alpha
-        
+    public func tShow(alpha: CGFloat = 1 ,duration: TimeInterval, completion: Block? = nil) {
         self.alpha = 0
         self.isHidden = false
         
