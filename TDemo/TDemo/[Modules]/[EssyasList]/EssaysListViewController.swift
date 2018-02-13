@@ -38,6 +38,7 @@ class EssaysListViewController: TTableModelViewController {
         
         mHanlders.handlerDidMove =  self._handlerDidMove
         mHanlders.handlerMove = self._handlerMove(atContext:toConttext:)
+        
         _handlers.moveHandlers = mHanlders
         
         /// Устанавливаем handlers у TTableModelViewController
@@ -89,7 +90,9 @@ class EssaysListViewController: TTableModelViewController {
     private var _snapshot: UIView?
     
     private func _snapshotControll(context: CellContext) {
-        let isContains = self.tableHeaderView.frame.contains(context.location)
+        let frame = context.hypotheticalFrame
+        
+        let isContains = self.tableHeaderView.frame.intersects(frame)//contains(context.location)
         
         if context.indexPath != IndexPath(row: 0, section: 0) || !isContains {
 

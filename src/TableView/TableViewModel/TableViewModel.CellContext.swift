@@ -13,6 +13,15 @@ public extension TableViewModel {
     public struct CellContext {
         public var location: CGPoint
         
+        // cell.frame + location
+        public var hypotheticalFrame: CGRect {
+            var frame = self.cell.frame
+            
+            frame = frame.t.set(mid: location)
+            
+            return frame
+        }
+        
         public var isMoving: Bool = false
         
         public var indexPath: IndexPath
