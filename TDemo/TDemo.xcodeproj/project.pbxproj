@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4300B7E6202D8F49009DD231 /* essays.json in Resources */ = {isa = PBXBuildFile; fileRef = 4300B7E5202D8F49009DD231 /* essays.json */; };
+		4300B7E9202D9060009DD231 /* Essays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4300B7E8202D9060009DD231 /* Essays.swift */; };
+		43270308202DBFCD0025BE15 /* EssayCardRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43270307202DBFCD0025BE15 /* EssayCardRowModel.swift */; };
+		4327030F202DC06D0025BE15 /* EssayCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4327030D202DC06D0025BE15 /* EssayCardCell.swift */; };
+		43270310202DC06D0025BE15 /* EssayCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4327030E202DC06D0025BE15 /* EssayCardCell.xib */; };
+		43270314202DCCAD0025BE15 /* EssayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43270313202DCCAD0025BE15 /* EssayView.swift */; };
+		43270316202DCCB30025BE15 /* EssayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43270315202DCCB30025BE15 /* EssayView.xib */; };
 		432FE3D72015DC050082E13D /* T.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 432FE3D62015DC040082E13D /* T.podspec */; };
 		434C2C731FEBD5CB00B62481 /* TMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C711FEBD5CB00B62481 /* TMenuItemCell.swift */; };
 		434C2C741FEBD5CB00B62481 /* TMenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 434C2C721FEBD5CB00B62481 /* TMenuItemCell.xib */; };
 		434C2C771FEBD68000B62481 /* TMenuItemRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C761FEBD68000B62481 /* TMenuItemRowModel.swift */; };
 		434C2C7A1FEBD6EA00B62481 /* TMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C791FEBD6EA00B62481 /* TMenuItem.swift */; };
-		434C2C831FEC8FCA00B62481 /* TDemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C821FEC8FCA00B62481 /* TDemoTableViewController.swift */; };
+		434C2C831FEC8FCA00B62481 /* EssaysListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C821FEC8FCA00B62481 /* EssaysListViewController.swift */; };
+		436453AC203172AD001ABDBD /* ActiveEssayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436453AB203172AD001ABDBD /* ActiveEssayView.swift */; };
 		436947BC1FEC9A02003B147B /* TDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436947BA1FEC9A02003B147B /* TDemoCell.swift */; };
 		436947BD1FEC9A02003B147B /* TDemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436947BB1FEC9A02003B147B /* TDemoCell.xib */; };
 		436947BF1FEC9BFC003B147B /* TDemoRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436947BE1FEC9BFC003B147B /* TDemoRowModel.swift */; };
@@ -40,12 +48,20 @@
 /* Begin PBXFileReference section */
 		0B5F976CAB332D64BF75D15C /* Pods-TDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDemoTests/Pods-TDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		213DC4A2055EAD62445D2C19 /* Pods-TDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TDemo/Pods-TDemo.release.xcconfig"; sourceTree = "<group>"; };
+		4300B7E5202D8F49009DD231 /* essays.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = essays.json; sourceTree = "<group>"; };
+		4300B7E8202D9060009DD231 /* Essays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Essays.swift; sourceTree = "<group>"; };
+		43270307202DBFCD0025BE15 /* EssayCardRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayCardRowModel.swift; sourceTree = "<group>"; };
+		4327030D202DC06D0025BE15 /* EssayCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayCardCell.swift; sourceTree = "<group>"; };
+		4327030E202DC06D0025BE15 /* EssayCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EssayCardCell.xib; sourceTree = "<group>"; };
+		43270313202DCCAD0025BE15 /* EssayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayView.swift; sourceTree = "<group>"; };
+		43270315202DCCB30025BE15 /* EssayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EssayView.xib; sourceTree = "<group>"; };
 		432FE3D62015DC040082E13D /* T.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = T.podspec; path = ../T.podspec; sourceTree = "<group>"; };
 		434C2C711FEBD5CB00B62481 /* TMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItemCell.swift; sourceTree = "<group>"; };
 		434C2C721FEBD5CB00B62481 /* TMenuItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMenuItemCell.xib; sourceTree = "<group>"; };
 		434C2C761FEBD68000B62481 /* TMenuItemRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItemRowModel.swift; sourceTree = "<group>"; };
 		434C2C791FEBD6EA00B62481 /* TMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItem.swift; sourceTree = "<group>"; };
-		434C2C821FEC8FCA00B62481 /* TDemoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoTableViewController.swift; sourceTree = "<group>"; };
+		434C2C821FEC8FCA00B62481 /* EssaysListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssaysListViewController.swift; sourceTree = "<group>"; };
+		436453AB203172AD001ABDBD /* ActiveEssayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEssayView.swift; sourceTree = "<group>"; };
 		436947BA1FEC9A02003B147B /* TDemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoCell.swift; sourceTree = "<group>"; };
 		436947BB1FEC9A02003B147B /* TDemoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TDemoCell.xib; sourceTree = "<group>"; };
 		436947BE1FEC9BFC003B147B /* TDemoRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoRowModel.swift; sourceTree = "<group>"; };
@@ -86,6 +102,83 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4300B7E7202D8F52009DD231 /* [resources] */ = {
+			isa = PBXGroup;
+			children = (
+				4300B7E5202D8F49009DD231 /* essays.json */,
+			);
+			path = "[resources]";
+			sourceTree = "<group>";
+		};
+		4300B7EA202D9E2D009DD231 /* [Modules] */ = {
+			isa = PBXGroup;
+			children = (
+				4300B7EC202D9E56009DD231 /* [EssayViewer] */,
+				4300B7EB202D9E42009DD231 /* [EssyasList] */,
+			);
+			path = "[Modules]";
+			sourceTree = "<group>";
+		};
+		4300B7EB202D9E42009DD231 /* [EssyasList] */ = {
+			isa = PBXGroup;
+			children = (
+				436453AA2031729B001ABDBD /* [Views] */,
+				43270309202DC0050025BE15 /* [Cells] */,
+				43270306202DBF8A0025BE15 /* [RowModels] */,
+				434C2C821FEC8FCA00B62481 /* EssaysListViewController.swift */,
+			);
+			path = "[EssyasList]";
+			sourceTree = "<group>";
+		};
+		4300B7EC202D9E56009DD231 /* [EssayViewer] */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "[EssayViewer]";
+			sourceTree = "<group>";
+		};
+		43270306202DBF8A0025BE15 /* [RowModels] */ = {
+			isa = PBXGroup;
+			children = (
+				43270307202DBFCD0025BE15 /* EssayCardRowModel.swift */,
+			);
+			path = "[RowModels]";
+			sourceTree = "<group>";
+		};
+		43270309202DC0050025BE15 /* [Cells] */ = {
+			isa = PBXGroup;
+			children = (
+				4327030C202DC0550025BE15 /* EssayCardCell */,
+			);
+			path = "[Cells]";
+			sourceTree = "<group>";
+		};
+		4327030C202DC0550025BE15 /* EssayCardCell */ = {
+			isa = PBXGroup;
+			children = (
+				4327030D202DC06D0025BE15 /* EssayCardCell.swift */,
+				4327030E202DC06D0025BE15 /* EssayCardCell.xib */,
+			);
+			path = EssayCardCell;
+			sourceTree = "<group>";
+		};
+		43270311202DCC840025BE15 /* [Views] */ = {
+			isa = PBXGroup;
+			children = (
+				43270312202DCC940025BE15 /* [EssayView] */,
+			);
+			path = "[Views]";
+			sourceTree = "<group>";
+		};
+		43270312202DCC940025BE15 /* [EssayView] */ = {
+			isa = PBXGroup;
+			children = (
+				43270313202DCCAD0025BE15 /* EssayView.swift */,
+				43270315202DCCB30025BE15 /* EssayView.xib */,
+			);
+			path = "[EssayView]";
+			sourceTree = "<group>";
+		};
 		434C2C6D1FEBD58700B62481 /* XIBS */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +211,7 @@
 			children = (
 				434C2C791FEBD6EA00B62481 /* TMenuItem.swift */,
 				436947C01FEC9D25003B147B /* TDemoItem.swift */,
+				4300B7E8202D9060009DD231 /* Essays.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -126,9 +220,16 @@
 			isa = PBXGroup;
 			children = (
 				43972D0F1F3989670029B66B /* ViewController.swift */,
-				434C2C821FEC8FCA00B62481 /* TDemoTableViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		436453AA2031729B001ABDBD /* [Views] */ = {
+			isa = PBXGroup;
+			children = (
+				436453AB203172AD001ABDBD /* ActiveEssayView.swift */,
+			);
+			path = "[Views]";
 			sourceTree = "<group>";
 		};
 		436947B91FEC99E2003B147B /* TDemoCell */ = {
@@ -169,6 +270,9 @@
 				434C2C781FEBD6DD00B62481 /* Structs */,
 				434C2C751FEBD66A00B62481 /* RowModels */,
 				434C2C6D1FEBD58700B62481 /* XIBS */,
+				4300B7E7202D8F52009DD231 /* [resources] */,
+				43270311202DCC840025BE15 /* [Views] */,
+				4300B7EA202D9E2D009DD231 /* [Modules] */,
 				43972D0D1F3989670029B66B /* AppDelegate.swift */,
 				43972D111F3989670029B66B /* Main.storyboard */,
 				43972D141F3989670029B66B /* Assets.xcassets */,
@@ -299,9 +403,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43270316202DCCB30025BE15 /* EssayView.xib in Resources */,
 				43972D181F3989670029B66B /* LaunchScreen.storyboard in Resources */,
+				43270310202DC06D0025BE15 /* EssayCardCell.xib in Resources */,
 				43972D151F3989670029B66B /* Assets.xcassets in Resources */,
 				434C2C741FEBD5CB00B62481 /* TMenuItemCell.xib in Resources */,
+				4300B7E6202D8F49009DD231 /* essays.json in Resources */,
 				436947BD1FEC9A02003B147B /* TDemoCell.xib in Resources */,
 				43972D131F3989670029B66B /* Main.storyboard in Resources */,
 				432FE3D72015DC050082E13D /* T.podspec in Resources */,
@@ -427,11 +534,16 @@
 				434C2C7A1FEBD6EA00B62481 /* TMenuItem.swift in Sources */,
 				43972D101F3989670029B66B /* ViewController.swift in Sources */,
 				43972D0E1F3989670029B66B /* AppDelegate.swift in Sources */,
+				43270314202DCCAD0025BE15 /* EssayView.swift in Sources */,
+				436453AC203172AD001ABDBD /* ActiveEssayView.swift in Sources */,
 				436947BC1FEC9A02003B147B /* TDemoCell.swift in Sources */,
 				436947BF1FEC9BFC003B147B /* TDemoRowModel.swift in Sources */,
+				4300B7E9202D9060009DD231 /* Essays.swift in Sources */,
 				434C2C731FEBD5CB00B62481 /* TMenuItemCell.swift in Sources */,
 				436947C11FEC9D25003B147B /* TDemoItem.swift in Sources */,
-				434C2C831FEC8FCA00B62481 /* TDemoTableViewController.swift in Sources */,
+				43270308202DBFCD0025BE15 /* EssayCardRowModel.swift in Sources */,
+				4327030F202DC06D0025BE15 /* EssayCardCell.swift in Sources */,
+				434C2C831FEC8FCA00B62481 /* EssaysListViewController.swift in Sources */,
 				434C2C771FEBD68000B62481 /* TMenuItemRowModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

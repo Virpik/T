@@ -7,11 +7,10 @@
 
 import Foundation
 
-extension CGPoint {
-    
+extension TExtension where Type == CGPoint {
     /// self.x = x
     func set(x: CGFloat) -> CGPoint {
-        var point = self
+        var point = self.origin
         
         point.x = x
         
@@ -20,7 +19,7 @@ extension CGPoint {
     
     /// self.y = y
     func set(y: CGFloat) -> CGPoint {
-        var point = self
+        var point = self.origin
         
         point.y = y
         
@@ -29,7 +28,7 @@ extension CGPoint {
     
     /// self.x += params.x
     func sum(x: CGFloat) -> CGPoint {
-        var point = self
+        var point = self.origin
         
         point.x += x
         
@@ -38,7 +37,7 @@ extension CGPoint {
     
     /// self.y += params.y
     func sum(y: CGFloat) -> CGPoint {
-        var point = self
+        var point = self.origin
         
         point.y += y
         

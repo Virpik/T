@@ -46,6 +46,24 @@ public extension UIView {
 }
 
 public extension UIView {
+    
+    func setup(fromXib name: String) {
+        guard let view = self.load(fromNib: name) else {
+            return
+        }
+        
+        self.tAddSubview(view: view, isSetBounds: true)
+    }
+    
+    func load(fromNib name: String) -> UIView? {
+        let bundle = Bundle(for: self.classForCoder)
+        let nib = UINib(nibName: name, bundle: bundle)
+        
+        let anyObj = nib.instantiate(withOwner: self, options: nil)[safe: 0]
+        
+        return anyObj as? UIView
+    }
+    
     /// if isBounds == true { view.frame = self.bounds }
     public func tAddSubview(view: UIView, isSetBounds: Bool = false, autoresizingMask: UIViewAutoresizing =  [.flexibleWidth, .flexibleHeight]) {
         
@@ -69,9 +87,7 @@ public extension UIView {
         }
     }
     
-    public func tShow(duration: TimeInterval, completion: Block? = nil) {
-        let alpha = self.alpha
-        
+    public func tShow(alpha: CGFloat = 1 ,duration: TimeInterval, completion: Block? = nil) {
         self.alpha = 0
         self.isHidden = false
         
