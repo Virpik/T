@@ -17,7 +17,7 @@ class EssaysListViewController: TTableModelViewController {
 //    }
     
     private var tableHeaderView: UIView  = {
-        let view = UIView(width: 320, height: 100)
+        let view = UIView(width: 320, height: 200)
         view.backgroundColor = .red
         return view
     }()
@@ -29,10 +29,11 @@ class EssaysListViewController: TTableModelViewController {
     private var _cover: UIView = {
         let cover = UIView(width: 100, height: 100)
         
-        let blurEffect = UIBlurEffect(style: .dark)
-        
+        let blurEffect = UIBlurEffect(style: .light)
+
         let blurView = UIVisualEffectView(effect: blurEffect)
-        
+        blurView.backgroundColor = UIColor.red.transparency(0.1)
+        blurView.alpha = 0.99
         blurView.frame = cover.bounds
         
         cover.tAddSubview(view: blurView)
@@ -164,7 +165,7 @@ class EssaysListViewController: TTableModelViewController {
     
     private func _updateOutOfCellLimitsState(context: CellContext) {
         
-        if let snapshot = self._snapshot {            
+        if let snapshot = self._snapshot {
             self.tableView.bringSubview(toFront: self._cover)
             self.tableView.bringSubview(toFront: snapshot)
             
