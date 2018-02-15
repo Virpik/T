@@ -19,10 +19,9 @@ public extension TableViewModel {
         public var hypotheticalFrame: CGRect {
             let cellFrame = self.cell.frame
             
-            let tY = self.locationFromCell.y - cellFrame.origin.y 
+            let tY: CGFloat = self.locationFromCell.y - (cellFrame.height / 2)
             
             var frame = cellFrame.t.set(mid: location)
-            
             frame.origin.y -= tY
             frame.origin.x = cellFrame.origin.x
             
@@ -37,9 +36,6 @@ public extension TableViewModel {
         public var rowModel: AnyRowModel
         public var cell: UITableViewCell
 
-//        public private(set) var originSnapshot: UIView
-//        public var snapshot: UIView
-
         public init(location: CGPoint, locationFromCell: CGPoint, indexPath: IndexPath, rowModel: AnyRowModel, cell: UITableViewCell) {
 
             self.location = location
@@ -49,9 +45,6 @@ public extension TableViewModel {
             self.rowModel = rowModel
             self.cell = cell
             
-//            self.originSnapshot = cell.snapshot()
-//            self.snapshot = cell.snapshot()
-    
             self = self.set(location: location)
         }
         
@@ -59,18 +52,6 @@ public extension TableViewModel {
             var context = self
             
             context.location = location
-
-//            let _ = {
-//                var centerPoint = context.originSnapshot.center
-//                centerPoint.y = location.y
-//                context.originSnapshot.center = centerPoint
-//            }()
-//
-//            let _ = {
-//                var centerPoint = context.snapshot.center
-//                centerPoint.y = location.y
-//                context.snapshot.center = centerPoint
-//            }()
             
             return self
         }

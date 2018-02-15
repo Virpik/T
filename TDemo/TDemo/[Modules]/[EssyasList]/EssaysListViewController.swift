@@ -119,6 +119,7 @@ class EssaysListViewController: TTableModelViewController {
     private func _handlerEndMove(atContext: CellContext, toContext: CellContext?) {
         if self._isOutOfCellLimits {
             self._uninstallOutOfCellLimitsState(context: atContext)
+            self._isOutOfCellLimits = false
         }
     }
     
@@ -190,6 +191,8 @@ class EssaysListViewController: TTableModelViewController {
     }
     
     private func _uninstallSnapshot(snapshot: UIView, context: CellContext) {
-        snapshot.removeFromSuperview()
+        snapshot.tHidde(duration: 0.2) {
+            snapshot.removeFromSuperview()
+        }
     }
 }
