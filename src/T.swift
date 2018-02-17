@@ -19,14 +19,6 @@ public struct Handlers<T> {
     public var fake: BlockFake<T>?
 }
 
-public struct TExtension<Type> {
-    public var origin: Type
-    
-    public init(origin: Type) {
-        self.origin = origin
-    }
-}
-
 public func async(_ block: @escaping Block) {
     DispatchQueue.global().async(execute: block)
 }

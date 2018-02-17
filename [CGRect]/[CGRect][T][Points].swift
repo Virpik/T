@@ -7,7 +7,8 @@
 
 import Foundation
 
-public extension TExtension where Type == CGRect {
+/// For CGRect
+public extension CGRect.Extension {
     public var max: CGPoint {
         return CGPoint(x: self.origin.maxX, y: self.origin.maxY)
     }

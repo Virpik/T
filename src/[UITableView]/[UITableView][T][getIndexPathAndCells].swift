@@ -1,19 +1,19 @@
 //
-//  [UITableView].swift
+//  [UITableView][T].swift
 //  Pods-TDemo
 //
-//  Created by Virpik on 02/02/2018.
+//  Created by Virpik on 15/02/2018.
 //
 
 import Foundation
 
-public extension UITableView {
+extension TExtension where Type == UITableView {
     public func belowCell(at indexPath: IndexPath) -> UITableViewCell? {
         guard let indexPath = self.below(at: indexPath) else {
             return nil
         }
         
-        return self.cellForRow(at: indexPath)
+        return self.origin.cellForRow(at: indexPath)
     }
     
     public func aboveCell(at indexPath: IndexPath) -> UITableViewCell? {
@@ -21,15 +21,15 @@ public extension UITableView {
             return nil
         }
         
-        return self.cellForRow(at: indexPath)
+        return self.origin.cellForRow(at: indexPath)
     }
     
     public func below(at indexPath: IndexPath) -> IndexPath? {
         var section = indexPath.section
         var row = indexPath.row
         
-        let sections = self.numberOfSections
-        let rowsAtSection = self.numberOfRows(inSection: section)
+        let sections = self.origin.numberOfSections
+        let rowsAtSection = self.origin.numberOfRows(inSection: section)
         
         if rowsAtSection - 1 == row && sections - 1 == section {
             return nil
@@ -66,10 +66,11 @@ public extension UITableView {
         
         if section > 0 {
             section -= 1
-            row = self.numberOfRows(inSection: section) - 1
+            row = self.origin.numberOfRows(inSection: section) - 1
             return IndexPath(row: row, section: section)
         }
         
         return nil
     }
 }
+

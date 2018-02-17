@@ -7,7 +7,8 @@
 
 import Foundation
 
-extension TExtension where Type == CGPoint {
+/// For CGPoint
+extension CGPoint.Extension {
     /// self.x = x
     func set(x: CGFloat) -> CGPoint {
         var point = self.origin

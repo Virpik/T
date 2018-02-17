@@ -1,14 +1,14 @@
 //
-//  [CGPoint].swift
-//  T
+//  [CGRect].swift
+//  Pods-TDemo
 //
 //  Created by Virpik on 13/02/2018.
 //
 
 import Foundation
 
-extension CGPoint {
-    public typealias TypeObject = CGPoint
+extension CGRect {
+    public typealias TypeObject = CGRect
     
     public struct Extension {
         public var origin: TypeObject
