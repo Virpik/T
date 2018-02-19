@@ -1,15 +1,14 @@
 //
-//  TExtension.swift
-//  Pods-TDemo
+//  [UIColor][T].swift
+//  T
 //
-//  Created by Virpik on 15/02/2018.
+//  Created by Virpik on 19/02/2018.
 //
 
 import Foundation
 
-/**
-extension %Your type% {
-    public typealias TypeObject = %Your type%
+extension UIColor {
+    public typealias TypeObject = UIColor
     
     public struct Ext {
         public var origin: TypeObject
@@ -43,4 +42,3 @@ extension %Your type% {
         return ExtDebugStatic(origin: self)
     }
 }
-*/

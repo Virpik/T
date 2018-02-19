@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension TExtension where Type == UITableView {
+public extension UITableView.Ext {
     public func belowCell(at indexPath: IndexPath) -> UITableViewCell? {
         guard let indexPath = self.below(at: indexPath) else {
             return nil

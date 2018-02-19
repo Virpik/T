@@ -10,19 +10,19 @@ import Foundation
 extension CGRect {
     public typealias TypeObject = CGRect
     
-    public struct Extension {
+    public struct Ext {
         public var origin: TypeObject
     }
     
-    public struct ExtensionStatic {
+    public struct ExtStatic {
         public var origin: TypeObject.Type
     }
     
-    var t: Extension {
-        return Extension(origin: self)
+    public var t: Ext {
+        return Ext(origin: self)
     }
     
-    static var t: ExtensionStatic {
-        return ExtensionStatic(origin: self)
+    public static var t: ExtStatic {
+        return ExtStatic(origin: self)
     }
 }

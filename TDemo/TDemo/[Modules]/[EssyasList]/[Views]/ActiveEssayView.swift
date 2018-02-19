@@ -39,7 +39,7 @@ class ActiveEssayView: UIView {
     
     func make(appearance: Appearance) {
         self.essayView.tBRadius = 3
-        self.backgroundColor = UIColor.gray.transparency(0.3)
+        self.backgroundColor = UIColor.gray.t.transparency(0.3)
     }
     
     func addSubviews() {

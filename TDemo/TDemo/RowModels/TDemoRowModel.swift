@@ -41,7 +41,7 @@ public struct TDemoRowModel: RowModelBlocks {
         
         cell.labelTitle.text = self.item.title
         cell.viewContainer.backgroundColor = self.item.color
-        cell.contentView.backgroundColor = self.item.color?.light(-0.2)
+        cell.contentView.backgroundColor = self.item.color?.t.light(-0.2)
         
         var handlers = RowType.Handlers()
         

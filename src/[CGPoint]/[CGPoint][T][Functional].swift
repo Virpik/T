@@ -8,7 +8,7 @@
 import Foundation
 
 /// For CGPoint
-extension CGPoint.Extension {
+extension CGPoint.Ext {
     /// self.x = x
     func set(x: CGFloat) -> CGPoint {
         var point = self.origin

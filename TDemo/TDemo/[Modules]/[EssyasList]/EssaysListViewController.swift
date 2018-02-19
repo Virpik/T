@@ -32,11 +32,11 @@ class EssaysListViewController: TTableModelViewController {
         let blurEffect = UIBlurEffect(style: .light)
 
         let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.backgroundColor = UIColor.red.transparency(0.1)
+        blurView.backgroundColor = UIColor.red.t.transparency(0.1)
         blurView.alpha = 0.99
         blurView.frame = cover.bounds
         
-        cover.tAddSubview(view: blurView)
+        cover.ext_view.tAddSubview(view: blurView)
         
         return cover
     }()
@@ -51,7 +51,7 @@ class EssaysListViewController: TTableModelViewController {
         }
         
         self.tableView.tableHeaderView = self.tableHeaderView
-        self.tableView.tAddSubview(view: self._cover)
+        self.tableView.ext_view.tAddSubview(view: self._cover)
         
         self._cover.alpha = 0
         self._cover.isHidden = false
@@ -113,7 +113,7 @@ class EssaysListViewController: TTableModelViewController {
     }
     
     private func _handlerDidMove(atContext: CellContext, toContext: CellContext) {
-        self.essays.move(at: atContext.indexPath.row, to: toContext.indexPath.row)
+        self.essays = self.essays.t.move(at: atContext.indexPath.row, to: toContext.indexPath.row)
     }
     
     private func _handlerEndMove(atContext: CellContext, toContext: CellContext?) {
@@ -148,7 +148,7 @@ class EssaysListViewController: TTableModelViewController {
     private func _setupOutOfCellLimitsState(context: CellContext) {
         self.tableView.bringSubview(toFront: self._cover)
         
-        self._cover.tShow(duration: 0.2)
+        self._cover.ext_view.show(duration: 0.2)
         
         let snapshot = self._setupSnashot(context: context)
         self._moveSnaphot(snapshot: snapshot, context: context)
@@ -156,7 +156,7 @@ class EssaysListViewController: TTableModelViewController {
     }
     
     private func _uninstallOutOfCellLimitsState(context: CellContext) {
-        self._cover.tHidde(duration: 0.2)
+        self._cover.ext_view.hidde(duration: 0.2)
 
         if let snapshot = self._snapshot {
             self._uninstallSnapshot(snapshot: snapshot, context: context)
@@ -175,7 +175,7 @@ class EssaysListViewController: TTableModelViewController {
     }
 
     private func _setupSnashot(context: CellContext) -> UIView {
-        let image = context.cell.render()
+        let image = context.cell.ext_view.render()
         
         let imageView = UIImageView(frame: context.cell.bounds)
         
@@ -191,7 +191,7 @@ class EssaysListViewController: TTableModelViewController {
     }
     
     private func _uninstallSnapshot(snapshot: UIView, context: CellContext) {
-        snapshot.tHidde(duration: 0.2) {
+        snapshot.ext_view.hidde(duration: 0.2) {
             snapshot.removeFromSuperview()
         }
     }
