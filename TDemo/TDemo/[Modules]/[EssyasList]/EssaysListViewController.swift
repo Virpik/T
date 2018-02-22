@@ -36,7 +36,7 @@ class EssaysListViewController: TTableModelViewController {
         blurView.alpha = 0.99
         blurView.frame = cover.bounds
         
-        cover.ext_view.tAddSubview(view: blurView)
+        cover.t_view.addSubview(view: blurView)
         
         return cover
     }()
@@ -51,7 +51,7 @@ class EssaysListViewController: TTableModelViewController {
         }
         
         self.tableView.tableHeaderView = self.tableHeaderView
-        self.tableView.ext_view.tAddSubview(view: self._cover)
+        self.tableView.t_view.addSubview(view: self._cover)
         
         self._cover.alpha = 0
         self._cover.isHidden = false
@@ -148,7 +148,7 @@ class EssaysListViewController: TTableModelViewController {
     private func _setupOutOfCellLimitsState(context: CellContext) {
         self.tableView.bringSubview(toFront: self._cover)
         
-        self._cover.ext_view.show(duration: 0.2)
+        self._cover.t_view.show(duration: 0.2)
         
         let snapshot = self._setupSnashot(context: context)
         self._moveSnaphot(snapshot: snapshot, context: context)
@@ -156,7 +156,7 @@ class EssaysListViewController: TTableModelViewController {
     }
     
     private func _uninstallOutOfCellLimitsState(context: CellContext) {
-        self._cover.ext_view.hidde(duration: 0.2)
+        self._cover.t_view.hidde(duration: 0.2)
 
         if let snapshot = self._snapshot {
             self._uninstallSnapshot(snapshot: snapshot, context: context)
@@ -175,7 +175,7 @@ class EssaysListViewController: TTableModelViewController {
     }
 
     private func _setupSnashot(context: CellContext) -> UIView {
-        let image = context.cell.ext_view.render()
+        let image = context.cell.t_view.render()
         
         let imageView = UIImageView(frame: context.cell.bounds)
         
@@ -191,7 +191,7 @@ class EssaysListViewController: TTableModelViewController {
     }
     
     private func _uninstallSnapshot(snapshot: UIView, context: CellContext) {
-        snapshot.ext_view.hidde(duration: 0.2) {
+        snapshot.t_view.hidde(duration: 0.2) {
             snapshot.removeFromSuperview()
         }
     }

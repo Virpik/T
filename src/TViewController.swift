@@ -22,8 +22,8 @@ public extension UIViewController {
         tLabel.textAlignment = .center
         tLabel.text = String(describing: self.classForCoder)
         
-        tView.ext_view.tAddSubview(view: tLabel)
-        self.view.ext_view.tAddSubview(view: tView)
+        tView.t_view.addSubview(view: tLabel)
+        self.view.t_view.addSubview(view: tView)
     }
 
 }

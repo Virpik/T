@@ -75,7 +75,7 @@ open class TTableModelViewController: UIViewController {
         self.tableView = tableView
         tableView.separatorStyle = .none
 
-        self.view.ext_view.tAddSubview(view: tableView)
+        self.view.t_view.addSubview(view: tableView)
     }
 }
 

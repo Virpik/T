@@ -13,7 +13,7 @@ public extension UIView.Ext_View {
             return
         }
         
-        self.tAddSubview(view: view, isSetBounds: true)
+        self.addSubview(view: view, isSetBounds: true)
     }
     
     public func load(fromNib name: String) -> UIView? {
@@ -26,7 +26,7 @@ public extension UIView.Ext_View {
     }
     
     /// if isBounds == true { view.frame = self.bounds }
-    public func tAddSubview(view: UIView, isSetBounds: Bool = false, autoresizingMask: UIViewAutoresizing =  [.flexibleWidth, .flexibleHeight]) {
+    public func addSubview(view: UIView, isSetBounds: Bool = false, autoresizingMask: UIViewAutoresizing =  [.flexibleWidth, .flexibleHeight]) {
         
         if isSetBounds {
             view.frame = self.origin.bounds
