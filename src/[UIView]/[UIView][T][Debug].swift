@@ -34,8 +34,8 @@ extension UIView.Ext_View {
         _hView.backgroundColor = crosshairsBgColor
         _wView.backgroundColor = crosshairsBgColor
         
-        view.ext_view.tAddSubview(view: _hView)
-        view.ext_view.tAddSubview(view: _wView)
+        view.t_view.addSubview(view: _hView)
+        view.t_view.addSubview(view: _wView)
         
         return view
     }

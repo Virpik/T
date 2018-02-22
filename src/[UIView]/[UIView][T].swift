@@ -26,19 +26,19 @@ extension UIView {
         public var origin: TypeObject_UIView.Type
     }
     
-    public var ext_view: Ext_View {
+    public var t_view: Ext_View {
         return Ext_View(origin: self)
     }
     
-    public static var ext_view: ExtStatic_View {
+    public static var t_view: ExtStatic_View {
         return ExtStatic_View(origin: self)
     }
     
-    public var _ext_view: ExtDebug_View {
+    public var _t_view: ExtDebug_View {
         return ExtDebug_View(origin: self)
     }
     
-    public static var _ext_view: ExtDebugStatic_View {
+    public static var _t_view: ExtDebugStatic_View {
         return ExtDebugStatic_View(origin: self)
     }
 }

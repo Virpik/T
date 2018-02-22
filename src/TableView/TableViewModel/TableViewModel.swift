@@ -42,7 +42,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
             return self.sections[indexPath.section][indexPath.row]
         }
         
-        return ManagerMoveCells(tableView: tableView, dataSourse: ds)
+        return ManagerMoveCells(tableView: self.tableView, dataSourse: ds)
     }()
     
     private var _cashHeightRows: [IndexPath: CGSize] = [:]

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4300B7E6202D8F49009DD231 /* essays.json in Resources */ = {isa = PBXBuildFile; fileRef = 4300B7E5202D8F49009DD231 /* essays.json */; };
 		4300B7E9202D9060009DD231 /* Essays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4300B7E8202D9060009DD231 /* Essays.swift */; };
+		43052A34203DA0A700BA293C /* SimulatioAppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43052A33203DA0A700BA293C /* SimulatioAppFlow.swift */; };
+		43052A36203DA93100BA293C /* TFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43052A35203DA93100BA293C /* TFlow.swift */; };
+		43052A39203DA95600BA293C /* SimulatioAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43052A38203DA95600BA293C /* SimulatioAppViewController.swift */; };
 		43270308202DBFCD0025BE15 /* EssayCardRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43270307202DBFCD0025BE15 /* EssayCardRowModel.swift */; };
 		4327030F202DC06D0025BE15 /* EssayCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4327030D202DC06D0025BE15 /* EssayCardCell.swift */; };
 		43270310202DC06D0025BE15 /* EssayCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4327030E202DC06D0025BE15 /* EssayCardCell.xib */; };
@@ -31,6 +34,12 @@
 		43972D151F3989670029B66B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43972D141F3989670029B66B /* Assets.xcassets */; };
 		43972D181F3989670029B66B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43972D161F3989670029B66B /* LaunchScreen.storyboard */; };
 		43972D231F3989680029B66B /* TDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D221F3989680029B66B /* TDemoTests.swift */; };
+		43B0021B203DAD2D008BDDEB /* SettingFieldStrCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B00219203DAD2D008BDDEB /* SettingFieldStrCell.swift */; };
+		43B0021C203DAD2D008BDDEB /* SettingFieldStrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B0021A203DAD2D008BDDEB /* SettingFieldStrCell.xib */; };
+		43B00221203DAD62008BDDEB /* SettingFieldColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B0021F203DAD62008BDDEB /* SettingFieldColorCell.swift */; };
+		43B00222203DAD62008BDDEB /* SettingFieldColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B00220203DAD62008BDDEB /* SettingFieldColorCell.xib */; };
+		43B00224203DB043008BDDEB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B00223203DB043008BDDEB /* Settings.swift */; };
+		43B00226203DB5FB008BDDEB /* SimulationAppViewController.Fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B00225203DB5FB008BDDEB /* SimulationAppViewController.Fields.swift */; };
 		4C57639A3F4DFC6ACDEB36DD /* Pods_TDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932965434AADC9EA62A2678A /* Pods_TDemo.framework */; };
 		97859F80736A7EBF89F4786C /* Pods_TDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD21F502FC13E24FAD464179 /* Pods_TDemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +59,9 @@
 		213DC4A2055EAD62445D2C19 /* Pods-TDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TDemo/Pods-TDemo.release.xcconfig"; sourceTree = "<group>"; };
 		4300B7E5202D8F49009DD231 /* essays.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = essays.json; sourceTree = "<group>"; };
 		4300B7E8202D9060009DD231 /* Essays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Essays.swift; sourceTree = "<group>"; };
+		43052A33203DA0A700BA293C /* SimulatioAppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatioAppFlow.swift; sourceTree = "<group>"; };
+		43052A35203DA93100BA293C /* TFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFlow.swift; sourceTree = "<group>"; };
+		43052A38203DA95600BA293C /* SimulatioAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatioAppViewController.swift; sourceTree = "<group>"; };
 		43270307202DBFCD0025BE15 /* EssayCardRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayCardRowModel.swift; sourceTree = "<group>"; };
 		4327030D202DC06D0025BE15 /* EssayCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayCardCell.swift; sourceTree = "<group>"; };
 		4327030E202DC06D0025BE15 /* EssayCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EssayCardCell.xib; sourceTree = "<group>"; };
@@ -76,6 +88,12 @@
 		43972D1E1F3989680029B66B /* TDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43972D221F3989680029B66B /* TDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoTests.swift; sourceTree = "<group>"; };
 		43972D241F3989680029B66B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43B00219203DAD2D008BDDEB /* SettingFieldStrCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFieldStrCell.swift; sourceTree = "<group>"; };
+		43B0021A203DAD2D008BDDEB /* SettingFieldStrCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingFieldStrCell.xib; sourceTree = "<group>"; };
+		43B0021F203DAD62008BDDEB /* SettingFieldColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFieldColorCell.swift; sourceTree = "<group>"; };
+		43B00220203DAD62008BDDEB /* SettingFieldColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingFieldColorCell.xib; sourceTree = "<group>"; };
+		43B00223203DB043008BDDEB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		43B00225203DB5FB008BDDEB /* SimulationAppViewController.Fields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationAppViewController.Fields.swift; sourceTree = "<group>"; };
 		51376A86BDCE084635AF1BCD /* Pods-TDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TDemoTests/Pods-TDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		932965434AADC9EA62A2678A /* Pods_TDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F71F7CC6A781AE25F65F917E /* Pods-TDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDemo/Pods-TDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +131,7 @@
 		4300B7EA202D9E2D009DD231 /* [Modules] */ = {
 			isa = PBXGroup;
 			children = (
+				43052A32203DA09A00BA293C /* [SimulatioAppFlow] */,
 				4300B7EC202D9E56009DD231 /* [EssayViewer] */,
 				4300B7EB202D9E42009DD231 /* [EssyasList] */,
 			);
@@ -135,6 +154,27 @@
 			children = (
 			);
 			path = "[EssayViewer]";
+			sourceTree = "<group>";
+		};
+		43052A32203DA09A00BA293C /* [SimulatioAppFlow] */ = {
+			isa = PBXGroup;
+			children = (
+				43B00218203DACD4008BDDEB /* [Cells] */,
+				43052A37203DA94500BA293C /* [ViewControllers] */,
+				43052A33203DA0A700BA293C /* SimulatioAppFlow.swift */,
+				43052A35203DA93100BA293C /* TFlow.swift */,
+				43B00223203DB043008BDDEB /* Settings.swift */,
+			);
+			path = "[SimulatioAppFlow]";
+			sourceTree = "<group>";
+		};
+		43052A37203DA94500BA293C /* [ViewControllers] */ = {
+			isa = PBXGroup;
+			children = (
+				43052A38203DA95600BA293C /* SimulatioAppViewController.swift */,
+				43B00225203DB5FB008BDDEB /* SimulationAppViewController.Fields.swift */,
+			);
+			path = "[ViewControllers]";
 			sourceTree = "<group>";
 		};
 		43270306202DBF8A0025BE15 /* [RowModels] */ = {
@@ -291,6 +331,33 @@
 			path = TDemoTests;
 			sourceTree = "<group>";
 		};
+		43B00218203DACD4008BDDEB /* [Cells] */ = {
+			isa = PBXGroup;
+			children = (
+				43B0021E203DAD49008BDDEB /* SettingFieldColorCell */,
+				43B0021D203DAD37008BDDEB /* SettingFieldStrCell */,
+			);
+			path = "[Cells]";
+			sourceTree = "<group>";
+		};
+		43B0021D203DAD37008BDDEB /* SettingFieldStrCell */ = {
+			isa = PBXGroup;
+			children = (
+				43B00219203DAD2D008BDDEB /* SettingFieldStrCell.swift */,
+				43B0021A203DAD2D008BDDEB /* SettingFieldStrCell.xib */,
+			);
+			path = SettingFieldStrCell;
+			sourceTree = "<group>";
+		};
+		43B0021E203DAD49008BDDEB /* SettingFieldColorCell */ = {
+			isa = PBXGroup;
+			children = (
+				43B0021F203DAD62008BDDEB /* SettingFieldColorCell.swift */,
+				43B00220203DAD62008BDDEB /* SettingFieldColorCell.xib */,
+			);
+			path = SettingFieldColorCell;
+			sourceTree = "<group>";
+		};
 		4CCE124A77611528A52CEA06 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,9 +475,11 @@
 				43270310202DC06D0025BE15 /* EssayCardCell.xib in Resources */,
 				43972D151F3989670029B66B /* Assets.xcassets in Resources */,
 				434C2C741FEBD5CB00B62481 /* TMenuItemCell.xib in Resources */,
+				43B0021C203DAD2D008BDDEB /* SettingFieldStrCell.xib in Resources */,
 				4300B7E6202D8F49009DD231 /* essays.json in Resources */,
 				436947BD1FEC9A02003B147B /* TDemoCell.xib in Resources */,
 				43972D131F3989670029B66B /* Main.storyboard in Resources */,
+				43B00222203DAD62008BDDEB /* SettingFieldColorCell.xib in Resources */,
 				432FE3D72015DC050082E13D /* T.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,14 +601,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				434C2C7A1FEBD6EA00B62481 /* TMenuItem.swift in Sources */,
+				43052A34203DA0A700BA293C /* SimulatioAppFlow.swift in Sources */,
+				43052A36203DA93100BA293C /* TFlow.swift in Sources */,
 				43972D101F3989670029B66B /* ViewController.swift in Sources */,
 				43972D0E1F3989670029B66B /* AppDelegate.swift in Sources */,
 				43270314202DCCAD0025BE15 /* EssayView.swift in Sources */,
+				43052A39203DA95600BA293C /* SimulatioAppViewController.swift in Sources */,
+				43B0021B203DAD2D008BDDEB /* SettingFieldStrCell.swift in Sources */,
+				43B00221203DAD62008BDDEB /* SettingFieldColorCell.swift in Sources */,
 				436453AC203172AD001ABDBD /* ActiveEssayView.swift in Sources */,
+				43B00226203DB5FB008BDDEB /* SimulationAppViewController.Fields.swift in Sources */,
 				436947BC1FEC9A02003B147B /* TDemoCell.swift in Sources */,
 				436947BF1FEC9BFC003B147B /* TDemoRowModel.swift in Sources */,
 				4300B7E9202D9060009DD231 /* Essays.swift in Sources */,
 				434C2C731FEBD5CB00B62481 /* TMenuItemCell.swift in Sources */,
+				43B00224203DB043008BDDEB /* Settings.swift in Sources */,
 				436947C11FEC9D25003B147B /* TDemoItem.swift in Sources */,
 				43270308202DBFCD0025BE15 /* EssayCardRowModel.swift in Sources */,
 				4327030F202DC06D0025BE15 /* EssayCardCell.swift in Sources */,
