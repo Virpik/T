@@ -8,7 +8,7 @@
 import Foundation
 
 public extension UIColor.ExtStatic {
-    public static func random() -> UIColor {
+    public func random() -> UIColor {
         return UIColor(red: .random(), green: .random(), blue: .random(), alpha: 1.0)
     }
 }
