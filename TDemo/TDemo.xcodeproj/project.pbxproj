@@ -31,6 +31,9 @@
 		43972D151F3989670029B66B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43972D141F3989670029B66B /* Assets.xcassets */; };
 		43972D181F3989670029B66B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43972D161F3989670029B66B /* LaunchScreen.storyboard */; };
 		43972D231F3989680029B66B /* TDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D221F3989680029B66B /* TDemoTests.swift */; };
+		43B46C8A20416E4A00484EF5 /* TStylesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B46C8920416E4A00484EF5 /* TStylesViewController.swift */; };
+		43B46C8C20417D0D00484EF5 /* TViewStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B46C8B20417D0D00484EF5 /* TViewStyles.swift */; };
+		43B46C8E20417D1B00484EF5 /* TLabelStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B46C8D20417D1B00484EF5 /* TLabelStyles.swift */; };
 		4C57639A3F4DFC6ACDEB36DD /* Pods_TDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932965434AADC9EA62A2678A /* Pods_TDemo.framework */; };
 		97859F80736A7EBF89F4786C /* Pods_TDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD21F502FC13E24FAD464179 /* Pods_TDemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +79,9 @@
 		43972D1E1F3989680029B66B /* TDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43972D221F3989680029B66B /* TDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoTests.swift; sourceTree = "<group>"; };
 		43972D241F3989680029B66B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43B46C8920416E4A00484EF5 /* TStylesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TStylesViewController.swift; sourceTree = "<group>"; };
+		43B46C8B20417D0D00484EF5 /* TViewStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TViewStyles.swift; sourceTree = "<group>"; };
+		43B46C8D20417D1B00484EF5 /* TLabelStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLabelStyles.swift; sourceTree = "<group>"; };
 		51376A86BDCE084635AF1BCD /* Pods-TDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TDemoTests/Pods-TDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		932965434AADC9EA62A2678A /* Pods_TDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F71F7CC6A781AE25F65F917E /* Pods-TDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDemo/Pods-TDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 		4300B7EA202D9E2D009DD231 /* [Modules] */ = {
 			isa = PBXGroup;
 			children = (
+				43B46C8820416E3700484EF5 /* [TStyles] */,
 				4300B7EC202D9E56009DD231 /* [EssayViewer] */,
 				4300B7EB202D9E42009DD231 /* [EssyasList] */,
 			);
@@ -289,6 +296,16 @@
 				43972D241F3989680029B66B /* Info.plist */,
 			);
 			path = TDemoTests;
+			sourceTree = "<group>";
+		};
+		43B46C8820416E3700484EF5 /* [TStyles] */ = {
+			isa = PBXGroup;
+			children = (
+				43B46C8920416E4A00484EF5 /* TStylesViewController.swift */,
+				43B46C8B20417D0D00484EF5 /* TViewStyles.swift */,
+				43B46C8D20417D1B00484EF5 /* TLabelStyles.swift */,
+			);
+			path = "[TStyles]";
 			sourceTree = "<group>";
 		};
 		4CCE124A77611528A52CEA06 /* Pods */ = {
@@ -534,6 +551,7 @@
 				434C2C7A1FEBD6EA00B62481 /* TMenuItem.swift in Sources */,
 				43972D101F3989670029B66B /* ViewController.swift in Sources */,
 				43972D0E1F3989670029B66B /* AppDelegate.swift in Sources */,
+				43B46C8A20416E4A00484EF5 /* TStylesViewController.swift in Sources */,
 				43270314202DCCAD0025BE15 /* EssayView.swift in Sources */,
 				436453AC203172AD001ABDBD /* ActiveEssayView.swift in Sources */,
 				436947BC1FEC9A02003B147B /* TDemoCell.swift in Sources */,
@@ -545,6 +563,8 @@
 				4327030F202DC06D0025BE15 /* EssayCardCell.swift in Sources */,
 				434C2C831FEC8FCA00B62481 /* EssaysListViewController.swift in Sources */,
 				434C2C771FEBD68000B62481 /* TMenuItemRowModel.swift in Sources */,
+				43B46C8E20417D1B00484EF5 /* TLabelStyles.swift in Sources */,
+				43B46C8C20417D0D00484EF5 /* TViewStyles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
