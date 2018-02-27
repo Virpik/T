@@ -126,6 +126,10 @@ extension TableViewModel {
                 return
             }
             
+            if !toCContet.isMoving {
+                return
+            }
+            
             let atIndexPath = atCContext.indexPath
             let toIndexPath = toCContet.indexPath
             
