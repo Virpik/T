@@ -8,6 +8,8 @@
 
 import Foundation
 
+public struct T {}
+
 public typealias Block = (() -> Void)
 public typealias BlockFail = ((NSError) -> Void)
 public typealias BlockSuccess<T> = ((T) -> Void)

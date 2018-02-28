@@ -13,15 +13,14 @@ class ViewController: TTableModelViewController {
 
     private var menuItem: [TMenuItem] = []
     
-    private var essaysListViewController = EssaysListViewController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "[Examples & Tests]"
         
         self.menuItem = [
-            TMenuItem(title: "TTableView [Essays]", block: self._essaysList)
+            TMenuItem(title: "TTableView [Essays]", block: self._essaysList),
+            TMenuItem(title: "TStyles", block: self._tSlyles)
         ]
         
         self.setup()
@@ -37,8 +36,16 @@ class ViewController: TTableModelViewController {
         self.set(rows: [rowModels])
     }
     
+    func _tSlyles() {
+        let vc = TStylesViewController()
+        
+        self.show(vc, sender: self)
+    }
+    
     func _essaysList() {
-        self.show(self.essaysListViewController, sender: self)
+        let vc = EssaysListViewController()
+        
+        self.show(vc, sender: self)
     }
 }
 
