@@ -26,6 +26,20 @@ protocol TStyleSupportView {
 
 extension TStyleSupportView {
     
+    public var viewStyle: T.Styles.View {
+        var style = T.Styles.View()
+        
+        style.bgColor = self.aBackgroundColor
+        style.alpha = self.aAlpha
+        style.bordeWidth = self.aBordeWidth.float
+        style.cornerRadius = self.aCornerRadius.float
+        style.borderColor = self.aBorderColor
+        style.tintColor = self.aTintColor
+        style.shadow = self.aShadow
+        
+        return style
+    }
+    
     @discardableResult
     public func apply (style: T.Styles.View) -> Self {
         var obj = self
