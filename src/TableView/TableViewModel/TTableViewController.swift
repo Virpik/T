@@ -1,5 +1,5 @@
 //
-//  TTableModelViewController.swift
+//  TTableViewController.swift
 //  TDemo
 //
 //  Created by Virpik on 13/12/2017.
@@ -15,7 +15,7 @@ import UIKit
     По дефолту таблица имеет фрейм сдвинутый на 500pt вверх и высотой view.height+500, с заданым contencInset.top = 500
     Это необходимо для устарения багов анимации при перемещении ячеек.
  */
-open class TTableModelViewController: UIViewController {
+open class TTableViewController: UIViewController {
 
     public typealias TableHandlers = TableViewModel.Handlers
     public typealias TableMoveCellHandlers = TableViewModel.MoveHandlers

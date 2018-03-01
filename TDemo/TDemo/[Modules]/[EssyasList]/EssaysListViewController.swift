@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import T
 
-class EssaysListViewController: TTableModelViewController {
+class EssaysListViewController: TTableViewController {
     typealias CellContext = TableViewModel.CellContext
 //    private var activeEssayView: EssayView {
 //        return self.tableHeaderView.essayView
@@ -65,7 +65,7 @@ class EssaysListViewController: TTableModelViewController {
         
         _handlers.moveHandlers = mHanlders
         
-        /// Устанавливаем handlers у TTableModelViewController
+        /// Устанавливаем handlers у TTableViewController
         self.handlers = _handlers
         
         self.setupTable()

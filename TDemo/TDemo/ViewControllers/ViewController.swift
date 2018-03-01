@@ -9,7 +9,7 @@
 import UIKit
 import T
 
-class ViewController: TTableModelViewController {
+class ViewController: TTableViewController {
 
     private var menuItem: [TMenuItem] = []
     
