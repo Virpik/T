@@ -12,6 +12,7 @@ public struct T {}
 
 public typealias Block = (() -> Void)
 public typealias BlockFail = ((NSError) -> Void)
+public typealias BlockForItem<T> = ((T) -> Void)
 public typealias BlockSuccess<T> = ((T) -> Void)
 public typealias BlockFake<T> = ((TimeInterval, T?, NSError?) -> Void)
 
