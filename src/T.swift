@@ -15,7 +15,7 @@ public typealias BlockFail = ((NSError) -> Void)
 public typealias BlockSuccess<T> = ((T) -> Void)
 public typealias BlockFake<T> = ((TimeInterval, T?, NSError?) -> Void)
 
-public typealias BlocksWorker<T> = (success: BlockSuccess<T>?, fail: BlockFail?)?
+public typealias BlocksWorker<T> = (success: BlockSuccess<T>?, fail: BlockFail?)
 
 public struct Handlers<T> {
     public var fail: BlockFail?
