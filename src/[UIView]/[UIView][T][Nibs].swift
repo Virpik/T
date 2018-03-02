@@ -24,7 +24,7 @@ public extension UIView.Ext_View {
     @discardableResult
     public func load<T: UIView>(fromNib name: String) -> T? {
         let _class = type(of: self.origin)
-        tLog(_class)
+        
         let bundle = Bundle(for: _class)
         let nib = UINib(nibName: name, bundle: bundle)
         let anyObj = nib.instantiate(withOwner: self.origin, options: nil)[safe: 0]
