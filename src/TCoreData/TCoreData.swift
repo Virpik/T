@@ -9,12 +9,12 @@ import Foundation
 import CoreData
 
 public class TCoreDataManager: NSObject {
-    private(set) var defaultContext: NSManagedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    public private(set) var defaultContext: NSManagedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     
-    private(set) var nameDB: String
-    private(set) var sqliteName: String
+    public private(set) var nameDB: String
+    public private(set) var sqliteName: String
     
-    internal var url: URL {
+    public var url: URL {
         return self.applicationDocumentsDirectory.appendingPathComponent(self.sqliteName)
     }
     
@@ -23,7 +23,7 @@ public class TCoreDataManager: NSObject {
         return urls[urls.count-1]
     }
     
-    internal init(dbName name: String, sqliteName: String = "SingleViewCoreData") {
+    public init(dbName name: String, sqliteName: String = "SingleViewCoreData") {
         
         self.nameDB = name
         self.sqliteName = sqliteName + ".sqlite"
@@ -85,7 +85,7 @@ public class TCoreDataManager: NSObject {
         return managedObjectContext
     }
     
-    internal func saveContext () {
+    public func saveContext () {
         let context = self.defaultContext
         
         if !context.hasChanges {

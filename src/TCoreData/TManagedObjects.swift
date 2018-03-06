@@ -22,6 +22,8 @@ extension NSCompoundPredicate {
 
 public struct TManagedObjects<T: NSManagedObject> {
     
+    public typealias Sorting = (attribute: String?, ascending: Bool)
+    
     public var coreDataManager: TCoreDataManager
 
     public init(coreDataManager: TCoreDataManager) {
@@ -58,10 +60,10 @@ public struct TManagedObjects<T: NSManagedObject> {
         return result
     }
 
-    public func find(params: [(String, Any)], sortBy attribute: String?, ascending: Bool, fetchLimit: Int? = nil) -> [T] {
+    public func find(params: [(String, Any)], sortBy: Sorting?, fetchLimit: Int? = nil) -> [T] {
         
         let predicate = NSCompoundPredicate(params: params)
-        let descriptor = NSSortDescriptor(key: attribute, ascending: ascending)
+        let descriptor = NSSortDescriptor(key: sortBy?.attribute, ascending: sortBy?.ascending ?? true)
         
         let result = self.find(predicate: predicate, sortDescriptors: [descriptor], fetchLimit: fetchLimit)
         
@@ -88,60 +90,7 @@ public struct TManagedObjects<T: NSManagedObject> {
         
         return result
     }
-
-    public func findFirstOrCreate(attribute: String, value: Any) -> T {
-        return self.findFirstOrCreate(params: [(attribute, value)])
-    }
-
-    public func findFirstOrCreate(params: [(String, Any)]) -> T {
-        if let entity = self.findFirst(params: params) {
-            return entity
-        }
-        
-        return self.create()
-    }
-
-
-    public func findFirst(params: [(String, Any)]) -> T? {
-        let name = self.entityName
-        
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: name)
-        request.fetchLimit = 1
-        request.predicate = NSCompoundPredicate(params: params)
-        
-        let result = self.find(with: request)
-        
-        return result.first
-    }
-
-    public func findFirst(attribute: String, value: Any) -> T? {
-        return self.findFirst(params: [(attribute, value)])
-    }
-
-    public func findFirst(sortBy attribute: String, ascending: Bool) -> T? {
-        let descriptor = NSSortDescriptor(key: attribute, ascending: ascending)
-        return self.find(sortDescriptors: [descriptor], fetchLimt: 1).first
-    }
-
-    public func find(sortBy attribute: String, ascending: Bool) -> [T] {
-        let descriptor = NSSortDescriptor(key: attribute, ascending: ascending)
-        return self.find(sortDescriptors: [descriptor])
-    }
-
-    public func find(sortDescriptors: [NSSortDescriptor] = [], fetchLimt: Int? = nil) -> [T] {
-        let name = self.entityName
-        
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: name)
-        
-        if let fetchLimt = fetchLimt {
-            request.fetchLimit = fetchLimt
-        }
-        
-        request.sortDescriptors = sortDescriptors
-        
-        return self.find(with: request)
-    }
-
+    
     public func find(with request: NSFetchRequest<NSFetchRequestResult>) -> [T] {
         let context = self.coreDataManager.defaultContext
         
@@ -155,5 +104,15 @@ public struct TManagedObjects<T: NSManagedObject> {
         }
         
         return []
+    }
+}
+
+extension TManagedObjects {
+    public func findFirstOrCreate(params: [(String, Any)], sortBy: Sorting? = nil) -> T {
+        return self.findFirst(params: params, sortBy: sortBy) ?? self.create()
+    }
+    
+    public func findFirst(params: [(String, Any)], sortBy: Sorting? = nil) -> T? {
+        return self.find(params: params, sortBy: sortBy, fetchLimit: 1).first
     }
 }
