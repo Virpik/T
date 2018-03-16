@@ -28,6 +28,16 @@ extension UILabel: TStyleSupportLabel {
         }
     }
     
+    @objc public dynamic var aTextAlignment: NSTextAlignment {
+        get {
+            return self.textAlignment
+        }
+        
+        set (value) {
+            self.textAlignment = value
+        }
+    }
+    
     @objc public dynamic var aTextSize: Float {
         get {
             return self.font.pointSize.float

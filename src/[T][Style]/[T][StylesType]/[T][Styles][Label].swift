@@ -12,11 +12,9 @@ extension T.Styles {
         public var textColor: UIColor?
         
         public var textFont: UIFont?
+        public var textAligment: NSTextAlignment = .left
+//        public var textSize: Float?
         
-        public var textSize: Float?
-        
-        public init() {
-            
-        }
+        public init() { }
     }
 }

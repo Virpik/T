@@ -7,6 +7,11 @@
 
 import Foundation
 
+public typealias LabelStyle = T.Styles.Label
+public typealias ViewStyle = T.Styles.View
+public typealias ShadowStyle = T.Styles.Shadow
+public typealias ButtonStyle = (label: LabelStyle, view: ViewStyle)
+
 public extension T {
     public struct Styles { }
 }

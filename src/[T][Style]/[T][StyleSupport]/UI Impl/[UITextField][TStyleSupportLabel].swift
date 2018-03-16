@@ -8,6 +8,7 @@
 import Foundation
 
 extension UITextField: TStyleSupportLabel {
+    
     @objc public dynamic var aTextColor: UIColor {
         get {
             return self.textColor ?? .black
@@ -28,13 +29,13 @@ extension UITextField: TStyleSupportLabel {
         }
     }
     
-    @objc public dynamic var aTextSize: Float {
+    @objc public dynamic var aTextAlignment: NSTextAlignment {
         get {
-            return self.aTextFont.pointSize.float
+            return self.textAlignment
         }
         
         set (value) {
-            self.font = self.aTextFont.withSize(value.cgFloat)
+            self.textAlignment = value
         }
     }
 }

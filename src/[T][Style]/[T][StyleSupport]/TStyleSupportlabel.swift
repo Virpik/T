@@ -7,13 +7,14 @@
 
 import Foundation
 
-protocol TStyleSupportLabel {
+public protocol TStyleSupportLabel {
 
     var aTextColor: UIColor { get set }
     
     var aTextFont: UIFont { get set }
     
-    var aTextSize: Float { get set }
+    var aTextAlignment: NSTextAlignment { get set }
+//    var aTextSize: Float { get set }
 }
 
 extension TStyleSupportLabel {
@@ -22,18 +23,22 @@ extension TStyleSupportLabel {
         var style = T.Styles.Label()
         
         style.textColor = self.aTextColor
-        style.textSize = self.aTextSize
         style.textFont = self.aTextFont
+        style.textAligment = self.aTextAlignment
         
         return style
     }
     
     @discardableResult
-    public func apply (style: T.Styles.Label) -> Self {
+    public func apply(_ style: T.Styles.Label?) -> Self {
+        guard let style = style else {
+            return self
+        }
+        
         var obj = self
         
+        obj.aTextAlignment = style.textAligment
         obj.aTextFont = style.textFont ?? UIFont.systemFont(ofSize: UIFont.systemFontSize)
-        obj.aTextSize = style.textSize ?? UIFont.systemFontSize.float
         obj.aTextColor = style.textColor ?? .black
         
         return obj

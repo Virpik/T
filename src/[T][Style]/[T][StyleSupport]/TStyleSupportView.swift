@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TStyleSupportView {
+public protocol TStyleSupportView {
     
     var aBackgroundColor: UIColor { get set }
     
@@ -41,7 +41,11 @@ extension TStyleSupportView {
     }
     
     @discardableResult
-    public func apply (style: T.Styles.View) -> Self {
+    public func apply(_ style: T.Styles.View?) -> Self {
+        guard let style = style else {
+            return self
+        }
+        
         var obj = self
         
         obj.aBackgroundColor = style.bgColor ?? .clear
@@ -52,7 +56,7 @@ extension TStyleSupportView {
         obj.aTintColor = style.tintColor ?? .clear
         obj.aShadow = style.shadow
         
-        return self
+        return obj
     }
 }
 

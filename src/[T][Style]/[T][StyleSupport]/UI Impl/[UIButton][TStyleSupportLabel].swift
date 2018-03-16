@@ -28,13 +28,23 @@ extension UIButton: TStyleSupportLabel {
         }
     }
     
-    @objc public dynamic var aTextSize: Float {
+    @objc public dynamic var aTextAlignment: NSTextAlignment {
         get {
-            return self.aTextFont.pointSize.float
+            return self.titleLabel?.textAlignment ?? .center
         }
         
         set (value) {
-            self.aTextFont = self.aTextFont.withSize(value.cgFloat)
+            self.titleLabel?.textAlignment = value
         }
+    }
+}
+
+extension UIButton: TStyleSupportButton {
+    public var aLabel: TStyleSupportLabel {
+        return self
+    }
+    
+    public var aView: TStyleSupportView {
+        return self
     }
 }
