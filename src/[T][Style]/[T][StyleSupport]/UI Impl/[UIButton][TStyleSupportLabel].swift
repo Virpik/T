@@ -38,13 +38,3 @@ extension UIButton: TStyleSupportLabel {
         }
     }
 }
-
-extension UIButton: TStyleSupportButton {
-    public var aLabel: TStyleSupportLabel {
-        return self
-    }
-    
-    public var aView: TStyleSupportView {
-        return self
-    }
-}

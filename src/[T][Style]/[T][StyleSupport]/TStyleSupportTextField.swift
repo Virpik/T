@@ -1,5 +1,5 @@
 //
-//  TStyleSupportButton.swift
+//  TStyleSupportTextField.swift
 //  PinLayout
 //
 //  Created by Virpik on 16/03/2018.
@@ -7,28 +7,32 @@
 
 import Foundation
 
-public protocol TStyleSupportButton {
+public protocol TStyleSupportTextField {
     var aLabel: TStyleSupportLabel { get }
+    var aPlaceholder: TStyleSupportLabel { get }
     var aView: TStyleSupportView { get }
 }
 
-public extension TStyleSupportButton {
-    public var buttonStyle: ButtonStyle {
+public extension TStyleSupportTextField {
+    
+    public var textFieldStyle: TextFieldStyle {
         
+        let sPlaceholder = self.aPlaceholder.labelStyle
         let sLabel = self.aLabel.labelStyle
         let sView = self.aView.viewStyle
         
-        return (sLabel, sView)
+        return (sLabel, sPlaceholder, sView)
     }
     
     @discardableResult
-    public func apply(_ style: ButtonStyle?) -> Self {
+    public func apply(_ style: TextFieldStyle?) -> Self {
         guard let style = style else {
             return self
         }
         
         let _self = self
         
+        _self.aPlaceholder.apply(style.placeholder)
         _self.aView.apply(style.view)
         _self.aLabel.apply(style.label)
         

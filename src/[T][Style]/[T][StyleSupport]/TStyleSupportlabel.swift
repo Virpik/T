@@ -7,6 +7,48 @@
 
 import Foundation
 
+public struct TStyleSupportLabelImpl: TStyleSupportLabel {
+    
+    var getTextColor: (() -> UIColor)
+    var setTextColor: ((UIColor) -> Void)
+    
+    var getTextFont: (() -> UIFont)
+    var setTextFont: ((UIFont) -> Void)
+    
+    var getTextAlignment: (() -> NSTextAlignment)
+    var setTextAlignment: ((NSTextAlignment) -> Void)
+    
+    public var aTextColor: UIColor {
+        get {
+            return self.getTextColor()
+        }
+        
+        set (value) {
+            self.setTextColor(value)
+        }
+    }
+    
+    public var aTextFont: UIFont {
+        get {
+            return self.getTextFont()
+        }
+        
+        set (value) {
+            self.setTextFont(value)
+        }
+    }
+    
+    public var aTextAlignment: NSTextAlignment {
+        get {
+            return self.getTextAlignment()
+        }
+        
+        set (value) {
+            self.setTextAlignment(value)
+        }
+    }
+}
+
 public protocol TStyleSupportLabel {
 
     var aTextColor: UIColor { get set }
