@@ -24,7 +24,6 @@ struct TLabelStyles {
         
         style.textColor = UIColor.blue
         style.textFont = UIFont(name: "Helvetica-Bold", size: 20)
-        style.textSize = 12
         
         return style
     }
@@ -34,7 +33,6 @@ struct TLabelStyles {
         
         style.textColor = UIColor.cyan
         style.textFont = UIFont(name: "HelveticaNeue-Italic", size: 20)
-        style.textSize = 16
         
         return style
     }

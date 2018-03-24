@@ -34,14 +34,14 @@ class TStylesViewController: UIViewController {
         button.frame.origin = textField.frame.t.max.t.set(x: 16).t.sum(y: 16)
         button.setTitle("[Button]", for: .normal)
         
-        view.apply(style: TViewStyles.view1)
-        label.apply(style: TViewStyles.view2)
-        textField.apply(style: TViewStyles.view1)
-        button.apply(style: TViewStyles.view2)
+        view.apply(TViewStyles.view1)
+        label.apply(TViewStyles.view2)
+        textField.apply(TViewStyles.view1)
+        button.apply(TViewStyles.view2)
 
-        label.apply(style: TLabelStyles.label1)
-        textField.apply(style: TLabelStyles.label2)
-        button.apply(style: TLabelStyles.label3)
+        label.apply(TLabelStyles.label1)
+        textField.apply(TLabelStyles.label2)
+        button.apply(TLabelStyles.label3)
         
         view.clipsToBounds = true
         label.clipsToBounds = true
