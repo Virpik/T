@@ -13,7 +13,7 @@ public protocol TStyleSupportButton {
 }
 
 public extension TStyleSupportButton {
-    public var buttonStyle: ButtonStyle {
+    public var uiButtonStyle: UIButtonStyle {
         
         let sLabel = self.aLabel.labelStyle
         let sView = self.aView.viewStyle
@@ -22,7 +22,7 @@ public extension TStyleSupportButton {
     }
     
     @discardableResult
-    public func apply(_ style: ButtonStyle?) -> Self {
+    public func apply(_ style: UIButtonStyle?) -> Self {
         guard let style = style else {
             return self
         }

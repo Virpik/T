@@ -15,7 +15,7 @@ public protocol TStyleSupportTextField {
 
 public extension TStyleSupportTextField {
     
-    public var textFieldStyle: TextFieldStyle {
+    public var UITextFieldStyle: UITextFieldStyle {
         
         let sPlaceholder = self.aPlaceholder.labelStyle
         let sLabel = self.aLabel.labelStyle
@@ -25,7 +25,7 @@ public extension TStyleSupportTextField {
     }
     
     @discardableResult
-    public func apply(_ style: TextFieldStyle?) -> Self {
+    public func apply(_ style: UITextFieldStyle?) -> Self {
         guard let style = style else {
             return self
         }

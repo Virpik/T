@@ -8,6 +8,19 @@
 import Foundation
 
 extension UILabel: TStyleSupportLabel {
+    public var uiLabelStyle: UILabelStyle {
+        return (self.labelStyle, self.viewStyle)
+    }
+    
+    public func apply(_ style: UILabelStyle?) {
+        guard let style = style else {
+            return
+        }
+        
+        self.apply(style.view)
+        self.apply(style.label)
+    }
+    
     @objc public dynamic var aTextColor: UIColor {
         get {
             return self.textColor
