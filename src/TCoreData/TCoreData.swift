@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 public class TCoreDataManager: NSObject {
+    
     public private(set) var defaultContext: NSManagedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     
     public private(set) var nameDB: String
@@ -23,12 +24,29 @@ public class TCoreDataManager: NSObject {
         return urls[urls.count-1]
     }
     
-    public init(dbName name: String, sqliteName: String = "SingleViewCoreData") {
+    public init(dbName name: String, sqliteName: String = "SingleViewCoreData", drop: Bool = false) {
         
         self.nameDB = name
         self.sqliteName = sqliteName + ".sqlite"
         
         super.init()
+        
+        if drop {
+            print("""
+!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+    Drop Core Data
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!
+""")
+            tLog("")
+            tLog("!\n\n\n\n\n")
+            tLog("!!!!!!!!!!!!!!!!!!!!!!!!!")
+            self.drop()
+        }
         
         self.defaultContext = self.managedObjectContext(name: name)
     }
@@ -37,12 +55,12 @@ public class TCoreDataManager: NSObject {
         self.defaultContext = self.managedObjectContext(name: self.nameDB)
     }
     
-    public func updateContext(managedObjectContext: AnyObject?) {
-        if let context = managedObjectContext as? NSManagedObjectContext {
-            self.defaultContext = self.managedObjectContext(name: self.nameDB, managedObjectContext: context)
-            self.saveContext()
-        }
-    }
+///    public func updateContext(managedObjectContext: AnyObject?) {
+///        if let context = managedObjectContext as? NSManagedObjectContext {
+///            self.defaultContext = self.managedObjectContext(name: self.nameDB, managedObjectContext: context)
+///            self.saveContext()
+///        }
+///    }
     
     
     private func managedObjectModelWithName(name: String) -> NSManagedObjectModel {
@@ -83,6 +101,18 @@ public class TCoreDataManager: NSObject {
         managedObjectContext.persistentStoreCoordinator = coordinator
         
         return managedObjectContext
+    }
+    
+    public func drop() {
+        
+        do {
+            let _ = try FileManager.default.removeItem(at: self.url)
+        } catch {
+            tLog(tag: "Error", error)
+        }
+        
+        self.defaultContext = self.managedObjectContext(name: self.nameDB)
+
     }
     
     public func saveContext () {
