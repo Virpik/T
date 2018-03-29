@@ -12,6 +12,14 @@ public extension UIColor.Ext {
         return self.origin.withAlphaComponent(f)
     }
     
+    public func invert(originAlpha: Bool = true) -> UIColor {
+        let c = self.origin.t.rgbaComponents
+        
+        let newC = RGBAComponents(r: 1 - c.r, g: 1 - c.g, b: 1 - c.b, a: originAlpha ? c.a : 1 - c.r)
+        
+        return UIColor.t.with(newC)//t.with(newC)
+    }
+    
     /// +/- 1.000
     public func light(_ f: CGFloat) -> UIColor {
         let components = self.rgbaComponents
