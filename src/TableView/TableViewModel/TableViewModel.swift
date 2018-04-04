@@ -197,6 +197,8 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let model = self.sections[indexPath.section][indexPath.row]
+        
+        self.tableView.register(type: model.rowType)
 
         guard let cell = self.tableView.cell(type: model.rowType) else {
             return UITableViewCell()

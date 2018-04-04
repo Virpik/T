@@ -15,6 +15,12 @@ precedencegroup MultiplicationPrecedence {
     higherThan: AdditionPrecedence
 }
 
+infix operator <<~ : MultiplicationPrecedence
+
+public func <<= <T> (left: [AnyHashable: Any], right: AnyHashable) -> T? {
+    return left[right] as? T
+}
+
 infix operator <=- : MultiplicationPrecedence
 infix operator -=> : MultiplicationPrecedence
 
