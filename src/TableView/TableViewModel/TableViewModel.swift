@@ -29,15 +29,15 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
 
     public var cellMoviesPressDuration: TimeInterval {
         get {
-            return self._managerMoveCells.cellMoviesPressDuration
+            return self.managerMoveCells.cellMoviesPressDuration
         }
         
         set(value) {
-            self._managerMoveCells.cellMoviesPressDuration = value
+            self.managerMoveCells.cellMoviesPressDuration = value
         }
     }
 
-    private lazy var _managerMoveCells: ManagerMoveCells = {
+    public lazy var managerMoveCells: ManagerMoveCells = {
         let ds = TableViewModel.ManagerMoveCells.DataSourse { (indexPath) -> AnyRowModel? in
             return self.sections[indexPath.section][indexPath.row]
         }
@@ -86,7 +86,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
             self.handlers?.moveHandlers?.handlerEndMove?(atContext, toContext)
         }
         
-        self._managerMoveCells.handlers = mHandlers
+        self.managerMoveCells.handlers = mHandlers
     }
 
     public func reload(rows: [Row]) {
@@ -198,8 +198,6 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
 
         let model = self.sections[indexPath.section][indexPath.row]
         
-        self.tableView.register(type: model.rowType)
-
         guard let cell = self.tableView.cell(type: model.rowType) else {
             return UITableViewCell()
         }

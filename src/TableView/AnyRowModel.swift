@@ -12,6 +12,8 @@ import UIKit
 public protocol AnyRowModel {
     var rowType: UITableViewCell.Type { get }
     
+    var isNib: Bool { get }
+    
     var isMoving: Bool { get }
     var movingAnchorView: UIView? { get }
     
@@ -22,6 +24,11 @@ public protocol AnyRowModel {
 }
 
 public extension AnyRowModel {
+    
+    public var isNib: Bool {
+        return true
+    }
+    
     public var rowHeight: CGFloat? {
         return nil
     }
