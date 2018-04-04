@@ -416,10 +416,15 @@ public extension UITableView {
         return self.dequeueReusableHeaderFooterView(withIdentifier: idendifier) as? View
     }
     
-    public func register<TCell: UITableViewCell> (type: TCell.Type) {
+    public func register<TCell: UITableViewCell> (type: TCell.Type, isNib: Bool = true) {
         let idendifier = self.cellIdendifier(atClass: type)
-        let nib = UINib(nibName: "\(type.classForCoder())", bundle: nil)
-        self.register(nib, forCellReuseIdentifier: idendifier)
+        
+        if isNib {
+            let nib = UINib(nibName: "\(type.classForCoder())", bundle: nil)
+            self.register(nib, forCellReuseIdentifier: idendifier)
+        } else {
+            self.register(type, forCellReuseIdentifier: idendifier)
+        }
     }
     
     public func cell<TCell: UITableViewCell> (type: TCell.Type) -> TCell? {
