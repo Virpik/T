@@ -8,7 +8,7 @@
 import Foundation
 
 extension TableViewModel {
-    class ManagerMoveCells: NSObject, UIGestureRecognizerDelegate {
+    public class ManagerMoveCells: NSObject, UIGestureRecognizerDelegate {
         
         struct DataSourse {
             var getRowModel: ((IndexPath) -> AnyRowModel?)
@@ -20,6 +20,9 @@ extension TableViewModel {
         }
         
         public var handlers: MoveHandlers?
+        
+        /// если true - ячейки не будут перемещатся, сам факт перемещения будет зафиксирова
+        public var isSnaphotOnly: Bool = false
         
         /// Контекс перемещаемой ячейки, задается при событии began, Gesture
         public var atContext: GestureContext?
@@ -127,6 +130,10 @@ extension TableViewModel {
             }
             
             if !toCContet.isMoving {
+                return
+            }
+            
+            if self.isSnaphotOnly {
                 return
             }
             

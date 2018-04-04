@@ -23,9 +23,9 @@ open class TTableViewController: UIViewController {
     @IBOutlet public  private(set) weak var tableView: UITableView!
     public private(set) var tableViewModel: TableViewModel!
 
-    public var handlers: TableHandlers? {
+    public var tableHandlers: TableHandlers? {
         didSet(value) {
-            self.tableViewModel.handlers = self.handlers
+            self.tableViewModel.handlers = self.tableHandlers
         }
     }
     
@@ -46,7 +46,7 @@ open class TTableViewController: UIViewController {
             self._installTableView()
         }
 
-        self.tableViewModel = TableViewModel(tableView: self.tableView, handlers: self.handlers)
+        self.tableViewModel = TableViewModel(tableView: self.tableView, handlers: self.tableHandlers)
     }
 
     public func set(rows: [[AnyRowModel]]) {
@@ -55,7 +55,7 @@ open class TTableViewController: UIViewController {
                 if rowModel.rowType.self == UITableViewCell.self {
                     return
                 }
-                self.tableView.register(type: rowModel.rowType.self)
+                self.tableView.register(type: rowModel.rowType.self, isNib: rowModel.isNib)
             })
         }
 
