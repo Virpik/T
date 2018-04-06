@@ -28,23 +28,28 @@ public struct LocalItem<T> {
         }
         
         set(value) {
-            guard let _value = value else {
-                UserDefaults.standard.set(value, forKey: self.key)
-                return
-            }
-            
-            guard let save = self.transformSave else {
-                UserDefaults.standard.set(_value, forKey: self.key)
-                return
-            }
-            
-            let item = save(_value)
-            UserDefaults.standard.set(item, forKey: self.key)
+            self.set(value: value)
         }
     }
     
     
     public init (key: String) {
         self.key = key
+    }
+    
+    /// Special for swift struct !!!!!!!!!!!!!!!!!!
+    func set(value: T?) {
+        guard let _value = value else {
+            UserDefaults.standard.set(value, forKey: self.key)
+            return
+        }
+        
+        guard let save = self.transformSave else {
+            UserDefaults.standard.set(_value, forKey: self.key)
+            return
+        }
+        
+        let item = save(_value)
+        UserDefaults.standard.set(item, forKey: self.key)
     }
 }
