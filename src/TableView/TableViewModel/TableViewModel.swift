@@ -88,6 +88,22 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
         
         self.managerMoveCells.handlers = mHandlers
     }
+    
+    public func set(sections: [[AnyRowModel]]){
+        self.sections = sections
+        
+        
+        sections.forEach {
+            $0.forEach({ (rowModel) in
+                if rowModel.rowType.self == UITableViewCell.self {
+                    return
+                }
+                self.tableView.register(type: rowModel.rowType.self, isNib: rowModel.isNib)
+            })
+        }
+
+        self.tableView.reloadData()
+    }
 
     public func reload(rows: [Row]) {
         rows.forEach { (row) in
