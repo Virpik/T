@@ -92,12 +92,12 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
     public func set(sections: [[AnyRowModel]]){
         self.sections = sections
         
-        
         sections.forEach {
             $0.forEach({ (rowModel) in
                 if rowModel.rowType.self == UITableViewCell.self {
                     return
                 }
+                
                 self.tableView.register(type: rowModel.rowType.self, isNib: rowModel.isNib)
             })
         }

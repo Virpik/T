@@ -102,7 +102,7 @@ public struct TManagedObjects<T: NSManagedObject> {
             return (result as? [T]) ?? []
         } catch {
             let nserror = error as NSError
-            print("Unresolved error \(nserror)")
+            tLog("Unresolved error \(nserror)")
             abort()
         }
         

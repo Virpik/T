@@ -41,7 +41,7 @@ extension UIView.Ext_View {
 
 extension UIView {
     @objc fileprivate func _keyboardDissmiss(sender: NSObject) {
-        print(self.classForCoder, sender.classForCoder, #function)
+        tLog(self.classForCoder, sender.classForCoder, #function)
         self.endEditing(false)
     }
 }
