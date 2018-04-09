@@ -41,7 +41,9 @@ public func tLog(file: String = #file, func: String = #function,
                  tag: String? = nil,
                  _ args: Any?...) {
     
-    let tag: String = "#[\(`func`)][\(line)]#[\(tag?.uppercased() ?? "")]"
+    let _file: NSString = file as NSString
+    
+    let tag: String = "#[\(_file.lastPathComponent)][\(`func`)][\(line)]#[\(tag?.uppercased() ?? "")]"
     
     let str: String = args.flatMap {
         return "\($0 ?? "#NIL#") "
