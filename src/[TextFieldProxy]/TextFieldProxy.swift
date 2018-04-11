@@ -9,8 +9,12 @@ import Foundation
 
 public class TextFieldProxy: NSObject, UITextFieldDelegate {
     
-    public var handlerDidEndEditing: (() -> Void)?
-    public var handlerDidBeginEditing: (() -> Void)?
+    public var handlerNotificationDidBeginEditing: Block?
+    public var handlerNotificationDidEndEditing: Block?
+    public var handlerNotificationDidChange: Block?
+    
+    public var handlerDidEndEditing: Block?
+    public var handlerDidBeginEditing: Block?
     
 //    @available(iOS 10.0, *)
 //    var handlerDidEndEditing: ((UITextFieldDidEndEditingReason) -> Void)?
@@ -29,6 +33,25 @@ public class TextFieldProxy: NSObject, UITextFieldDelegate {
         super.init()
         
         self.textField.delegate = self
+        
+        let nc = NotificationCenter.default
+        
+        nc.addObserver(forName: .UITextFieldTextDidBeginEditing, object: self.textField, queue: .main) { (n) in
+            
+            self.handlerNotificationDidBeginEditing?()
+        }
+        
+        nc.addObserver(forName: .UITextFieldTextDidEndEditing, object: self.textField, queue: .main) { (n) in
+            self.handlerNotificationDidEndEditing?()
+        }
+        
+        nc.addObserver(forName: .UITextFieldTextDidChange, object: self.textField, queue: .main) { (n) in
+            self.handlerNotificationDidChange?()
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
