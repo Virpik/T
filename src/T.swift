@@ -36,6 +36,10 @@ public func delay(_ delay: TimeInterval, _ block: @escaping Block) {
     DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: block)
 }
 
+public func UIAnimate(withDuration duration: TimeInterval, animations: @escaping Block, completion: ((Bool) -> Void)?) {
+    UIView.animate(withDuration: duration, animations: animations, completion: completion)
+}
+
 public func tLog(file: String = #file, func: String = #function,
                  line: Int = #line,
                  tag: String? = nil,

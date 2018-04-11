@@ -56,7 +56,6 @@ public protocol TStyleSupportLabel {
     var aTextFont: UIFont { get set }
     
     var aTextAlignment: NSTextAlignment { get set }
-//    var aTextSize: Float { get set }
 }
 
 extension TStyleSupportLabel {
