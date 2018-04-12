@@ -8,6 +8,15 @@
 
 import Foundation
 
+
+public extension StringProtocol where Index == String.Index {
+    
+    /// range to NSRange
+    public func nsRange(from range: Range<Index>) -> NSRange {
+        return NSRange(range, in: self)
+    }
+}
+
 public enum TStringDecline: String {
     case TOne, TMany, TOther
 }
