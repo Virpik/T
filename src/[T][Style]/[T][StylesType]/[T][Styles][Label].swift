@@ -18,3 +18,30 @@ extension T.Styles {
         public init() { }
     }
 }
+
+public extension T.Styles.Label {
+    
+    public func with(textColor: UIColor?) -> T.Styles.Label {
+        var _self = self
+        
+        _self.textColor = textColor
+        
+        return _self
+    }
+    
+    public func with(textFont: UIFont?) -> T.Styles.Label {
+        var _self = self
+        
+        _self.textFont = textFont
+        
+        return _self
+    }
+    
+    public func with(textAligment: NSTextAlignment) -> T.Styles.Label {
+        var _self = self
+        
+        _self.textAligment = textAligment
+        
+        return _self
+    }
+}

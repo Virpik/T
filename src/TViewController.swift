@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 
 public extension UIViewController {
+    
+    @objc public func backAction(sender: Any?) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     public func chponks() {
         let tView = UIView.defaultScreen()
         
