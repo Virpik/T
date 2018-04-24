@@ -12,3 +12,15 @@ public extension UIColor.ExtStatic {
         return UIColor(red: .random(), green: .random(), blue: .random(), alpha: 1.0)
     }
 }
+
+public extension UIColor {
+    public static func random() -> UIColor {
+        return UIColor(red: .random(), green: .random(), blue: .random(), alpha: 1.0)
+    }
+}
+
+public extension UIColor {
+    public static func _random(alpha: CGFloat = 0.2) -> UIColor {
+        return UIColor.random().t.transparency(alpha)
+    }
+}
