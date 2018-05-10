@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+extension UIViewController {
+    public func show(vc: UIViewController, isAnimate: Bool) {
+        var viewControllers = self.navigationController?.viewControllers ?? []
+        viewControllers.append(vc)
+        self.navigationController?.setViewControllers(viewControllers, animated: isAnimate)
+    }
+}
+
 public extension UIViewController {
     
     @objc public func backAction(sender: Any?) {

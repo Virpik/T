@@ -20,7 +20,7 @@ open class TTableViewController: UIViewController {
     public typealias TableHandlers = TableViewModel.Handlers
     public typealias TableMoveCellHandlers = TableViewModel.MoveHandlers
 
-    @IBOutlet public  private(set) weak var tableView: UITableView!
+    @IBOutlet public weak var tableView: UITableView!
     public private(set) var tableViewModel: TableViewModel!
 
     public var tableHandlers: TableHandlers? {
@@ -50,17 +50,7 @@ open class TTableViewController: UIViewController {
     }
 
     public func set(rows: [[AnyRowModel]]) {
-        rows.forEach {
-            $0.forEach({ (rowModel) in
-                if rowModel.rowType.self == UITableViewCell.self {
-                    return
-                }
-                self.tableView.register(type: rowModel.rowType.self, isNib: rowModel.isNib)
-            })
-        }
-
-        self.tableViewModel.sections = rows
-        self.tableView.reloadData()
+        self.tableViewModel.set(sections: rows)
     }
  
     private func _installTableView() {
