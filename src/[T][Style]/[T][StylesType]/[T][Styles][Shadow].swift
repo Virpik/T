@@ -8,7 +8,8 @@
 import Foundation
 
 extension T.Styles {
-    public class Shadow: NSObject {
+    
+    public final class Shadow: NSObject, Configurable, Transformable {
         
         public var color: UIColor = .clear
         
@@ -17,5 +18,19 @@ extension T.Styles {
         public var opacity: Float = 1
         
         public var offset: CGSize = .zero
+        
+        public func set(_ block: ((inout Shadow) -> Void)) -> Shadow {
+            
+            var shadow = Shadow()
+            
+            shadow.color = self.color
+            shadow.radius = self.radius
+            shadow.opacity = self.opacity
+            shadow.offset = self.offset
+            
+            block(&shadow)
+            
+            return shadow
+        }
     }
 }

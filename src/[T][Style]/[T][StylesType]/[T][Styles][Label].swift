@@ -8,7 +8,7 @@
 import Foundation
 
 extension T.Styles {
-    public struct Label {
+    public struct Label: Configurable, Transformable {
         public var textColor: UIColor?
         
         public var textFont: UIFont?

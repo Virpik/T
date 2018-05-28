@@ -8,7 +8,7 @@
 import Foundation
 
 extension T.Styles {
-    public struct View {
+    public struct View: Configurable, Transformable, THashable {
         
         public var bgColor: UIColor?
         
@@ -23,6 +23,18 @@ extension T.Styles {
         public var tintColor: UIColor?
         
         public var shadow: Shadow?
+        
+        public var hashes: [Int] {
+            return [
+                self.bgColor?.hashValue ?? 0,
+                self.alpha.hashValue,
+                self.bordeWidth.hashValue,
+                self.cornerRadius.hashValue,
+                self.borderColor.hashValue,
+                self.tintColor?.hashValue ?? 0,
+                self.shadow?.hashValue ?? 0
+            ]
+        }
         
         public init() {
             

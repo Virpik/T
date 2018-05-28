@@ -195,6 +195,10 @@ public extension Double {
     public var string: String {
         return "\(self)"
     }
+    
+    public var date: Date {
+        return Date(timeIntervalSince1970: self)
+    }
 }
 
 public extension UInt32 {
