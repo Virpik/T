@@ -69,3 +69,21 @@ public func timeLog(func: String = #function,
     
     tLog(func: `func`, line: line, tag: "Time", "\(tt/1000)" )
 }
+
+/// For Tests
+public extension T {
+    public static func coderInstance<T: NSCoding>(_ initBlock: (() -> T)) -> T? {
+        
+        let obj = initBlock()
+        
+        let archiverData = NSMutableData()
+        
+        let archiver = NSKeyedArchiver(forWritingWith: archiverData)
+        archiver.encode(obj, forKey: "view")
+        archiver.finishEncoding()
+        
+        let unarchve = NSKeyedUnarchiver(forReadingWith: archiverData as Data)
+        
+        return unarchve.decodeObject(forKey: "view") as? T
+    }
+}

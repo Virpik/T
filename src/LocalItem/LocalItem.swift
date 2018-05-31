@@ -37,7 +37,6 @@ public struct LocalItem<T> {
         self.key = key
     }
     
-    /// Special for swift struct !!!!!!!!!!!!!!!!!!
     public func set(value: T?) {
         guard let _value = value else {
             UserDefaults.standard.set(value, forKey: self.key)
