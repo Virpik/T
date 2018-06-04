@@ -17,6 +17,8 @@ public typealias BlockSuccess<T> = ((T) -> Void)
 public typealias BlockFake<T> = ((TimeInterval, T?, NSError?) -> Void)
 
 public typealias BlocksWorker<T> = (success: BlockSuccess<T>?, fail: BlockFail?)
+public typealias BlockFail_ = ((Error) -> Void)
+public typealias BlocksWorker_<T> = (success: BlockSuccess<T>?, fail: BlockFail_?)
 
 public struct Handlers<T> {
     public var fail: BlockFail?
@@ -49,9 +51,9 @@ public func tLog(file: String = #file, func: String = #function,
     
     let tag: String = "#[\(_file.lastPathComponent)][\(`func`)][\(line)]#[\(tag?.uppercased() ?? "")]"
     
-    let str: String = args.flatMap {
+    let str: String = args.compactMap {
         return "\($0 ?? "#NIL#") "
-        }.joined()
+    }.joined()
     
     print(tag, str)
 }

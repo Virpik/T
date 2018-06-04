@@ -78,3 +78,34 @@ public extension String {
         return .TOther
     }
 }
+
+public extension String {
+    
+    public var lastPathComponent: String {
+        return (self as NSString).lastPathComponent
+    }
+    
+    public var deletingLastPathComponent: String {
+        return (self as NSString).deletingLastPathComponent
+    }
+    
+    public var deletingPathExtension: String {
+        return (self as NSString).deletingPathExtension
+    }
+    
+    public var pathExtension: String {
+        return (self as NSString).pathExtension
+    }
+    
+    public var abbreviatingWithTildeInPath: String {
+        return (self as NSString).abbreviatingWithTildeInPath
+    }
+    
+    public func appendingPathComponent(_ str: String) -> String {
+        return (self as NSString).appendingPathComponent(str)
+    }
+    
+    public func appendingPathExtension(_ str: String) -> String {
+        return (self as NSString).appendingPathExtension(str) ?? self+"."+str
+    }
+}
