@@ -25,4 +25,8 @@ extension CGRect {
     public static var t: ExtStatic {
         return ExtStatic(origin: self)
     }
+    
+    public init(_ x: CGFloat, _ y: CGFloat, _ w: CGFloat, _ h: CGFloat) {
+        self.init(x: x, y: y, width: w, height: h)
+    }
 }

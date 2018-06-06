@@ -31,12 +31,6 @@ public extension CGSize {
     }
 }
 
-public extension CGRect {
-    public init( _ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) {
-        self.init(x:x, y:y, width:width, height:height)
-    }
-}
-
 public extension CGFloat {
     public static func random() -> CGFloat {
         return CGFloat(arc4random()) / CGFloat(UInt32.max)
