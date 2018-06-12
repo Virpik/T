@@ -17,6 +17,7 @@ public protocol RowModel: AnyRowModel {
 }
 
 public extension RowModel {
+    
     public var rowType: UITableViewCell.Type {
         return RowType.self
     }

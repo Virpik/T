@@ -7,13 +7,14 @@
 
 import Foundation
 
-public extension UITableView.Ext {
+public extension UITableView {
+    
     public func belowCell(at indexPath: IndexPath) -> UITableViewCell? {
         guard let indexPath = self.below(at: indexPath) else {
             return nil
         }
         
-        return self.origin.cellForRow(at: indexPath)
+        return self.cellForRow(at: indexPath)
     }
     
     public func aboveCell(at indexPath: IndexPath) -> UITableViewCell? {
@@ -21,15 +22,15 @@ public extension UITableView.Ext {
             return nil
         }
         
-        return self.origin.cellForRow(at: indexPath)
+        return self.cellForRow(at: indexPath)
     }
     
     public func below(at indexPath: IndexPath) -> IndexPath? {
         var section = indexPath.section
         var row = indexPath.row
         
-        let sections = self.origin.numberOfSections
-        let rowsAtSection = self.origin.numberOfRows(inSection: section)
+        let sections = self.numberOfSections
+        let rowsAtSection = self.numberOfRows(inSection: section)
         
         if rowsAtSection - 1 == row && sections - 1 == section {
             return nil
@@ -66,7 +67,7 @@ public extension UITableView.Ext {
         
         if section > 0 {
             section -= 1
-            row = self.origin.numberOfRows(inSection: section) - 1
+            row = self.numberOfRows(inSection: section) - 1
             return IndexPath(row: row, section: section)
         }
         
