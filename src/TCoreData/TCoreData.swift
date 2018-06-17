@@ -14,6 +14,7 @@ public class TCoreDataManager: NSObject {
     
     public private(set) var nameDB: String
     public private(set) var sqliteName: String
+    public private(set) var bundle: Bundle
     
     public var url: URL {
         return self.applicationDocumentsDirectory.appendingPathComponent(self.sqliteName)
@@ -24,10 +25,15 @@ public class TCoreDataManager: NSObject {
         return urls[urls.count-1]
     }
     
-    public init(dbName name: String, sqliteName: String = "SingleViewCoreData", drop: Bool = false) {
+    public init(dbName name: String,
+                sqliteName: String = "SingleViewCoreData",
+                bundle: Bundle = Bundle.main,
+                drop: Bool = false) {
         
         self.nameDB = name
         self.sqliteName = sqliteName + ".sqlite"
+        
+        self.bundle = bundle
         
         super.init()
         
@@ -63,14 +69,15 @@ public class TCoreDataManager: NSObject {
 ///    }
     
     
-    private func managedObjectModelWithName(name: String) -> NSManagedObjectModel {
-        let modelURL = Bundle.main.url(forResource: name, withExtension: "momd")!
+    private func managedObjectModelWithName(name: String, bundle: Bundle) -> NSManagedObjectModel {
+        let modelURL = bundle.url(forResource: name, withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: modelURL)!
     }
 
     private func persistentStoreCoordinatorWithName(name: String) -> NSPersistentStoreCoordinator {
         
-        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModelWithName(name: name))
+        let managedObjectMode = self.managedObjectModelWithName(name: name, bundle: self.bundle)
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectMode)
 
         let options = [
             NSMigratePersistentStoresAutomaticallyOption: true,
