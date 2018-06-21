@@ -310,19 +310,19 @@ public extension Date {
     }
     
     public struct Formatter {
-        static let iso8601: DateFormatter = {
+        public static let iso8601: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
             return formatter
         }()
         
-        static let iso1: DateFormatter = {
+        public static let iso1: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd'T'HH-mm-ss"
             return formatter
         }()
         
-        static let iso2: DateFormatter = {
+        public static let iso2: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd'T'HH-mm-ssZ"
             return formatter
