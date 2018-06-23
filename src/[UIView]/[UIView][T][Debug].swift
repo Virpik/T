@@ -9,8 +9,9 @@ import Foundation
 
 extension UIView.Ext_View {
     static func point(at center: CGPoint) -> UIView {
-        let bgColor = UIColor.red.t.transparency(0.3)
-        let crosshairsBgColor = UIColor.green.t.transparency(0.3)
+        
+        let bgColor = UIColor.red.transparency(0.3)
+        let crosshairsBgColor = UIColor.green.transparency(0.3)
         
         let frameSize = CGSize(width: 20, height: 20)
         

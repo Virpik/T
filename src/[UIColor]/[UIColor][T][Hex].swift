@@ -7,17 +7,17 @@
 
 import Foundation
 
-public extension UIColor.Ext {
+public extension UIColor {
     public var hex: String {
         return self.hexDescription()
     }
     
     public func hexDescription(_ includeAlpha: Bool = false) -> String {
-        guard self.origin.cgColor.numberOfComponents == 4 else {
+        guard self.cgColor.numberOfComponents == 4 else {
             return "Color not RGB."
         }
         
-        let a = self.origin.cgColor.components!.map {
+        let a = self.cgColor.components!.map {
             Int($0 * CGFloat(255))
         }
         

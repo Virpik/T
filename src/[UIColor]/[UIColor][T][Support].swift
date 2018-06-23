@@ -7,17 +7,17 @@
 
 import Foundation
 
-public extension UIColor.Ext {
+public extension UIColor {
     public func transparency(_ f: CGFloat) -> UIColor {
-        return self.origin.withAlphaComponent(f)
+        return self.withAlphaComponent(f)
     }
     
     public func invert(originAlpha: Bool = true) -> UIColor {
-        let c = self.origin.t.rgbaComponents
+        let c = self.rgbaComponents
         
         let newC = RGBAComponents(r: 1 - c.r, g: 1 - c.g, b: 1 - c.b, a: originAlpha ? c.a : 1 - c.r)
         
-        return UIColor.t.with(newC)//t.with(newC)
+        return UIColor(newC)
     }
     
     /// +/- 1.000

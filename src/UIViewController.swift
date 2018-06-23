@@ -26,7 +26,7 @@ public extension UIViewController {
     public func chponks() {
         let tView = UIView.defaultScreen()
         
-        tView.backgroundColor = UIColor.t.random().t.transparency(0.8)
+        tView.backgroundColor = UIColor.random().transparency(0.8)
         tView.frame = self.view.bounds
         
         let tLabel = UILabel.defaultScreen()
@@ -34,7 +34,7 @@ public extension UIViewController {
         
         tLabel.textAlignment = .center
         tLabel.text = String(describing: self.classForCoder)
-        tLabel.textColor = tView.backgroundColor?.t.invert().t.transparency(1)
+        tLabel.textColor = tView.backgroundColor?.invert().transparency(1)
             
         tView.t_view.addSubview(view: tLabel)
         self.view.t_view.addSubview(view: tView)
