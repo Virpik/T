@@ -7,10 +7,10 @@
 
 import Foundation
 
-extension UIView.Ext_View {
+extension UIView {
     public func snapshot() -> UIView {
         
-        let view = UIImageView(frame: self.origin.bounds)
+        let view = UIImageView(frame: self.bounds)
         view.image = self.render()
         
         return view
@@ -18,15 +18,15 @@ extension UIView.Ext_View {
     
     public func render() -> UIImage? {
         
-        self.origin.layoutIfNeeded()
+        self.layoutIfNeeded()
         
         let scale = UIScreen.main.scale
         
-        UIGraphicsBeginImageContextWithOptions(self.origin.frame.size, false, scale)
+        UIGraphicsBeginImageContextWithOptions(self.frame.size, false, scale)
         
         if let context = UIGraphicsGetCurrentContext() {
             
-            self.origin.layer.render(in: context)
+            self.layer.render(in: context)
             
             let image = UIGraphicsGetImageFromCurrentImageContext()
             

@@ -7,11 +7,11 @@
 
 import Foundation
 
-public extension UIView.Ext_View {
+public extension UIView {
     @discardableResult
     public func setup<T: UIView>() -> T? {
         
-        let nibName = String(describing: type(of: self.origin))
+        let nibName = String(describing: type(of: self))
         
         guard let view: T = self.load(fromNib: nibName) else {
             return nil
@@ -23,11 +23,11 @@ public extension UIView.Ext_View {
     
     @discardableResult
     public func load<T: UIView>(fromNib name: String) -> T? {
-        let _class = type(of: self.origin)
+        let _class = type(of: self)
         
         let bundle = Bundle(for: _class)
         let nib = UINib(nibName: name, bundle: bundle)
-        let anyObj = nib.instantiate(withOwner: self.origin, options: nil)[safe: 0]
+        let anyObj = nib.instantiate(withOwner: self, options: nil)[safe: 0]
         
         return anyObj as? T
     }
@@ -42,10 +42,10 @@ public extension UIView.Ext_View {
     }
     
     public func load(fromNib name: String) -> UIView? {
-        let bundle = Bundle(for: self.origin.classForCoder)
+        let bundle = Bundle(for: self.classForCoder)
         let nib = UINib(nibName: name, bundle: bundle)
         
-        let anyObj = nib.instantiate(withOwner: self.origin, options: nil)[safe: 0]
+        let anyObj = nib.instantiate(withOwner: self, options: nil)[safe: 0]
         
         return anyObj as? UIView
     }
@@ -54,10 +54,10 @@ public extension UIView.Ext_View {
     public func addSubview(view: UIView, isSetBounds: Bool = false, autoresizingMask: UIViewAutoresizing =  [.flexibleWidth, .flexibleHeight]) {
         
         if isSetBounds {
-            view.frame = self.origin.bounds
+            view.frame = self.bounds
         }
         
         view.autoresizingMask = autoresizingMask
-        self.origin.addSubview(view)
+        self.addSubview(view)
     }
 }

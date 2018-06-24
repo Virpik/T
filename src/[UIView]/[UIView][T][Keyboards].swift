@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension UIView.Ext_View {
+extension UIView {
     
     private static var _dissmissKeyboardGestures: [UIView: UITapGestureRecognizer] = [:]
     
@@ -17,23 +17,23 @@ extension UIView.Ext_View {
     
     public var isDissmissKeyboard: Bool {
         get {
-            return UIView.Ext_View._dissmissKeyboardGestures[self.origin] != nil
+            return UIView._dissmissKeyboardGestures[self] != nil
         }
         
         set (value) {
             
             if !value {
-                if let gesture = UIView.Ext_View._dissmissKeyboardGestures[self.origin] {
-                    self.origin.removeGestureRecognizer(gesture)
+                if let gesture = UIView._dissmissKeyboardGestures[self] {
+                    self.removeGestureRecognizer(gesture)
                 }
                 
                 return
             }
             
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.origin._keyboardDissmiss(sender:)))
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self._keyboardDissmiss(sender:)))
             gesture.cancelsTouchesInView = false
-            self.origin.addGestureRecognizer(gesture)
-            UIView.Ext_View._dissmissKeyboardGestures[self.origin] = gesture
+            self.addGestureRecognizer(gesture)
+            UIView._dissmissKeyboardGestures[self] = gesture
             
         }
     }

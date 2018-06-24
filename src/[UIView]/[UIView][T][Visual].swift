@@ -6,25 +6,25 @@
 //
 import Foundation
 
-extension UIView.Ext_View {
+extension UIView {
     public func hidde(duration: TimeInterval, completion: Block? = nil) {
-        let alpha = self.origin.alpha
+        let alpha = self.alpha
         
         UIView.animate(withDuration: duration, animations: {
-            self.origin.alpha = 0
+            self.alpha = 0
         }) { (_) in
-            self.origin.isHidden = true
-            self.origin.alpha = alpha
+            self.isHidden = true
+            self.alpha = alpha
             completion?()
         }
     }
     
     public func show(alpha: CGFloat = 1 ,duration: TimeInterval, completion: Block? = nil) {
-        self.origin.alpha = 0
-        self.origin.isHidden = false
+        self.alpha = 0
+        self.isHidden = false
         
         UIView.animate(withDuration: duration, animations: {
-            self.origin.alpha = alpha
+            self.alpha = alpha
         }) { (_) in
             completion?()
         }
@@ -33,13 +33,13 @@ extension UIView.Ext_View {
     public func selfdestruction(isAnimation: Bool = true, after: TimeInterval = 1, handler: Block? = nil) {
         delay(after) {
             if !isAnimation {
-                self.origin.removeFromSuperview()
+                self.removeFromSuperview()
                 handler?()
                 return
             }
             
             self.hidde(duration: 0.2) {
-                self.origin.removeFromSuperview()
+                self.removeFromSuperview()
                 handler?()
             }
         }
@@ -47,8 +47,8 @@ extension UIView.Ext_View {
     
     
     public func shake () {
-        let midX = self.origin.frame.midX
-        let midY = self.origin.frame.midY
+        let midX = self.frame.midX
+        let midY = self.frame.midY
         
         let animation = CABasicAnimation(keyPath: "position")
         
@@ -59,6 +59,6 @@ extension UIView.Ext_View {
         animation.fromValue = CGPoint(x: midX - 10, y: midY)
         animation.toValue = CGPoint(x: midX + 10, y: midY)
         
-        self.origin.layer.add(animation, forKey: "position")
+        self.layer.add(animation, forKey: "position")
     }
 }

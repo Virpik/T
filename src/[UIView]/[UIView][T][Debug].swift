@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension UIView.Ext_View {
-    static func point(at center: CGPoint) -> UIView {
+extension UIView {
+    public static func point(at center: CGPoint) -> UIView {
         
         let bgColor = UIColor.red.transparency(0.3)
         let crosshairsBgColor = UIColor.green.transparency(0.3)
@@ -35,8 +35,8 @@ extension UIView.Ext_View {
         _hView.backgroundColor = crosshairsBgColor
         _wView.backgroundColor = crosshairsBgColor
         
-        view.t_view.addSubview(view: _hView)
-        view.t_view.addSubview(view: _wView)
+        view.addSubview(view: _hView)
+        view.addSubview(view: _wView)
         
         return view
     }

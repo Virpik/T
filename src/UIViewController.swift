@@ -36,8 +36,8 @@ public extension UIViewController {
         tLabel.text = String(describing: self.classForCoder)
         tLabel.textColor = tView.backgroundColor?.invert().transparency(1)
             
-        tView.t_view.addSubview(view: tLabel)
-        self.view.t_view.addSubview(view: tView)
+        tView.addSubview(view: tLabel)
+        self.view.addSubview(view: tView)
     }
 
 }
