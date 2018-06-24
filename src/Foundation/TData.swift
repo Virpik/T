@@ -9,6 +9,7 @@
 import Foundation
 
 public extension Data {
+    
     public init?(fileName: String, bundle: Bundle = Bundle.main) {
         guard let path = bundle.path(forResource: fileName, ofType: "json") else {
             return nil

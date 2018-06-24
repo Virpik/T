@@ -8,6 +8,7 @@
 import Foundation
 
 public extension UIColor {
+    
     public func transparency(_ f: CGFloat) -> UIColor {
         return self.withAlphaComponent(f)
     }

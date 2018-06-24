@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import T
 
 public extension TableViewModel {
     public struct CellContext {
@@ -21,7 +22,7 @@ public extension TableViewModel {
             
             let tY: CGFloat = self.locationFromCell.y - (cellFrame.height / 2)
             
-            var frame = cellFrame.t.set(mid: location)
+            var frame = cellFrame.set(mid: location)
             frame.origin.y -= tY
             frame.origin.x = cellFrame.origin.x
             

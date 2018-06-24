@@ -79,7 +79,7 @@ class EssaysListViewController: TTableViewController {
         
         var coverFrame = self.tableView.frame
         coverFrame.size.height -= self.tableHeaderView.bounds.height
-        coverFrame.origin = self.tableHeaderView.frame.t.max
+        coverFrame.origin = self.tableHeaderView.frame.max
         coverFrame.origin.x = 0
         self._cover.frame = coverFrame
     }
@@ -113,7 +113,7 @@ class EssaysListViewController: TTableViewController {
     }
     
     private func _handlerDidMove(atContext: CellContext, toContext: CellContext) {
-        self.essays = self.essays.t.move(at: atContext.indexPath.row, to: toContext.indexPath.row)
+        self.essays = self.essays.move(at: atContext.indexPath.row, to: toContext.indexPath.row)
     }
     
     private func _handlerEndMove(atContext: CellContext, toContext: CellContext?) {

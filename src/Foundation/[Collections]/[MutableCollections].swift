@@ -8,6 +8,7 @@
 import Foundation
 
 public extension MutableCollection where Index == Int {
+    
     public mutating func shuffleInPlace() {
         if self.count < 2 {
             return

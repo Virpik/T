@@ -8,10 +8,10 @@
 import Foundation
 
 /// For CGPoint
-extension CGPoint.Ext {
+extension CGPoint {
     /// self.x = x
     public func set(x: CGFloat) -> CGPoint {
-        var point = self.origin
+        var point = self
         
         point.x = x
         
@@ -20,7 +20,7 @@ extension CGPoint.Ext {
     
     /// self.y = y
     public func set(y: CGFloat) -> CGPoint {
-        var point = self.origin
+        var point = self
         
         point.y = y
         
@@ -29,7 +29,7 @@ extension CGPoint.Ext {
     
     /// self.x += params.x
     public func sum(x: CGFloat) -> CGPoint {
-        var point = self.origin
+        var point = self
         
         point.x += x
         
@@ -38,7 +38,7 @@ extension CGPoint.Ext {
     
     /// self.y += params.y
     public func sum(y: CGFloat) -> CGPoint {
-        var point = self.origin
+        var point = self
         
         point.y += y
         

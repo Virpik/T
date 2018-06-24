@@ -15,10 +15,7 @@ public typealias BlockFail = ((Error) -> Void)
 public typealias BlockForItem<T> = ((T) -> Void)
 public typealias BlockSuccess<T> = ((T) -> Void)
 public typealias BlockFake<T> = ((TimeInterval, T?, Error?) -> Void)
-
 public typealias BlocksWorker<T> = (success: BlockSuccess<T>?, fail: BlockFail?)
-//public typealias BlockFail_ = ((Error) -> Void)
-//public typealias BlocksWorker_<T> = (success: BlockSuccess<T>?, fail: BlockFail_?)
 
 public struct Handlers<T> {
     public var fail: BlockFail?
@@ -36,10 +33,6 @@ public  func main(_ block: @escaping Block) {
 
 public func delay(_ delay: TimeInterval, _ block: @escaping Block) {
     DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: block)
-}
-
-public func UIAnimate(withDuration duration: TimeInterval, animations: @escaping Block, completion: ((Bool) -> Void)?) {
-    UIView.animate(withDuration: duration, animations: animations, completion: completion)
 }
 
 public func tLog(file: String = #file, func: String = #function,

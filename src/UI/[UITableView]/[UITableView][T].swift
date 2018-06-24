@@ -1,9 +1,10 @@
 //
-//  [UITableView][T].swift
+//  [UITableView].swift
 //  Pods-TDemo
 //
-//  Created by Virpik on 15/02/2018.
+//  Created by Virpik on 02/02/2018.
 //
+
 
 import Foundation
 
@@ -74,4 +75,3 @@ public extension UITableView {
         return nil
     }
 }
-

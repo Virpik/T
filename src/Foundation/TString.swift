@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public extension StringProtocol where Index == String.Index {
     
     /// range to NSRange
