@@ -13,7 +13,7 @@ struct TViewStyles {
     static var view1: T.Styles.View {
         var style = T.Styles.View()
         
-        style.bgColor = UIColor.red.t.transparency(0.3)
+        style.bgColor = UIColor.red.transparency(0.3)
         style.bordeWidth = 3
         style.borderColor = .green
         style.cornerRadius = 5
@@ -24,7 +24,7 @@ struct TViewStyles {
     static var view2: T.Styles.View {
         var style = T.Styles.View()
         
-        style.bgColor = UIColor.blue.t.transparency(0.3)
+        style.bgColor = UIColor.blue.transparency(0.3)
         
         style.bordeWidth = 1
         style.borderColor = .gray

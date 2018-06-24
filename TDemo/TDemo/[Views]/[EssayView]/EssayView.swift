@@ -19,13 +19,13 @@ class EssayView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.t_view.setup(fromXib: "\(self.classForCoder)")
+        self.setup(fromXib: "\(self.classForCoder)")
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.t_view.setup(fromXib: "\(self.classForCoder)")
+        self.setup(fromXib: "\(self.classForCoder)")
     }
 
     func setup(essay: Essay) {
