@@ -11,14 +11,14 @@ import Foundation
 public struct T {}
 
 public typealias Block = (() -> Void)
-public typealias BlockFail = ((NSError) -> Void)
+public typealias BlockFail = ((Error) -> Void)
 public typealias BlockForItem<T> = ((T) -> Void)
 public typealias BlockSuccess<T> = ((T) -> Void)
-public typealias BlockFake<T> = ((TimeInterval, T?, NSError?) -> Void)
+public typealias BlockFake<T> = ((TimeInterval, T?, Error?) -> Void)
 
 public typealias BlocksWorker<T> = (success: BlockSuccess<T>?, fail: BlockFail?)
-public typealias BlockFail_ = ((Error) -> Void)
-public typealias BlocksWorker_<T> = (success: BlockSuccess<T>?, fail: BlockFail_?)
+//public typealias BlockFail_ = ((Error) -> Void)
+//public typealias BlocksWorker_<T> = (success: BlockSuccess<T>?, fail: BlockFail_?)
 
 public struct Handlers<T> {
     public var fail: BlockFail?
