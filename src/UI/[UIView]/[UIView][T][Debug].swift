@@ -8,6 +8,7 @@
 import Foundation
 
 extension UIView {
+    
     public static func point(at center: CGPoint) -> UIView {
         
         let bgColor = UIColor.red.transparency(0.3)

@@ -8,6 +8,7 @@
 import Foundation
 
 extension UIView {
+    
     public func snapshot() -> UIView {
         
         let view = UIImageView(frame: self.bounds)

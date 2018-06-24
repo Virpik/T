@@ -7,6 +7,7 @@
 import Foundation
 
 extension UIView {
+    
     public func hidde(duration: TimeInterval, completion: Block? = nil) {
         let alpha = self.alpha
         

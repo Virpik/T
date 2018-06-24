@@ -8,11 +8,11 @@
 import Foundation
 
 public extension UIView {
+    
     public convenience init(width: CGFloat, height: CGFloat) {
         let size = CGSize(width: width, height: height)
         self.init(size: size)
     }
-    
     
     public convenience init(size: CGSize) {
         let frame = CGRect(origin: CGPoint.zero, size: size)

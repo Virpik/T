@@ -8,6 +8,45 @@
 
 import Foundation
 
+public extension String {
+    
+    var int: Int {
+        return Int(self) ?? 0
+    }
+    
+    public var uInt32: UInt32 {
+        if let int = UInt32(self) {
+            return int
+        }
+        
+        return 0
+    }
+    
+    public var float: Float {
+        if let int = Float(self) {
+            return int
+        }
+        
+        return 0
+    }
+    
+    public var double: Double {
+        if let int = Double(self) {
+            return int
+        }
+        
+        return 0
+    }
+    
+    public var int16: Int16 {
+        if let int = Int16(self) {
+            return int
+        }
+        
+        return 0
+    }
+}
+
 public extension StringProtocol where Index == String.Index {
     
     /// range to NSRange
