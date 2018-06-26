@@ -18,7 +18,7 @@ public extension TStyleSupportButton {
         let sLabel = self.aLabel.labelStyle
         let sView = self.aView.viewStyle
         
-        return (sLabel, sView)
+        return UIButtonStyle(sLabel, sView)
     }
     
     @discardableResult

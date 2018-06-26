@@ -9,7 +9,7 @@ import Foundation
 
 extension UILabel: TStyleSupportLabel {
     public var uiLabelStyle: UILabelStyle {
-        return (self.labelStyle, self.viewStyle)
+        return UILabelStyle(self.labelStyle, self.viewStyle)
     }
     
     public func apply(_ style: UILabelStyle?) {
