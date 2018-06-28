@@ -20,3 +20,7 @@ extension Transformable {
         return block(self)
     }
 }
+
+extension String: Transformable {
+    
+}
