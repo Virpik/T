@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import T
 
 public protocol TStyleSupportTextField {
     var aLabel: TStyleSupportLabel { get }
@@ -15,13 +16,13 @@ public protocol TStyleSupportTextField {
 
 public extension TStyleSupportTextField {
     
-    public var UITextFieldStyle: UITextFieldStyle {
+    public var uiTextFieldStyle: UITextFieldStyle {
         
         let sPlaceholder = self.aPlaceholder.labelStyle
         let sLabel = self.aLabel.labelStyle
         let sView = self.aView.viewStyle
         
-        return (sLabel, sPlaceholder, sView)
+        return UITextFieldStyle(sLabel, sPlaceholder, sView)
     }
     
     @discardableResult

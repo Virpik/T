@@ -9,6 +9,10 @@ import Foundation
 
 extension UIView {
     
+    public func debugBackground(_ alpha: CGFloat = 0.3) {
+        self.backgroundColor = UIColor.random().transparency(alpha)
+    }
+    
     public static func point(at center: CGPoint) -> UIView {
         
         let bgColor = UIColor.red.transparency(0.3)

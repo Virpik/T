@@ -14,7 +14,7 @@ public extension UIColor {
 }
 
 public extension UIColor {
-    public static func random() -> UIColor {
+    public static func random(alpha: CGFloat = 1.0) -> UIColor {
         return UIColor(red: .random(), green: .random(), blue: .random(), alpha: 1.0)
     }
 }
