@@ -124,4 +124,8 @@ public class KeyboardProxy: NSObject {
             self.handlerDidChangeFrame?(keyboard)
         })
     }
+    
+    deinit {
+        
+    }
 }

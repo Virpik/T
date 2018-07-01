@@ -27,6 +27,7 @@ extension NSAttributedString {
 
 extension UITextField: TStyleSupportTextField {
     private typealias AtrStrKey = NSAttributedStringKey
+    
     public var aLabel: TStyleSupportLabel {
         return self
     }
@@ -65,9 +66,6 @@ extension UITextField: TStyleSupportTextField {
             let aligment: NSParagraphStyle? = self.attributedPlaceholder?.value(by: .paragraphStyle as AtrStrKey)
 
             return aligment?.alignment ?? .left
-
-
-            
         }) { (textAligment) in
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = textAligment
@@ -78,5 +76,4 @@ extension UITextField: TStyleSupportTextField {
         
         return impl
     }
-    
 }
