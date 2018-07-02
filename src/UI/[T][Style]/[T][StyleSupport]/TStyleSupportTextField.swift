@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import T
 
 public protocol TStyleSupportTextField {
     var aLabel: TStyleSupportLabel { get }
