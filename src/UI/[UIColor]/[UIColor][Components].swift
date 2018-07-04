@@ -7,11 +7,9 @@
 
 import Foundation
 
-extension UIColor {
-    public struct RGBAComponents {
-        public var r: CGFloat = 0
-        public var g: CGFloat = 0
-        public var b: CGFloat = 0
-        public var a: CGFloat = 0
-    }
+public struct RGBAComponents: Transformable, Configurable {
+    public var r: CGFloat = 0
+    public var g: CGFloat = 0
+    public var b: CGFloat = 0
+    public var a: CGFloat = 0
 }

@@ -24,7 +24,7 @@ extension UIView: TStyleSupportView {
         }
         
         set (value) {
-            self.alpha = 1
+            self.alpha = value
         }
     }
     
