@@ -7,7 +7,24 @@
 
 import Foundation
 
-public class CustomPlaceholderTextField: UITextField {
+public class CustomPlaceholderTextField: VMaskTextField {
+    
+    override public var text: String? {
+        get {
+            return super.text//self.labelPlaceHolder.text
+        }
+        
+        set(value) {
+            
+            if value?.count ?? 0 > 0 {
+                self.hidePlaceholder()
+            } else {
+                self.showPlaceHolder()
+            }
+            
+            super.text = value
+        }
+    }
     
     override public var placeholder: String? {
         

@@ -23,6 +23,12 @@ public struct Handlers<T> {
     public var fake: BlockFake<T>?
 }
 
+func configure<T>(item: T, _ block: ((inout T) -> Void)) -> T {
+    var item = item
+    block(&item)
+    return item
+}
+
 public func async(_ block: @escaping Block) {
     DispatchQueue.global().async(execute: block)
 }
