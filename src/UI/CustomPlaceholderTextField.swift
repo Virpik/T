@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class CustomPlaceholderTextField: VMaskTextField {
+public class CustomPlaceholderTextField: UITextField {
     
     override public var text: String? {
         get {
