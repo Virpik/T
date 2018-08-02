@@ -8,6 +8,16 @@
 import Foundation
 
 public extension UIEdgeInsets {
+    public var vertical: CGFloat {
+        return self.bottom + self.top
+    }
+    
+    public var horisontal: CGFloat {
+        return self.left + self.right
+    }
+}
+
+public extension UIEdgeInsets {
     
     public func set(top: CGFloat) -> UIEdgeInsets {
         var edgeInsets = self
