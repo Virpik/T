@@ -25,7 +25,7 @@ open class TTableViewController: UIViewController {
 
     public var tableHandlers: TableHandlers? {
         didSet(value) {
-            self.tableViewModel.handlers = self.tableHandlers
+            self.tableViewModel.handlers = self.tableHandlers ?? self.tableViewModel.handlers
         }
     }
     

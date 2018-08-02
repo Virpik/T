@@ -25,7 +25,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
 //        }
 //    }
 //
-    public var handlers: Handlers?
+    public var handlers: Handlers = Handlers()
 
     public var cellMoviesPressDuration: TimeInterval {
         get {
@@ -49,7 +49,10 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
     
     public init (tableView: UITableView, handlers: Handlers? = nil) {
         self.tableView = tableView
-        self.handlers = handlers
+        
+        if let handlers = handlers {
+            self.handlers = handlers
+        }
         
         super.init()
 
@@ -60,12 +63,12 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
         
         mHandlers.handlerBeginMove = { context in
             //
-            self.handlers?.moveHandlers?.handlerBeginMove?(context)
+            self.handlers.moveHandlers?.handlerBeginMove?(context)
         }
         
         mHandlers.handlerMove = { atContext, toContext in
             //
-            self.handlers?.moveHandlers?.handlerMove?(atContext, toContext)
+            self.handlers.moveHandlers?.handlerMove?(atContext, toContext)
         }
         
         mHandlers.handlerDidMove = { atContex, toContext in
@@ -78,12 +81,12 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
             self.sections[atIndexPath.section].remove(at: atIndexPath.row)
             self.sections[toIndexPath.section].insert(item, at: toIndexPath.row)
             
-            self.handlers?.moveHandlers?.handlerDidMove?(atContex, toContext)
+            self.handlers.moveHandlers?.handlerDidMove?(atContex, toContext)
         }
         
         mHandlers.handlerEndMove = { atContext, toContext in
             //
-            self.handlers?.moveHandlers?.handlerEndMove?(atContext, toContext)
+            self.handlers.moveHandlers?.handlerEndMove?(atContext, toContext)
         }
         
         self.managerMoveCells.handlers = mHandlers
@@ -182,7 +185,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        tLog(scrollView.contentOffset)
     
-        self.handlers?.handlerDidScroll?(scrollView)
+        self.handlers.handlerDidScroll?(scrollView)
     }
     
     open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
