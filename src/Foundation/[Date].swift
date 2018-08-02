@@ -8,6 +8,36 @@
 import Foundation
 
 public extension Date {
+    
+    public var startOfYear: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        let from = gregorian.dateComponents([.year], from: self)
+        return gregorian.date(from: from)
+    }
+    
+    public var startOfMonth: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        let from = gregorian.dateComponents([.year, .month], from: self)
+        return gregorian.date(from: from)
+    }
+    
+    /// on monday
+    public var startOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        let from = gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)
+        guard let sunday = gregorian.date(from: from) else { return nil }
+        return gregorian.date(byAdding: .day, value: 1, to: sunday)
+    }
+    
+    public var endOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        let from = gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)
+        guard let sunday = gregorian.date(from: from) else { return nil }
+        return gregorian.date(byAdding: .day, value: 8, to: sunday)
+    }
+}
+
+public extension Date {
     public func years(from date: Date) -> Int {
         return Calendar.current.dateComponents([.year], from: date, to: self).year ?? 0
     }
