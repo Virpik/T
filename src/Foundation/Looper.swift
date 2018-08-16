@@ -59,11 +59,11 @@ public protocol Loopable {
 }
 
 extension Loopable {
-    func loopRegister() {
+    public func loopRegister() {
         Looper.shared.add(at: self.loopKey, block: self.loopHandler)
     }
     
-    func loopUnregister() {
+    public func loopUnregister() {
         Looper.shared.remove(at: self.loopKey)
     }
 }
