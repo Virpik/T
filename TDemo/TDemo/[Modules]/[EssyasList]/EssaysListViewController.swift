@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import T
 
-class EssaysListViewController: TTableModelViewController {
+class EssaysListViewController: TTableViewController {
     typealias CellContext = TableViewModel.CellContext
 //    private var activeEssayView: EssayView {
 //        return self.tableHeaderView.essayView
@@ -32,11 +32,11 @@ class EssaysListViewController: TTableModelViewController {
         let blurEffect = UIBlurEffect(style: .light)
 
         let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.backgroundColor = UIColor.red.t.transparency(0.1)
+        blurView.backgroundColor = UIColor.red.transparency(0.1)
         blurView.alpha = 0.99
         blurView.frame = cover.bounds
         
-        cover.t_view.addSubview(view: blurView)
+        cover.addSubview(view: blurView)
         
         return cover
     }()
@@ -51,7 +51,7 @@ class EssaysListViewController: TTableModelViewController {
         }
         
         self.tableView.tableHeaderView = self.tableHeaderView
-        self.tableView.t_view.addSubview(view: self._cover)
+        self.tableView.addSubview(view: self._cover)
         
         self._cover.alpha = 0
         self._cover.isHidden = false
@@ -65,8 +65,8 @@ class EssaysListViewController: TTableModelViewController {
         
         _handlers.moveHandlers = mHanlders
         
-        /// Устанавливаем handlers у TTableModelViewController
-        self.handlers = _handlers
+        /// Устанавливаем tableHandlers у TTableViewController
+        self.tableHandlers = _handlers
         
         self.setupTable()
     }
@@ -79,7 +79,7 @@ class EssaysListViewController: TTableModelViewController {
         
         var coverFrame = self.tableView.frame
         coverFrame.size.height -= self.tableHeaderView.bounds.height
-        coverFrame.origin = self.tableHeaderView.frame.t.max
+        coverFrame.origin = self.tableHeaderView.frame.max
         coverFrame.origin.x = 0
         self._cover.frame = coverFrame
     }
@@ -113,7 +113,7 @@ class EssaysListViewController: TTableModelViewController {
     }
     
     private func _handlerDidMove(atContext: CellContext, toContext: CellContext) {
-        self.essays = self.essays.t.move(at: atContext.indexPath.row, to: toContext.indexPath.row)
+        self.essays = self.essays.move(at: atContext.indexPath.row, to: toContext.indexPath.row)
     }
     
     private func _handlerEndMove(atContext: CellContext, toContext: CellContext?) {
@@ -148,7 +148,7 @@ class EssaysListViewController: TTableModelViewController {
     private func _setupOutOfCellLimitsState(context: CellContext) {
         self.tableView.bringSubview(toFront: self._cover)
         
-        self._cover.t_view.show(duration: 0.2)
+        self._cover.show(duration: 0.2)
         
         let snapshot = self._setupSnashot(context: context)
         self._moveSnaphot(snapshot: snapshot, context: context)
@@ -156,7 +156,7 @@ class EssaysListViewController: TTableModelViewController {
     }
     
     private func _uninstallOutOfCellLimitsState(context: CellContext) {
-        self._cover.t_view.hidde(duration: 0.2)
+        self._cover.hidde(duration: 0.2)
 
         if let snapshot = self._snapshot {
             self._uninstallSnapshot(snapshot: snapshot, context: context)
@@ -175,7 +175,7 @@ class EssaysListViewController: TTableModelViewController {
     }
 
     private func _setupSnashot(context: CellContext) -> UIView {
-        let image = context.cell.t_view.render()
+        let image = context.cell.render()
         
         let imageView = UIImageView(frame: context.cell.bounds)
         
@@ -191,7 +191,7 @@ class EssaysListViewController: TTableModelViewController {
     }
     
     private func _uninstallSnapshot(snapshot: UIView, context: CellContext) {
-        snapshot.t_view.hidde(duration: 0.2) {
+        snapshot.hidde(duration: 0.2) {
             snapshot.removeFromSuperview()
         }
     }

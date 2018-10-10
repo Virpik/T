@@ -21,10 +21,6 @@
 		434C2C7A1FEBD6EA00B62481 /* TMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C791FEBD6EA00B62481 /* TMenuItem.swift */; };
 		434C2C831FEC8FCA00B62481 /* EssaysListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C2C821FEC8FCA00B62481 /* EssaysListViewController.swift */; };
 		436453AC203172AD001ABDBD /* ActiveEssayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436453AB203172AD001ABDBD /* ActiveEssayView.swift */; };
-		436947BC1FEC9A02003B147B /* TDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436947BA1FEC9A02003B147B /* TDemoCell.swift */; };
-		436947BD1FEC9A02003B147B /* TDemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436947BB1FEC9A02003B147B /* TDemoCell.xib */; };
-		436947BF1FEC9BFC003B147B /* TDemoRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436947BE1FEC9BFC003B147B /* TDemoRowModel.swift */; };
-		436947C11FEC9D25003B147B /* TDemoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436947C01FEC9D25003B147B /* TDemoItem.swift */; };
 		43972D0E1F3989670029B66B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D0D1F3989670029B66B /* AppDelegate.swift */; };
 		43972D101F3989670029B66B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43972D0F1F3989670029B66B /* ViewController.swift */; };
 		43972D131F3989670029B66B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43972D111F3989670029B66B /* Main.storyboard */; };
@@ -35,7 +31,6 @@
 		43B46C8C20417D0D00484EF5 /* TViewStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B46C8B20417D0D00484EF5 /* TViewStyles.swift */; };
 		43B46C8E20417D1B00484EF5 /* TLabelStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B46C8D20417D1B00484EF5 /* TLabelStyles.swift */; };
 		4C57639A3F4DFC6ACDEB36DD /* Pods_TDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932965434AADC9EA62A2678A /* Pods_TDemo.framework */; };
-		97859F80736A7EBF89F4786C /* Pods_TDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD21F502FC13E24FAD464179 /* Pods_TDemoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +44,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0B5F976CAB332D64BF75D15C /* Pods-TDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDemoTests/Pods-TDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		213DC4A2055EAD62445D2C19 /* Pods-TDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TDemo/Pods-TDemo.release.xcconfig"; sourceTree = "<group>"; };
 		4300B7E5202D8F49009DD231 /* essays.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = essays.json; sourceTree = "<group>"; };
 		4300B7E8202D9060009DD231 /* Essays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Essays.swift; sourceTree = "<group>"; };
@@ -65,10 +59,6 @@
 		434C2C791FEBD6EA00B62481 /* TMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItem.swift; sourceTree = "<group>"; };
 		434C2C821FEC8FCA00B62481 /* EssaysListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssaysListViewController.swift; sourceTree = "<group>"; };
 		436453AB203172AD001ABDBD /* ActiveEssayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEssayView.swift; sourceTree = "<group>"; };
-		436947BA1FEC9A02003B147B /* TDemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoCell.swift; sourceTree = "<group>"; };
-		436947BB1FEC9A02003B147B /* TDemoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TDemoCell.xib; sourceTree = "<group>"; };
-		436947BE1FEC9BFC003B147B /* TDemoRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoRowModel.swift; sourceTree = "<group>"; };
-		436947C01FEC9D25003B147B /* TDemoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDemoItem.swift; sourceTree = "<group>"; };
 		43972D0A1F3989670029B66B /* TDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43972D0D1F3989670029B66B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43972D0F1F3989670029B66B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +72,6 @@
 		43B46C8920416E4A00484EF5 /* TStylesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TStylesViewController.swift; sourceTree = "<group>"; };
 		43B46C8B20417D0D00484EF5 /* TViewStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TViewStyles.swift; sourceTree = "<group>"; };
 		43B46C8D20417D1B00484EF5 /* TLabelStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLabelStyles.swift; sourceTree = "<group>"; };
-		51376A86BDCE084635AF1BCD /* Pods-TDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TDemoTests/Pods-TDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		932965434AADC9EA62A2678A /* Pods_TDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F71F7CC6A781AE25F65F917E /* Pods-TDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDemo/Pods-TDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		FD21F502FC13E24FAD464179 /* Pods_TDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,7 +90,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97859F80736A7EBF89F4786C /* Pods_TDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				43B46C8820416E3700484EF5 /* [TStyles] */,
-				4300B7EC202D9E56009DD231 /* [EssayViewer] */,
 				4300B7EB202D9E42009DD231 /* [EssyasList] */,
 			);
 			path = "[Modules]";
@@ -135,13 +122,6 @@
 				434C2C821FEC8FCA00B62481 /* EssaysListViewController.swift */,
 			);
 			path = "[EssyasList]";
-			sourceTree = "<group>";
-		};
-		4300B7EC202D9E56009DD231 /* [EssayViewer] */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "[EssayViewer]";
 			sourceTree = "<group>";
 		};
 		43270306202DBF8A0025BE15 /* [RowModels] */ = {
@@ -189,7 +169,6 @@
 		434C2C6D1FEBD58700B62481 /* XIBS */ = {
 			isa = PBXGroup;
 			children = (
-				436947B91FEC99E2003B147B /* TDemoCell */,
 				434C2C701FEBD5AE00B62481 /* TMenuItemCell */,
 			);
 			path = XIBS;
@@ -208,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				434C2C761FEBD68000B62481 /* TMenuItemRowModel.swift */,
-				436947BE1FEC9BFC003B147B /* TDemoRowModel.swift */,
 			);
 			path = RowModels;
 			sourceTree = "<group>";
@@ -217,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				434C2C791FEBD6EA00B62481 /* TMenuItem.swift */,
-				436947C01FEC9D25003B147B /* TDemoItem.swift */,
 				4300B7E8202D9060009DD231 /* Essays.swift */,
 			);
 			path = Structs;
@@ -237,15 +214,6 @@
 				436453AB203172AD001ABDBD /* ActiveEssayView.swift */,
 			);
 			path = "[Views]";
-			sourceTree = "<group>";
-		};
-		436947B91FEC99E2003B147B /* TDemoCell */ = {
-			isa = PBXGroup;
-			children = (
-				436947BA1FEC9A02003B147B /* TDemoCell.swift */,
-				436947BB1FEC9A02003B147B /* TDemoCell.xib */,
-			);
-			path = TDemoCell;
 			sourceTree = "<group>";
 		};
 		43972D011F3989670029B66B = {
@@ -313,8 +281,6 @@
 			children = (
 				F71F7CC6A781AE25F65F917E /* Pods-TDemo.debug.xcconfig */,
 				213DC4A2055EAD62445D2C19 /* Pods-TDemo.release.xcconfig */,
-				0B5F976CAB332D64BF75D15C /* Pods-TDemoTests.debug.xcconfig */,
-				51376A86BDCE084635AF1BCD /* Pods-TDemoTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -340,7 +306,6 @@
 				43972D071F3989670029B66B /* Frameworks */,
 				43972D081F3989670029B66B /* Resources */,
 				0C9AE1DEAF7A6DA8439285CA /* [CP] Embed Pods Frameworks */,
-				A0B1D818F70D36094B54676E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -355,12 +320,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43972D2A1F3989680029B66B /* Build configuration list for PBXNativeTarget "TDemoTests" */;
 			buildPhases = (
-				A48C99601295C014B1B8EF1C /* [CP] Check Pods Manifest.lock */,
 				43972D1A1F3989680029B66B /* Sources */,
 				43972D1B1F3989680029B66B /* Frameworks */,
 				43972D1C1F3989680029B66B /* Resources */,
-				4B4AAA6047B1B5D6EBFBA0C9 /* [CP] Embed Pods Frameworks */,
-				BF391C2256350FE268C07A5A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -426,7 +388,6 @@
 				43972D151F3989670029B66B /* Assets.xcassets in Resources */,
 				434C2C741FEBD5CB00B62481 /* TMenuItemCell.xib in Resources */,
 				4300B7E6202D8F49009DD231 /* essays.json in Resources */,
-				436947BD1FEC9A02003B147B /* TDemoCell.xib in Resources */,
 				43972D131F3989670029B66B /* Main.storyboard in Resources */,
 				432FE3D72015DC050082E13D /* T.podspec in Resources */,
 			);
@@ -478,69 +439,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4B4AAA6047B1B5D6EBFBA0C9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TDemoTests/Pods-TDemoTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A0B1D818F70D36094B54676E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TDemo/Pods-TDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A48C99601295C014B1B8EF1C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TDemoTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BF391C2256350FE268C07A5A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TDemoTests/Pods-TDemoTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -554,11 +452,8 @@
 				43B46C8A20416E4A00484EF5 /* TStylesViewController.swift in Sources */,
 				43270314202DCCAD0025BE15 /* EssayView.swift in Sources */,
 				436453AC203172AD001ABDBD /* ActiveEssayView.swift in Sources */,
-				436947BC1FEC9A02003B147B /* TDemoCell.swift in Sources */,
-				436947BF1FEC9BFC003B147B /* TDemoRowModel.swift in Sources */,
 				4300B7E9202D9060009DD231 /* Essays.swift in Sources */,
 				434C2C731FEBD5CB00B62481 /* TMenuItemCell.swift in Sources */,
-				436947C11FEC9D25003B147B /* TDemoItem.swift in Sources */,
 				43270308202DBFCD0025BE15 /* EssayCardRowModel.swift in Sources */,
 				4327030F202DC06D0025BE15 /* EssayCardCell.swift in Sources */,
 				434C2C831FEC8FCA00B62481 /* EssaysListViewController.swift in Sources */,
@@ -752,7 +647,6 @@
 		};
 		43972D2B1F3989680029B66B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B5F976CAB332D64BF75D15C /* Pods-TDemoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -768,7 +662,6 @@
 		};
 		43972D2C1F3989680029B66B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51376A86BDCE084635AF1BCD /* Pods-TDemoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
