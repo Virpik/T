@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "Virpik" => "ach@gmail.ru" }
+  s.author             = { "Virpik" => "vvirpik@gmail.com" }
   # s.social_media_url   = "http://twitter.com/vvirpik"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
