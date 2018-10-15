@@ -52,7 +52,7 @@
 		4327030E202DC06D0025BE15 /* EssayCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EssayCardCell.xib; sourceTree = "<group>"; };
 		43270313202DCCAD0025BE15 /* EssayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayView.swift; sourceTree = "<group>"; };
 		43270315202DCCB30025BE15 /* EssayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EssayView.xib; sourceTree = "<group>"; };
-		432FE3D62015DC040082E13D /* T.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = T.podspec; path = ../T.podspec; sourceTree = "<group>"; };
+		432FE3D62015DC040082E13D /* T.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = T.podspec; path = ../T.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		434C2C711FEBD5CB00B62481 /* TMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItemCell.swift; sourceTree = "<group>"; };
 		434C2C721FEBD5CB00B62481 /* TMenuItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMenuItemCell.xib; sourceTree = "<group>"; };
 		434C2C761FEBD68000B62481 /* TMenuItemRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMenuItemRowModel.swift; sourceTree = "<group>"; };
@@ -623,7 +623,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -641,7 +641,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

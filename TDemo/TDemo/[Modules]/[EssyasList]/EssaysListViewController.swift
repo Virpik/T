@@ -146,7 +146,7 @@ class EssaysListViewController: TTableViewController {
     }
     
     private func _setupOutOfCellLimitsState(context: CellContext) {
-        self.tableView.bringSubview(toFront: self._cover)
+        self.tableView.bringSubviewToFront(self._cover)
         
         self._cover.show(duration: 0.2)
         
@@ -167,8 +167,8 @@ class EssaysListViewController: TTableViewController {
     private func _updateOutOfCellLimitsState(context: CellContext) {
         
         if let snapshot = self._snapshot {
-            self.tableView.bringSubview(toFront: self._cover)
-            self.tableView.bringSubview(toFront: snapshot)
+            self.tableView.bringSubviewToFront(self._cover)
+            self.tableView.bringSubviewToFront(snapshot)
             
             self._moveSnaphot(snapshot: snapshot, context: context)
         }
