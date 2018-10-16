@@ -10,7 +10,7 @@ import Foundation
 
 public extension String {
     
-    var int: Int {
+    public var int: Int {
         return Int(self) ?? 0
     }
     
@@ -65,12 +65,14 @@ public extension String {
         return String(self[i] as Character)
     }
     
+    /// Подстрока по диапазону
     subscript (r: Range<Int>) -> String {
         let start = index(startIndex, offsetBy: r.lowerBound)
         let end = index(startIndex, offsetBy: r.upperBound)
         return String(self[start ..< end])
     }
 
+    /// Большая первая буква
     public var capitalizingFirstLetter: String {
         let first = self.prefix(1).capitalized
         let other = self.dropFirst()
@@ -78,6 +80,7 @@ public extension String {
     }
 }
 
+/// Набор методов по работе с путями из NSString (Это было удобно)
 public extension String {
     
     public var lastPathComponent: String {
