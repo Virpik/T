@@ -9,6 +9,7 @@
 import Foundation
 
 /// Класс, использовать в структурах
+/// Для обхода запсиси в не мутабельных структурах
 open class TMutableStore <T> {
     public var item: T
     
