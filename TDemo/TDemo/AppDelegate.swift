@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        tLog(Date().startOfYear?.string(format: "dd/MM/YYYY"))
+        tLog(Date().startOfMonth?.string(format: "dd/MM/YYYY"))
+        tLog(Date().startOfWeek?.string(format: "dd/MM/YYYY"))
+        tLog(Date().endOfWeek?.string(format: "dd/MM/YYYY"))
+        
         return true
     }
 

@@ -8,10 +8,13 @@
 import Foundation
 
 public extension Int {
+    
+    /// Текущее значение как градусы в радианах
     public var degreesToRadians: Double {
         return Double(self) * .pi / 180
     }
     
+    /// Текущее значение как радианы в градусах
     public var radiansToDegrees: Double {
         return Double(self) * 180 / .pi
     }

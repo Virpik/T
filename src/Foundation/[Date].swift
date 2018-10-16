@@ -8,20 +8,21 @@
 import Foundation
 
 public extension Date {
-    
+    /// Начало текущего года
     public var startOfYear: Date? {
         let gregorian = Calendar(identifier: .gregorian)
         let from = gregorian.dateComponents([.year], from: self)
         return gregorian.date(from: from)
     }
     
+    /// Начало текущего месяца
     public var startOfMonth: Date? {
         let gregorian = Calendar(identifier: .gregorian)
         let from = gregorian.dateComponents([.year, .month], from: self)
         return gregorian.date(from: from)
     }
     
-    /// on monday
+    /// Начало текущей недели (с понедельника)
     public var startOfWeek: Date? {
         let gregorian = Calendar(identifier: .gregorian)
         let from = gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)
@@ -29,6 +30,7 @@ public extension Date {
         return gregorian.date(byAdding: .day, value: 1, to: sunday)
     }
     
+    /// Конец текущей недели
     public var endOfWeek: Date? {
         let gregorian = Calendar(identifier: .gregorian)
         let from = gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)
@@ -38,38 +40,48 @@ public extension Date {
 }
 
 public extension Date {
+    
+    /// Возвращает колличество лет между между текущей и заданной
     public func years(from date: Date) -> Int {
         return Calendar.current.dateComponents([.year], from: date, to: self).year ?? 0
     }
     
+    /// Возвращает колличество месяцев между текущей и заданной
     public func months(from date: Date) -> Int {
         return Calendar.current.dateComponents([.month], from: date, to: self).month ?? 0
     }
     
+    /// Возвращает колличество недель между текущей и заданной
     public func weeks(from date: Date) -> Int {
         return Calendar.current.dateComponents([.weekOfYear], from: date, to: self).weekOfYear ?? 0
     }
     
+    /// Возвращает колличество дней между текущей и заданной
     public func days(from date: Date) -> Int {
         return Calendar.current.dateComponents([.day], from: date, to: self).day ?? 0
     }
     
+    /// Возвращает колличество часов между текущей и заданной
     public func hours(from date: Date) -> Int {
         return Calendar.current.dateComponents([.hour], from: date, to: self).hour ?? 0
     }
     
+    /// Возвращает колличество минут между текущей и заданной
     public func minutes(from date: Date) -> Int {
         return Calendar.current.dateComponents([.minute], from: date, to: self).minute ?? 0
     }
     
+    /// Возвращает колличество секунд между текущей и заданной
     public func seconds(from date: Date) -> Int {
         return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
     }
     
+    /// Возвращает колличество наносекунд между текущей и заданной
     public func nanosecond(from date: Date) -> Int {
         return Calendar.current.dateComponents([.nanosecond], from: date, to: self).nanosecond ?? 0
     }
     
+    /**
     public func offset(_ date: Date) -> String {
         if years(from: date)   > 0 { return "\(years(from: date))y"   }
         if months(from: date)  > 0 { return "\(months(from: date))M"  }
@@ -81,10 +93,12 @@ public extension Date {
         if nanosecond(from: date) > 0 { return ".\(nanosecond(from: date))s" }
         
         return "\(date.timeIntervalSince1970 - self.timeIntervalSince1970)"
-    }
+    }*/
 }
 
 public extension DateFormatter {
+    
+    /// текущий DateFormatter c заданной 'UTC' тайм зоной
     public var defaultTimeZone: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = self.dateFormat
@@ -92,6 +106,7 @@ public extension DateFormatter {
         return formatter
     }
     
+    /// Инициализация с указанием формата
     public convenience init(format: String) {
         self.init()
         
@@ -101,6 +116,7 @@ public extension DateFormatter {
 
 public extension Date {
     
+    /// Возвращает форматированную дату по указанному шаблону
     public func string(format: String) -> String {
         let formatter = DateFormatter(format: format)
         
@@ -108,24 +124,24 @@ public extension Date {
     }
     
     public struct Formatter {
+        
+        /// yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX
         public static let iso8601: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+            let formatter = DateFormatter(format: "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX")
             return formatter
         }()
         
+        /// yyyy-MM-dd'T'HH-mm-ss
         public static let iso1: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH-mm-ss"
+            let formatter = DateFormatter(format: "yyyy-MM-dd'T'HH-mm-ss")
             return formatter
         }()
         
+        /// yyyy-MM-dd'T'HH-mm-ssZ
         public static let iso2: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH-mm-ssZ"
+            let formatter = DateFormatter(format: "yyyy-MM-dd'T'HH-mm-ssZ")
             return formatter
         }()
-        
     }
     
     public var iso8601: String {
