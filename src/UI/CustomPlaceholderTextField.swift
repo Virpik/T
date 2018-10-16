@@ -11,7 +11,7 @@ public class CustomPlaceholderTextField: UITextField {
     
     override public var text: String? {
         get {
-            return super.text//self.labelPlaceHolder.text
+            return super.text
         }
         
         set(value) {

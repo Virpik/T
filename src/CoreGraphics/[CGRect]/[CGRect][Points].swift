@@ -9,6 +9,7 @@ import Foundation
 
 /// For CGRect
 public extension CGRect {
+    
     public var max: CGPoint {
         return CGPoint(x: self.maxX, y: self.maxY)
     }

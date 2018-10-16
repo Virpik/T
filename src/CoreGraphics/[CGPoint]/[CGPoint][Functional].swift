@@ -1,5 +1,5 @@
 //
-//  [CGRect].swift
+//  [CGPoint].swift
 //  Pods-TDemo
 //
 //  Created by Virpik on 01/02/2018.
@@ -9,6 +9,7 @@ import Foundation
 
 /// For CGPoint
 extension CGPoint {
+    
     /// self.x = x
     public func set(x: CGFloat) -> CGPoint {
         var point = self

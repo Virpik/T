@@ -3,7 +3,7 @@
 //  EZMobile
 //
 //  Created by Virpik on 05/03/2018.
-//  Copyright © 2018 Sybis. All rights reserved.
+//  Copyright © 2018 []. All rights reserved.
 //
 
 import Foundation
