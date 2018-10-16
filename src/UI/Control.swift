@@ -7,13 +7,13 @@
 
 import Foundation
 
-public class TControl <T: UIControl>: NSObject {
+public class Control <T: UIControl>: NSObject {
     
     public let item: T
     
-    public var handlerValueChanged: BlockForItem<T>?
-    public var handlerEditingChanged: BlockForItem<T>?
-    public var handlerTouchUpInside: BlockForItem<T>?
+    public var handlerValueChanged: BlockItem<T>?
+    public var handlerEditingChanged: BlockItem<T>?
+    public var handlerTouchUpInside: BlockItem<T>?
     
     public init(item: T) {
         self.item = item
@@ -40,7 +40,7 @@ public class TControl <T: UIControl>: NSObject {
         self.worker(sender: sender, handler: self.handlerValueChanged)
     }
     
-    func worker(sender: Any?, handler: BlockForItem<T>?) {
+    func worker(sender: Any?, handler: BlockItem<T>?) {
         guard let _item = sender as? T else {
             return
         }

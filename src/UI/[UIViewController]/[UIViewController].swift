@@ -45,7 +45,7 @@ public protocol ViewControllerInterface {
     
     var blockViewDidLoad: Block? { get set }
     
-    var blockViewWillAppear: BlockForItem<Bool>? { get set }
+    var blockViewWillAppear: BlockItem<Bool>? { get set }
     var blockViewDidAppear: BlockForItem<Bool>? { get set }
     
     var blockViewWillDisappear: BlockForItem<Bool>? { get set }

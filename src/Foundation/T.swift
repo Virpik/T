@@ -12,21 +12,14 @@ public struct T {}
 
 public typealias Block = (() -> Void)
 public typealias BlockFail = ((Error) -> Void)
-public typealias BlockForItem<T> = ((T) -> Void)
-public typealias BlockSuccess<T> = ((T) -> Void)
+public typealias BlockItem<T> = ((T) -> Void)
 public typealias BlockFake<T> = ((TimeInterval, T?, Error?) -> Void)
-public typealias BlocksWorker<T> = (success: BlockSuccess<T>?, fail: BlockFail?)
+public typealias BlocksWorker<T> = (success: BlockItem<T>?, fail: BlockFail?)
 
 public struct Handlers<T> {
     public var fail: BlockFail?
-    public var success: BlockSuccess<T>?
+    public var success: BlockItem<T>?
     public var fake: BlockFake<T>?
-}
-
-func configure<T>(item: T, _ block: ((inout T) -> Void)) -> T {
-    var item = item
-    block(&item)
-    return item
 }
 
 public func async(_ block: @escaping Block) {
@@ -41,7 +34,14 @@ public func delay(_ delay: TimeInterval, _ block: @escaping Block) {
     DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: block)
 }
 
-public func tLog(file: String = #file, func: String = #function,
+public func configure<T>(item: T, _ block: ((inout T) -> Void)) -> T {
+    var item = item
+    block(&item)
+    return item
+}
+
+public func tLog(file: String = #file,
+                 func: String = #function,
                  line: Int = #line,
                  tag: String? = nil,
                  _ args: Any?...) {

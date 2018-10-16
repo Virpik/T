@@ -61,13 +61,13 @@ public class KeyboardProxy: NSObject {
         }
     }
 
-    public var handlerWillShow: BlockForItem<Keyboard>?
-    public var handlerDidShow: BlockForItem<Keyboard>?
-    public var handlerWillHide: BlockForItem<Keyboard>?
-    public var handlerDidHide: BlockForItem<Keyboard>?
+    public var handlerWillShow: BlockItem<Keyboard>?
+    public var handlerDidShow: BlockItem<Keyboard>?
+    public var handlerWillHide: BlockItem<Keyboard>?
+    public var handlerDidHide: BlockItem<Keyboard>?
     
-    public var handlerWillChangeFrame: BlockForItem<Keyboard>?
-    public var handlerDidChangeFrame: BlockForItem<Keyboard>?
+    public var handlerWillChangeFrame: BlockItem<Keyboard>?
+    public var handlerDidChangeFrame: BlockItem<Keyboard>?
     
     public override init () {
         super.init()
