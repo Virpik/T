@@ -9,9 +9,10 @@
 import Foundation
 
 public extension Data {
-    
-    public init?(fileName: String, bundle: Bundle = Bundle.main) {
-        guard let path = bundle.path(forResource: fileName, ofType: "json") else {
+
+    /// Инициализация даты из ресурсов, по имени и типу
+    public init?(fileName: String, type: String = "json", bundle: Bundle = Bundle.main) {
+        guard let path = bundle.path(forResource: fileName, ofType: type) else {
             return nil
         }
 
@@ -23,7 +24,8 @@ public extension Data {
             return nil
         }
     }
-
+    
+    /// Возвращает словарь, если  получется преобразовать текущую дату
     public var json: [[AnyHashable: Any]]? {
         do {
             let jsonResult = try JSONSerialization.jsonObject(with: self, options: .mutableLeaves)
@@ -42,6 +44,7 @@ public extension Data {
         }
     }
     
+    /// Возвращает строку, если  получется преобразовать текущую дату
     public var string: String? {
         return String(data: self, encoding: .utf8)
     }
