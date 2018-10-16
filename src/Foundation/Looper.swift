@@ -9,7 +9,7 @@ import Foundation
 
 open class Looper {
     
-    open static let shared: Looper = {
+    public static let shared: Looper = {
         var looper = Looper()
         
         looper.begin()
@@ -18,7 +18,6 @@ open class Looper {
     }()
     
     open var timeDelay: TimeInterval = 1
-    
     open var list: [String: Block] = [:]
     
     public init(delay: TimeInterval = 1) {
@@ -38,8 +37,8 @@ open class Looper {
     }
     
     private func loop() {
-        delay(self.timeDelay, {
-            self.call()
+        delay(self.timeDelay, { [weak self] in
+            self?.call()
         })
     }
     

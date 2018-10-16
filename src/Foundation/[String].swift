@@ -55,10 +55,6 @@ public extension StringProtocol where Index == String.Index {
     }
 }
 
-public enum TStringDecline: String {
-    case TOne, TMany, TOther
-}
-
 public extension String {
     
     subscript (i: Int) -> Character {
@@ -79,41 +75,6 @@ public extension String {
         let first = self.prefix(1).capitalized
         let other = self.dropFirst()
         return first + other
-    }
-    
-    public var localize: String {
-        return self.localize()
-    }
-    
-    public func localize(comment: String? = "", count: Int? = nil) -> String {
-        var str = self
-        
-        if let _count = count {
-            str +=  "-"+self.declension(_count).rawValue
-        }
-        
-        return  NSLocalizedString(str, comment: "")
-    }
-    
-    private func declension(_ count: Int) -> TStringDecline {
-        
-        if (count % 10 == 1) && (count != 11) {
-            return .TOne
-        }
-        
-        if (count >= 5) && (count <= 20) {
-            return .TMany
-        }
-        
-        if (count % 10 >= 5) || (count % 10 == 0) {
-            return .TMany
-        }
-        
-        if (count % 10 >= 2) && (count % 10 <= 4) {
-            return .TOther
-        }
-        
-        return .TOther
     }
 }
 

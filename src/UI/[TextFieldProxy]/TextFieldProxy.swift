@@ -37,7 +37,6 @@ public class TextFieldProxy: NSObject, UITextFieldDelegate {
         let nc = NotificationCenter.default
         
         nc.addObserver(forName: .UITextFieldTextDidBeginEditing, object: self.textField, queue: .main) { (n) in
-            
             self.handlerNotificationDidBeginEditing?()
         }
         

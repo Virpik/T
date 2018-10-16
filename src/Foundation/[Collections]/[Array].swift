@@ -13,15 +13,7 @@ extension Array {
     }
     
     public func item(atIndex index: Int) -> Element? {
-        if self.count <= index {
-            return nil
-        }
-        
-        if index < 0 {
-            return nil
-        }
-        
-        return self[index]
+        return self[safe: index]
     }
     
     public func move(at: Int, to: Int) -> Array<Element> {
