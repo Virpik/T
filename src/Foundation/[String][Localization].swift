@@ -47,10 +47,10 @@ public extension String {
             str +=  "-"+self.declension(count).key
         }
         
-        return  NSLocalizedString(str, comment: "")
+        return  NSLocalizedString(str, comment: comment ?? "")
     }
     
-    /// Возвращает тип значения по числу 
+    /// Возвращает тип значения по числу
     private func declension(_ count: Int) -> StringDecline {
         
         if (count % 10 == 1) && (count != 11) {
