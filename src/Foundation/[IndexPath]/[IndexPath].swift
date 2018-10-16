@@ -8,6 +8,8 @@
 import Foundation
 
 public extension IndexPath {
+    
+    /// Следующий элемент по текущей секции
     public func incRow() -> IndexPath {
         let section = self.section
         let row = self.row
@@ -15,6 +17,7 @@ public extension IndexPath {
         return IndexPath(row: row + 1, section: section)
     }
     
+    /// Предыдущий элемент по текущей секции
     public func decRow() -> IndexPath {
         let section = self.section
         let row = self.row
