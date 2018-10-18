@@ -21,10 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tLog(Date().startOfMonth?.string(format: "dd/MM/YYYY"))
         tLog(Date().startOfWeek?.string(format: "dd/MM/YYYY"))
         tLog(Date().endOfWeek?.string(format: "dd/MM/YYYY"))
-        
+          
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         
     }
