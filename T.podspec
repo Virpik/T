@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
     
   s.name         = "T"
-  s.version      = "0.3.2"
+  s.version      = "0.1.0"
   s.summary      = "A short description of T."
 
   s.description  = <<-DESC
@@ -26,12 +26,6 @@ Pod::Spec.new do |s|
   s.author             = { "Virpik" => "vvirpik@gmail.com" }
   s.social_media_url   = "http://github.com/virpik"
 
-  # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  If this Pod runs only on iOS or OS X, then specify the platform and
-  #  the deployment target. You can optionally include the target after the platform.
-  #
-
   # s.platform     = :ios
   # s.platform     = :ios, "5.0"
 
@@ -42,24 +36,25 @@ Pod::Spec.new do |s|
   # s.tvos.deployment_target = "9.0"
 
   s.source       = { :git => "http://github/Virpik/T.git", :tag => "#{s.version}" }
-  s.source_files  = "src/**/*.swift"#{}"src/**/", "src/", "src/Extension"
-  # s.exclude_files = "src/Exclude"
-  # s.public_header_files = "Classes/**/*.h"
+    # s.source_files  = "src/**/*.swift"
 
+    s.subspec 'CoreData' do |s|
+        s.source_files = "src/CoreData/**/*.swift"
+    end
 
-  # s.resource  = "icon.png"
-  # s.resources = "Resources/*.png"
-  # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
+    s.subspec 'UI' do |s|
+        s.source_files = "src/UI/**/*.swift"
+    end
 
-  # s.framework  = "SomeFramework"
-  # s.frameworks = "SomeFramework", "AnotherFramework"
+    s.subspec 'CoreGraphics' do |s|
+        s.source_files = "src/CoreGraphics/**/*.swift"
+    end
 
-  # s.library   = "iconv"
-  # s.libraries = "iconv", "xml2"
-
-  # s.requires_arc = true
-
-  # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # s.dependency "JSONKit", "~> 1.4"
-
+    s.subspec 'Foundation' do |s|
+        s.source_files = "src/Foundation/**/*.swift"
+    end
 end
+
+
+
+
