@@ -51,7 +51,7 @@ public extension UIView {
     }
     
     /// if isBounds == true { view.frame = self.bounds }
-    public func addSubview(view: UIView, isSetBounds: Bool = false, autoresizingMask: UIViewAutoresizing =  [.flexibleWidth, .flexibleHeight]) {
+    public func addSubview(view: UIView, isSetBounds: Bool = false, autoresizingMask: UIView.AutoresizingMask =  [.flexibleWidth, .flexibleHeight]) {
         
         if isSetBounds {
             view.frame = self.bounds

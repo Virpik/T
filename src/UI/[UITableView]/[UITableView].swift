@@ -78,17 +78,17 @@ public extension UITableView {
 
 public extension UITableView {
     public func setupAutomaticDimension(estimatedHeight: CGFloat = 40) {
-        self.rowHeight = UITableViewAutomaticDimension
+        self.rowHeight = UITableView.automaticDimension
         self.estimatedRowHeight = estimatedHeight
     }
     
     public func setupAutomaticDimensionHeader(estimatedHeight: CGFloat = 40) {
-        self.sectionHeaderHeight = UITableViewAutomaticDimension
+        self.sectionHeaderHeight = UITableView.automaticDimension
         self.estimatedSectionHeaderHeight = estimatedHeight
     }
     
     public func setupAutomaticDimensionFooter(estimatedHeight: CGFloat = 40) {
-        self.sectionFooterHeight = UITableViewAutomaticDimension
+        self.sectionFooterHeight = UITableView.automaticDimension
         self.estimatedSectionFooterHeight = estimatedHeight
     }
     

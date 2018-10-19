@@ -15,7 +15,7 @@ public class KeyboardProxy: NSObject {
         public var frameBegin: CGRect
         public var frameEnd: CGRect
         public var animationDuration: TimeInterval
-        public var animationCurve: UIViewAnimationCurve?
+        public var animationCurve: UIView.AnimationCurve?
         
         @available(iOS 9.0, *)
         public var isLocalUser: Bool {
@@ -26,25 +26,25 @@ public class KeyboardProxy: NSObject {
         
         public init?(userInfo: [AnyHashable: Any]) {
             
-            guard let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else {
+            guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else {
+             
+                return nil
+            }
+            
+            guard let frameBegin = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect else {
                 
                 return nil
             }
             
-            guard let frameBegin = userInfo[UIKeyboardFrameBeginUserInfoKey] as? CGRect else {
+            guard let frameEnd = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
                 
                 return nil
             }
             
-            guard let frameEnd = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect else {
-                
-                return nil
-            }
-            
-            let animationCurve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? UIViewAnimationCurve
+            let animationCurve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? UIView.AnimationCurve
             
             if #available(iOS 9.0, *) {
-                guard let isLocalUser = userInfo[UIKeyboardIsLocalUserInfoKey] as? Bool else {
+                guard let isLocalUser = userInfo[UIResponder.keyboardIsLocalUserInfoKey] as? Bool else {
                     
                     return nil
                 }
@@ -83,42 +83,42 @@ public class KeyboardProxy: NSObject {
         let nc = NotificationCenter.default
         
         /// Will Show
-        nc.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: .main, using: { (n) in
+        nc.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main, using: { (n) in
             guard let keyboard = getKeyboard(n) else { return }
             
             self.handlerWillShow?(keyboard)
         })
     
         /// Did Show
-        nc.addObserver(forName: .UIKeyboardDidShow, object: nil, queue: .main, using: { (n) in
+        nc.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: .main, using: { (n) in
             guard let keyboard = getKeyboard(n) else { return }
             
             self.handlerDidShow?(keyboard)
         })
     
         /// Will Hide
-        nc.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: .main, using: { (n) in
+        nc.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main, using: { (n) in
             guard let keyboard = getKeyboard(n) else { return }
             
             self.handlerWillHide?(keyboard)
         })
         
         /// Did Hide
-        nc.addObserver(forName: .UIKeyboardDidHide, object: nil, queue: .main, using: { (n) in
+        nc.addObserver(forName: UIResponder.keyboardDidHideNotification, object: nil, queue: .main, using: { (n) in
             guard let keyboard = getKeyboard(n) else { return }
             
             self.handlerDidHide?(keyboard)
         })
         
         /// Will Change Frame
-        nc.addObserver(forName: .UIKeyboardWillChangeFrame, object: nil, queue: .main, using: { (n) in
+        nc.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: .main, using: { (n) in
             guard let keyboard = getKeyboard(n) else { return }
             
             self.handlerWillChangeFrame?(keyboard)
         })
         
         /// Did Change Frame
-        nc.addObserver(forName: .UIKeyboardDidChangeFrame, object: nil, queue: .main, using: { (n) in
+        nc.addObserver(forName: UIResponder.keyboardDidChangeFrameNotification, object: nil, queue: .main, using: { (n) in
             guard let keyboard = getKeyboard(n) else { return }
             
             self.handlerDidChangeFrame?(keyboard)

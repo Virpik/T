@@ -13,9 +13,9 @@ public extension TableViewModel {
         
         public var indexPath: IndexPath
         public var rowModel: AnyRowModel
-        public var animation: UITableViewRowAnimation
+        public var animation: UITableView.RowAnimation
         
-        public init(model: AnyRowModel, indexPath: IndexPath, animation: UITableViewRowAnimation = .none) {
+        public init(model: AnyRowModel, indexPath: IndexPath, animation: UITableView.RowAnimation = .none) {
             self.rowModel = model
             self.indexPath = indexPath
             self.animation = animation

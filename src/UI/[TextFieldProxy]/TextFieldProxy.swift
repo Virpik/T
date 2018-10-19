@@ -36,15 +36,15 @@ public class TextFieldProxy: NSObject, UITextFieldDelegate {
         
         let nc = NotificationCenter.default
         
-        nc.addObserver(forName: .UITextFieldTextDidBeginEditing, object: self.textField, queue: .main) { (n) in
+        nc.addObserver(forName: UITextField.textDidBeginEditingNotification, object: self.textField, queue: .main) { (n) in
             self.handlerNotificationDidBeginEditing?()
         }
         
-        nc.addObserver(forName: .UITextFieldTextDidEndEditing, object: self.textField, queue: .main) { (n) in
+        nc.addObserver(forName: UITextField.textDidEndEditingNotification, object: self.textField, queue: .main) { (n) in
             self.handlerNotificationDidEndEditing?()
         }
         
-        nc.addObserver(forName: .UITextFieldTextDidChange, object: self.textField, queue: .main) { (n) in
+        nc.addObserver(forName: UITextField.textDidChangeNotification, object: self.textField, queue: .main) { (n) in
             self.handlerNotificationDidChange?()
         }
     }
