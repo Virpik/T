@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 extension NSAttributedString {
-    fileprivate func value<T>(by attribute: NSAttributedStringKey) -> T? {
+    fileprivate func value<T>(by attribute: NSAttributedString.Key) -> T? {
         let attributes = self.attributes(at: 0, effectiveRange: nil)
         
-        return attributes[NSAttributedStringKey.foregroundColor] as? T
+        return attributes[NSAttributedString.Key.foregroundColor] as? T
     }
     
-    fileprivate func set(value: Any, by attribute: NSAttributedStringKey) -> NSAttributedString {
+    fileprivate func set(value: Any, by attribute: NSAttributedString.Key) -> NSAttributedString {
         let mAttrStr = NSMutableAttributedString(attributedString: self)
         
         let range = NSRange(location: 0, length: self.string.count)
@@ -26,7 +26,7 @@ extension NSAttributedString {
 }
 
 extension UITextField: TStyleSupportTextField {
-    private typealias AtrStrKey = NSAttributedStringKey
+    private typealias AtrStrKey = NSAttributedString.Key
     
     public var aLabel: TStyleSupportLabel {
         return self

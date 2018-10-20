@@ -9,6 +9,7 @@ import Foundation
 
 public extension MutableCollection where Index == Int {
     
+    /// Перемешивание элементов массива, в рамках текущщей ссылки 
     public mutating func shuffleInPlace() {
         if self.count < 2 {
             return

@@ -8,6 +8,7 @@
 import Foundation
 
 public extension Float {
+    
     public var uInt32: UInt32 {
         return UInt32(self)
     }

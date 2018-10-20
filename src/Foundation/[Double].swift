@@ -8,6 +8,7 @@
 import Foundation
 
 public extension Double {
+    
     public var uInt32: UInt32 {
         return UInt32(self)
     }

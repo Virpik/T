@@ -12,63 +12,29 @@ public struct T {}
 
 public typealias Block = (() -> Void)
 public typealias BlockFail = ((Error) -> Void)
-public typealias BlockForItem<T> = ((T) -> Void)
-public typealias BlockSuccess<T> = ((T) -> Void)
+public typealias BlockItem<T> = ((T) -> Void)
 public typealias BlockFake<T> = ((TimeInterval, T?, Error?) -> Void)
-public typealias BlocksWorker<T> = (success: BlockSuccess<T>?, fail: BlockFail?)
+public typealias BlocksWorker<T> = (success: BlockItem<T>?, fail: BlockFail?)
 
 public struct Handlers<T> {
     public var fail: BlockFail?
-    public var success: BlockSuccess<T>?
+    public var success: BlockItem<T>?
     public var fake: BlockFake<T>?
 }
 
-func configure<T>(item: T, _ block: ((inout T) -> Void)) -> T {
-    var item = item
-    block(&item)
-    return item
-}
-
+/// Выполнение блока в дефолтной, асинхронной очереди
 public func async(_ block: @escaping Block) {
     DispatchQueue.global().async(execute: block)
 }
 
+/// Выполнение блока в главной очереди
 public  func main(_ block: @escaping Block) {
     DispatchQueue.main.async(execute: block)
 }
 
-public func delay(_ delay: TimeInterval, _ block: @escaping Block) {
-    DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: block)
-}
-
-public func tLog(file: String = #file, func: String = #function,
-                 line: Int = #line,
-                 tag: String? = nil,
-                 _ args: Any?...) {
-    
-    let _file: NSString = file as NSString
-    
-    let tag: String = "#[\(_file.lastPathComponent)][\(`func`)][\(line)]#[\(tag?.uppercased() ?? "")]"
-    
-    let str: String = args.compactMap {
-        return "\($0 ?? "#NIL#") "
-    }.joined()
-    
-    print(tag, str)
-}
-
-public func timeLog(func: String = #function,
-                    line: Int = #line,
-                    _ block: (() -> Void)) {
-    let date = Date()
-    
-    block()
-    
-    let nDate = Date()
-    
-    let tt = nDate.timeIntervalSince(date)
-    
-    tLog(func: `func`, line: line, tag: "Time", "\(tt/1000)" )
+/// Выполнение блока с задержкой в указанной очереди (по умолчанию в главной)
+public func delay(queue: DispatchQueue = DispatchQueue.main, _ delay: TimeInterval, _ block: @escaping Block) {
+    queue.asyncAfter(deadline: .now() + delay, execute: block)
 }
 
 /// For Tests

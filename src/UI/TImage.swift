@@ -12,11 +12,11 @@ import UIKit
 public extension UIImage {
     
     var png: Data? {
-        return UIImagePNGRepresentation(self)
+        return self.pngData()
     }
     
     var jpg: Data? {
-        return UIImageJPEGRepresentation(self, 0)
+        return self.jpegData(compressionQuality: 0)
     }
     
     public static var defaultColor: UIColor {

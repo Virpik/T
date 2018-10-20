@@ -117,7 +117,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
         }
     }
     
-    public func remove(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
+    public func remove(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableView.RowAnimation = .bottom) {
 
         self.tableView.beginUpdates()
 
@@ -128,7 +128,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
         self.tableView.endUpdates()
     }
 
-    public func update(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .automatic) {
+    public func update(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableView.RowAnimation = .automatic) {
 
         self.tableView.beginUpdates()
 
@@ -139,7 +139,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
         self.tableView.endUpdates()
     }
 
-    public func insert(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableViewRowAnimation = .bottom) {
+    public func insert(sections: [[AnyRowModel]], indexPaths: [IndexPath], animation: UITableView.RowAnimation = .bottom) {
 
         self.tableView.beginUpdates()
 
@@ -172,7 +172,7 @@ open class TableViewModel: NSObject, UITableViewDelegate, UITableViewDataSource 
         self.tableView.endUpdates()
     }
     
-    public func remove(rows: [(IndexPath, UITableViewRowAnimation)]) {
+    public func remove(rows: [(IndexPath, UITableView.RowAnimation)]) {
         self.tableView.beginUpdates()
         rows.forEach { row in
             self.sections[row.0.section].remove(at: row.0.row)

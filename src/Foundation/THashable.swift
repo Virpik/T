@@ -8,7 +8,26 @@
 
 import Foundation
 
+/// Обертка над Hashable, для упрощения получения hashValue значения
+/// Для полноченной исопльзования Hashable, необходмио реализовать свойство var hashes: [Int]
+///
+///struct Object: THashable {
+///    var field1: String
+///    var field2: String
+///    var field3: String?
+///
+///    var hashes: [Int] {
+///        return [
+///            self.field1.hashValue,
+///            self.field2.hashValue,
+///            self.field3.hashValue ?? 0
+///        ]
+///    }
+///}
+///
 public protocol THashable: Hashable {
+    
+    /// Список hashValue свойств объекта, которые влияют на уникальность
     var hashes: [Int] { get }
 }
 
