@@ -1,50 +1,36 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 target 'Demo' do
-    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!
-    
-    # Pods for Demo
+
+    pod 'T', :path=>'../'
     
     target 'DemoTests' do
         inherit! :search_paths
-        # Pods for testing
+        
     end
-    
 end
 
 target 'CoreDataOnly' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for CoreDataOnly
   pod 'T/CoreData', :path=>'../'
-
 end
 
 target 'CoreGraphicsOnly' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   pod 'T/CoreGraphics', :path=>'../'
-  # Pods for CoreGraphicsOnly
-
 end
 
 target 'FoundationOnly' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   pod 'T/Foundation', :path=>'../'
-  # Pods for FoundationOnly
-
 end
 
 target 'UIOnly' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   pod 'T/UI', :path=>'../'
-  # Pods for UIOnly
-
 end
