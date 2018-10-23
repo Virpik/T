@@ -6,9 +6,8 @@ _*VERSION: 0.1.0*_
 
 #### Установка:
 
-```
+```ruby
 pod 'T', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
-
 ```
 
 #### Модули: 
@@ -23,10 +22,8 @@ pod 'T', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
 
 #### Установка:
 
-```
-
+```ruby
 pod 'T/Foundation', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
-
 ```
 
 
@@ -34,27 +31,24 @@ pod 'T/Foundation', :git => 'https://github.com/Virpik/T.git', :branch => 'maste
 
 #### Установка:
 
-```
+```ruby
 pod 'T/CoreGraphics', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
-	
 ```
 
 ## CoreData
 
 #### Установка:
 
-```
+```ruby
 pod 'T/CoreData', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
-
 ```
 
 ## UI
 
 #### Установка:
 
-```
+```ruby
 pod 'T/UI', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
-
 ```
 
 
