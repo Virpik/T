@@ -24,6 +24,7 @@ pod 'T', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
 #### Установка:
 
 ```
+
 pod 'T/Foundation', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
 
 ```
