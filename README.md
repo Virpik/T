@@ -7,7 +7,7 @@ _*VERSION: 0.1.0*_
 #### Установка:
 
 ```
-	pod 'T', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
+pod 'T', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
 
 ```
 
@@ -24,7 +24,7 @@ _*VERSION: 0.1.0*_
 #### Установка:
 
 ```
-	pod 'T/Foundation', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
+pod 'T/Foundation', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
 
 ```
 
@@ -34,8 +34,8 @@ _*VERSION: 0.1.0*_
 #### Установка:
 
 ```
-	pod 'T/CoreGraphics', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
-
+pod 'T/CoreGraphics', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
+	
 ```
 
 ## CoreData
@@ -43,7 +43,7 @@ _*VERSION: 0.1.0*_
 #### Установка:
 
 ```
-	pod 'T/CoreData', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
+pod 'T/CoreData', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
 
 ```
 
@@ -52,7 +52,7 @@ _*VERSION: 0.1.0*_
 #### Установка:
 
 ```
-	pod 'T/UI', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
+pod 'T/UI', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
 
 ```
 
