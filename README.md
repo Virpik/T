@@ -1,4 +1,4 @@
-_*VERSION: 0.1.0*_
+_VERSION: 0.1.0_
 
 # T 
 
@@ -17,8 +17,7 @@ pod 'T', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
 - [**CoreData**](#CoreData) - Подход к работе с CoreData
 - [**UI**](#UI) - Для работы с _UI_
 
-
-## Foundation
+## <a name="Foundation"></a> Foundation
 
 #### Установка:
 
@@ -27,7 +26,7 @@ pod 'T/Foundation', :git => 'https://github.com/Virpik/T.git', :branch => 'maste
 ```
 
 
-## CoreGraphics
+## <a name="CoreGraphics"></a> CoreGraphics
 
 #### Установка:
 
@@ -35,7 +34,7 @@ pod 'T/Foundation', :git => 'https://github.com/Virpik/T.git', :branch => 'maste
 pod 'T/CoreGraphics', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
 ```
 
-## CoreData
+## <a name="CoreData"></a> CoreData
 
 #### Установка:
 
@@ -43,7 +42,7 @@ pod 'T/CoreGraphics', :git => 'https://github.com/Virpik/T.git', :branch => 'mas
 pod 'T/CoreData', :git => 'https://github.com/Virpik/T.git', :branch => 'master'
 ```
 
-## UI
+## <a name="UI"></a> UI
 
 #### Установка:
 
