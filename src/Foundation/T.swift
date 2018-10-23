@@ -23,8 +23,8 @@ public struct Handlers<T> {
 }
 
 /// Выполнение блока в дефолтной, асинхронной очереди
-public func async(_ block: @escaping Block) {
-    DispatchQueue.global().async(execute: block)
+public func async(qos: DispatchQoS.QoSClass = `default`, _ block: @escaping Block) {
+    DispatchQueue.global(qos: qos).async(execute: block)
 }
 
 /// Выполнение блока в главной очереди
