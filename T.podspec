@@ -36,14 +36,12 @@ Pod::Spec.new do |s|
   # s.tvos.deployment_target = "9.0"
 
   s.source       = { :git => "http://github/Virpik/T.git", :tag => "#{s.version}" }
-    # s.source_files  = "src/**/*.swift"
-
     s.subspec 'CoreData' do |s|
         s.source_files = "src/CoreData/**/*.swift"
     end
 
     s.subspec 'UI' do |s|
-        s.source_files = "src/UI/**/*.swift"
+        s.source_files = "src/UI/**/*.swift", "src/Foundation/**/*.swift", "src/CoreGraphics/**/*.swift" 
     end
 
     s.subspec 'CoreGraphics' do |s|
