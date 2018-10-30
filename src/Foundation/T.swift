@@ -55,19 +55,19 @@ public extension T {
     }
 }
 
-class Counter {
+public class Counter {
     
-    private(set) var count: Int
-    private(set) var avaiable: Int = 0
+    private(set) public var count: Int
+    private(set) public var avaiable: Int = 0
     
-    var blockSuccess: Block?
+    public var blockSuccess: Block?
     
-    init(count: Int, blockSuccess: Block?) {
+    public init(count: Int, blockSuccess: Block?) {
         self.count = count
         self.blockSuccess = blockSuccess
     }
     
-    func check() {
+    public func check() {
         self.avaiable += 1
         if self.count == avaiable {
             self.blockSuccess?()
