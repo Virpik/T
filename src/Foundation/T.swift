@@ -54,3 +54,24 @@ public extension T {
         return unarchve.decodeObject(forKey: "view") as? T
     }
 }
+
+class Counter {
+    
+    private(set) var count: Int
+    private(set) var avaiable: Int = 0
+    
+    var blockSuccess: Block?
+    
+    init(count: Int, blockSuccess: Block?) {
+        self.count = count
+        self.blockSuccess = blockSuccess
+    }
+    
+    func check() {
+        self.avaiable += 1
+        if self.count == avaiable {
+            self.blockSuccess?()
+        }
+    }
+    
+}
